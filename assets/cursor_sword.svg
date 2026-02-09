@@ -1,0 +1,26 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+    rect { shape-rendering: crispEdges; }
+  </style>
+  
+  <!-- Blade Outline (Black) -->
+  <path d="M2,2 L4,2 L4,4 L6,4 L6,6 L8,6 L8,8 L10,8 L10,10 L12,10 L12,12 L14,12 L14,14 L16,14 L16,12 L18,12 L18,14 L20,14 L20,16 L22,16 L22,18 L24,18 L24,20 L22,20 L22,22 L20,22 L20,24 L18,24 L18,26 L16,26 L16,24 L14,24 L14,22 L12,22 L12,20 L10,20 L10,18 L8,18 L8,16 L6,16 L6,14 L4,14 L4,12 L2,12 Z" fill="black"/>
+  
+  <!-- Blade Fill (Silver) -->
+  <path d="M3,3 L5,3 L5,5 L7,5 L7,7 L9,7 L9,9 L11,9 L11,11 L13,11 L13,13 L15,13 L15,15 L17,15 L17,17 L19,17 L19,19 L17,19 L17,21 L15,21 L15,23 L13,23 L13,21 L11,21 L11,19 L9,19 L9,17 L7,17 L7,15 L5,15 L5,13 L3,13 Z" fill="#e0e0e0"/>
+  
+  <!-- Center Groove/Fuller (Darker Silver) -->
+  <path d="M4,4 L6,4 L6,6 L8,6 L8,8 L10,8 L10,10 L12,10 L12,12 L14,12 L14,14 L12,14 L12,12 L10,12 L10,10 L8,10 L8,8 L6,8 L6,6 L4,6 Z" fill="#bdbdbd"/>
+
+  <!-- Crossguard (Gold) -->
+  <rect x="14" y="14" width="6" height="2" fill="#FFD700" transform="rotate(45 17 15)"/>
+  <!-- Actually drawing pixelated guard is easier with paths -->
+  <path d="M12,12 L16,12 L16,14 L18,14 L18,16 L20,16 L20,20 L18,20 L18,18 L16,18 L16,16 L14,16 L14,14 L12,14 Z" fill="#FFD700" stroke="black" stroke-width="0.5"/>
+
+  <!-- Handle (Brown) -->
+  <path d="M18,18 L22,18 L22,22 L24,22 L24,24 L26,24 L26,26 L28,26 L28,28 L30,28 L30,30 L28,30 L28,28 L26,28 L26,26 L24,26 L24,24 L22,24 L22,22 L18,22 Z" fill="#8B4513"/>
+  <path d="M19,19 L21,19 L21,21 L23,21 L23,23 L25,23 L25,25 L27,25 L27,27 L29,27 L29,29 L27,29 L27,27 L25,27 L25,25 L23,25 L23,23 L21,23 L21,21 L19,21 Z" fill="#A0522D"/>
+  
+  <!-- Pommel (Gold) -->
+  <rect x="28" y="28" width="2" height="2" fill="#FFD700"/>
+</svg>

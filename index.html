@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="ExWord - Get your video game stories heard by millions of gamers worldwide through organic marketing strategies.">
+    <title>ExWord | Video Game Organic Marketing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=VT323&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Services</a>
+                <a href="#" class="nav-link">Case Studies</a>
+            </div>
+            <div class="nav-logo">
+                <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon">
+                <img src="assets/Group.svg" alt="ExWord" class="logo-text">
+                <span class="logo-rpg-text">EXWORD//</span>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <!-- Video Background - Full Screen -->
+        <div class="hero-video-wrapper">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="assets/202602042244.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Get your stories heard by</span>
+                <span class="title-highlight">millions of gamers</span>
+                <span class="title-line">worldwide</span>
+            </h1>
+            <p class="hero-subtitle">We are ExWord, the gaming marketing studio that thrives on bold ideas, fearless
+                campaigns, and authentic engagement that actually resonates with players.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Start Your Journey</a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By - Logo Scroll -->
+    <section class="logo-scroll" id="trusted-by">
+        <p class="logo-scroll-label">Trusted by studios making games that matter</p>
+        <div class="logo-marquee">
+            <div class="logo-track">
+                <!-- Logos repeated for seamless loop -->
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <!-- Duplicate for seamless loop -->
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+                <div class="logo-item"><span class="logo-placeholder">🎮 Webflow</span></div>
+                <div class="logo-item"><span class="logo-placeholder">⚡ Relume</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Ways Section -->
+    <!-- Services / Inventory Section -->
+    <section class="inventory-section" id="services">
+        <div class="section-container">
+            <div class="section-header split-header">
+                <h2 class="section-title reveal-on-scroll">Our Expertise</h2>
+                <div class="section-description">
+                    <p class="reveal-on-scroll" style="transition-delay: 0.1s;">Our methods combine a genuine approach
+                        to marketing with data-driven strategies to form
+                        meaningful connections between games and players. We don't just market your game - we introduce
+                        it to communities that will celebrate it and keep it alive for a long time.</p>
+                </div>
+            </div>
+
+            <!-- Character + Inventory Grid (No Box) -->
+            <div class="inventory-display classic-rpg-ui">
+
+                <!-- Left: Character Art -->
+                <div class="character-panel">
+                    <img src="assets/Group 1.png" alt="RPG Character" class="pixel-art-character">
+                </div>
+
+                <!-- Right: Inventory (Hexagons) -->
+                <div class="inventory-main">
+                    <!-- Removed Header -->
+
+                    <div class="inventory-mesh grid-hex">
+                        <!-- Row 1 -->
+                        <div class="inventory-slot hex-slot" data-id="reddit" title="Reddit Ops">
+                            <img src="assets/logos/reddit-143-svgrepo-com.svg" class="item-icon-svg" alt="Reddit">
+                        </div>
+                        <div class="inventory-slot hex-slot" data-id="community" title="Community Mgmt">
+                            <img src="assets/logos/discord-icon-svgrepo-com.svg" class="item-icon-svg" alt="Discord">
+                        </div>
+                        <div class="inventory-slot hex-slot" data-id="content" title="Content Production">
+                            <img src="assets/logos/adobepremierepro-svgrepo-com.svg" class="item-icon-svg"
+                                alt="Premiere">
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="inventory-slot hex-slot" data-id="tiktok" title="TikTok Viral">
+                            <img src="assets/logos/tiktok-svgrepo-com.svg" class="item-icon-svg" alt="TikTok">
+                        </div>
+                        <div class="inventory-slot hex-slot" data-id="influencer" title="Influencer Network">
+                            <img src="assets/logos/instagram-svgrepo-com.svg" class="item-icon-svg" alt="Instagram">
+                        </div>
+                        <div class="inventory-slot hex-slot" data-id="youtube" title="YouTube Strategy">
+                            <img src="assets/logos/youtube-168-svgrepo-com.svg" class="item-icon-svg" alt="YouTube">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Philosophy Block -->
+            <div class="philosophy-container">
+                <h3 class="philosophy-title reveal-on-scroll">Our Philosophy</h3>
+                <p class="philosophy-text reveal-on-scroll" style="transition-delay: 0.1s;">"We believe marketing should
+                    be rooted in genuine interactions, not numbers on a spreadsheet. Each campaign we create begins with
+                    a deep understanding of the gaming culture, the needs of players, and the identity of the games we
+                    represent - ensuring every connection feels natural and authentic. When marketers understand gamers,
+                    magic happens."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Banner Section (Full Width Expansion) -->
+    <section class="banner-section">
+        <div class="banner-expansion-wrapper">
+            <img src="assets/Profile banner - 1.avif" alt="Profile Banner" class="banner-img">
+            <div class="banner-gradient"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section (Moved & Updated) -->
+    <section class="stats" id="stats">
+        <div class="section-container">
+            <!-- Removed Header for cleaner look under banner -->
+            <div class="stats-grid">
+                <div class="stat-item reveal-on-scroll">
+                    <span class="stat-number" data-count="90">0</span>
+                    <span class="stat-suffix">M+</span>
+                    <span class="stat-label">Gamers Reached</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item reveal-on-scroll" style="transition-delay: 0.1s;">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-suffix">M+</span>
+                    <span class="stat-label">Copies Sold</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item reveal-on-scroll" style="transition-delay: 0.2s;">
+                    <span class="stat-number" data-count="60">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Worldwide Clients</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item reveal-on-scroll" style="transition-delay: 0.3s;">
+                    <span class="stat-number" data-count="2022">2022</span>
+                    <span class="stat-suffix"></span>
+                    <span class="stat-label">Founded</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Detail Modal overlay -->
+    <div class="skill-modal-overlay" id="skillModal">
+        <div class="skill-modal-content">
+            <button class="skill-modal-close" id="closeSkillModal">&times;</button>
+            <div class="skill-modal-header">
+                <div class="skill-modal-icon" id="modalIcon">🚀</div>
+                <h3 class="skill-modal-title" id="modalTitle">Skill Name</h3>
+            </div>
+            <div class="skill-modal-body">
+                <p id="modalDesc">Description goes here.</p>
+                <div class="skill-modal-tags" id="modalTags">
+                    <!-- Tags injected via JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle" style="color: white;">See what we've built together with incredible game
+                    studios.</p>
+            </div>
+
+            <div class="character-select">
+                <div class="character-card" data-project="alpha">
+                    <div class="character-image">
+                        <div class="character-placeholder">🎮</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Project Alpha</h3>
+                        <p class="character-role">RPG Adventure</p>
+                    </div>
+                </div>
+
+                <div class="character-card" data-project="battle">
+                    <div class="character-image">
+                        <div class="character-placeholder">⚔️</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Battle Arena</h3>
+                        <p class="character-role">Action MOBA</p>
+                    </div>
+                </div>
+
+                <div class="character-card" data-project="space">
+                    <div class="character-image">
+                        <div class="character-placeholder">🚀</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Space Voyage</h3>
+                        <p class="character-role">Sci-Fi Explorer</p>
+                    </div>
+                </div>
+
+                <div class="character-card" data-project="kingdom">
+                    <div class="character-image">
+                        <div class="character-placeholder">🏰</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Kingdom Rise</h3>
+                        <p class="character-role">Strategy Builder</p>
+                    </div>
+                </div>
+
+                <div class="character-card" data-project="precision">
+                    <div class="character-image">
+                        <div class="character-placeholder">🎯</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 class="character-name">Precision</h3>
+                        <p class="character-role">FPS Tactical</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Modal -->
+    <div class="case-study-modal" id="caseStudyModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+            <div class="modal-header">
+                <span class="modal-tag">Case Study</span>
+                <h2 class="modal-title" id="modalTitle">Project Name</h2>
+                <p class="modal-genre" id="modalGenre">Genre</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <div class="modal-image-placeholder" id="modalImage">🎮</div>
+                </div>
+                <div class="modal-details">
+                    <div class="modal-section">
+                        <h3>The Challenge</h3>
+                        <p id="modalChallenge">Description of the challenge faced by the game studio.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>Our Approach</h3>
+                        <p id="modalApproach">How ExWord tackled the marketing challenge.</p>
+                    </div>
+                    <div class="modal-section">
+                        <h3>The Results</h3>
+                        <div class="modal-stats">
+                            <div class="modal-stat">
+                                <span class="modal-stat-number" id="modalStat1">+250%</span>
+                                <span class="modal-stat-label">Community Growth</span>
+                            </div>
+                            <div class="modal-stat">
+                                <span class="modal-stat-number" id="modalStat2">50K+</span>
+                                <span class="modal-stat-label">New Players</span>
+                            </div>
+                            <div class="modal-stat">
+                                <span class="modal-stat-number" id="modalStat3">4.8★</span>
+                                <span class="modal-stat-label">Store Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real Voices / Testimonials Section - RPG Dialogue Style -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Real voices</h2>
+                <p class="section-subtitle">Hear what our partners have to say about us</p>
+            </div>
+
+            <div class="rpg-dialogue-container">
+                <!-- Navigation Arrow Left -->
+                <button class="dialogue-nav dialogue-prev" aria-label="Previous testimonial">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <!-- Dialogue Wrapper (Box + Character) -->
+                <div class="dialogue-wrapper">
+                    <!-- Name Badge (positioned above box) -->
+                    <div class="dialogue-name-badge">
+                        <span class="dialogue-name" id="dialogueName">Alex Rivera</span>
+                        <span class="dialogue-studio" id="dialogueStudio">Relume Studios</span>
+                    </div>
+
+                    <!-- Dialogue Box -->
+                    <div class="rpg-dialogue-box">
+                        <div class="dialogue-content">
+                            <div class="dialogue-text-wrapper">
+                                <p class="dialogue-text" id="dialogueText">"Working with ExWord felt like having an
+                                    extension of our own team. They understood our game's vision and connected us with
+                                    players who truly care."</p>
+                                <span class="dialogue-cursor"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Character Portrait (positioned on right, overlapping) -->
+                    <div class="dialogue-character">
+                        <img src="assets/Vector Male.svg" alt="Character" class="character-silhouette"
+                            id="dialogueCharacter">
+                    </div>
+                </div>
+
+                <!-- Navigation Arrow Right -->
+                <button class="dialogue-nav dialogue-next" aria-label="Next testimonial">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
+                <!-- Dialogue Indicators -->
+                <div class="dialogue-indicators">
+                    <span class="indicator active" data-index="0"></span>
+                    <span class="indicator" data-index="1"></span>
+                    <span class="indicator" data-index="2"></span>
+                    <span class="indicator" data-index="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Consultation CTA Section -->
+    <section class="consultation-cta">
+        <div class="cta-card-container">
+            <h2 class="cta-heading">Every game has a story, let's tell yours.</h2>
+            <p class="cta-subheading">Let's explore the best opportunities to help it grow and reach its ideal audience.
+            </p>
+            <a href="#" class="cta-button-sched">Schedule Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- RPG Contact Section -->
+    <section class="rpg-contact" id="contact">
+        <div class="rpg-container">
+            <!-- Left ASCII Art -->
+            <div class="rpg-ascii">
+                <pre>
+                                                 ==                                                 
+                                                 ==                                                 
+                                ++               ==               ++                                
+                               ++               ===               +++                               
+                              +++               ====               +++                              
+                             ++++               ====               ++++                             
+                             ++++              =====               ++++                             
+                            ++++++             ======             +++++                             
+                            ++++++             ======             ++++++                            
+                            ++++++++          =======           ++++++++                            
+                            ++++++++++        ========        ++++++++++                            
+                            +++++++++++++     ========     +++++++++++++                            
+                            +++++++++++++++   ========   +++++++++++++++                            
+                            +++++++++++++++++  ======  +++++++++++++++++                            
+                        *    +++++++++++++++++ ====== +++++++++++++++++    *                        
+                       ***   ++++++++++++++++++ ==== ++++++++++++++++++   ***                       
+                       ****   ++++++++++++++++++ == ++++++++++++++++++   ****                       
+                       ******    ++++++++++++++++==++++++++++++++++   *******                       
+                       **********  ++++++++++++++  ++++++++++++++  **********                       
+                       ************* ++++++++++++  +++++++++++  *************                       
+                       ***************  ++++++++++++++++++++  ***************                       
+                       ***************** ++++++++++++++++++ *****************                       
+                       ****************** +++++++++++++++  ******************                       
+                       ******************** ++++++++++++ *******************                        
+                        ******************** ++++++++++ ********************                        
+                         ******************** ++++++++ ********************                         
+                          ******************** ++++++ ********************                          
+                           ********************++++++********************                           
+                                  ************* ++++ *************                                  
+                               #####  **********+++ **********  #####                               
+                               #######  ******** ++ ********  #######                               
+                               ######### ********++*******  #########                               
+                               ########### ******  ****** ###########                               
+                               ############ *****  ***** ############                               
+                               #############*****  **** ############                                
+                                ############ **** *****#############                                
+                                 ############ ******** ############                                 
+                                  ############******* ############                                  
+                                    ########## ****** ##########                                    
+                                          #####***** #####                                          
+                                            ### **** ###                                            
+                                              # ****##                                              
+                                              ##*** #                                               
+                                                ***                                                 
+                                                 *                                                  
+                </pre>
+            </div>
+
+            <div class="rpg-box">
+                <div class="rpg-text-area">
+                    <span id="rpg-text"></span><span class="rpg-cursor">|</span>
+                </div>
+
+                <!-- Options Grid -->
+                <div class="rpg-options" id="rpg-options">
+
+                    <button class="rpg-option" data-action="email">
+                        <span class="rpg-selector">▶</span> Where can I send you a message?
+                    </button>
+                    <button class="rpg-option" data-action="publisher">
+                        <span class="rpg-selector">▶</span> We are a publisher, let's collaborate
+                    </button>
+                    <button class="rpg-option" data-action="run">
+                        <span class="rpg-selector">▶</span> Flee
+                    </button>
+                </div>
+
+                <!-- Hidden Form -->
+                <form class="rpg-form" id="rpg-form">
+                    <div class="form-group">
+                        <input type="text" class="rpg-input" placeholder="ENTER NAME" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="rpg-input" placeholder="ENTER EMAIL" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="rpg-input" placeholder="ENTER MESSAGE" rows="2" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="rpg-submit">[TRANSMIT]</button>
+                        <button type="button" class="rpg-back">[BACK]</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right ASCII Art -->
+            <div class="rpg-ascii">
+                <pre>
+                                                 ==                                                 
+                                                 ==                                                 
+                                ++               ==               ++                                
+                               ++               ===               +++                               
+                              +++               ====               +++                              
+                             ++++               ====               ++++                             
+                             ++++              =====               ++++                             
+                            ++++++             ======             +++++                             
+                            ++++++             ======             ++++++                            
+                            ++++++++          =======           ++++++++                            
+                            ++++++++++        ========        ++++++++++                            
+                            +++++++++++++     ========     +++++++++++++                            
+                            +++++++++++++++   ========   +++++++++++++++                            
+                            +++++++++++++++++  ======  +++++++++++++++++                            
+                        *    +++++++++++++++++ ====== +++++++++++++++++    *                        
+                       ***   ++++++++++++++++++ ==== ++++++++++++++++++   ***                       
+                       ****   ++++++++++++++++++ == ++++++++++++++++++   ****                       
+                       ******    ++++++++++++++++==++++++++++++++++   *******                       
+                       **********  ++++++++++++++  ++++++++++++++  **********                       
+                       ************* ++++++++++++  +++++++++++  *************                       
+                       ***************  ++++++++++++++++++++  ***************                       
+                       ***************** ++++++++++++++++++ *****************                       
+                       ****************** +++++++++++++++  ******************                       
+                       ******************** ++++++++++++ *******************                        
+                        ******************** ++++++++++ ********************                        
+                         ******************** ++++++++ ********************                         
+                          ******************** ++++++ ********************                          
+                           ********************++++++********************                           
+                                  ************* ++++ *************                                  
+                               #####  **********+++ **********  #####                               
+                               #######  ******** ++ ********  #######                               
+                               ######### ********++*******  #########                               
+                               ########### ******  ****** ###########                               
+                               ############ *****  ***** ############                               
+                               #############*****  **** ############                                
+                                ############ **** *****#############                                
+                                 ############ ******** ############                                 
+                                  ############******* ############                                  
+                                    ########## ****** ##########                                    
+                                          #####***** #####                                          
+                                            ### **** ###                                            
+                                              # ****##                                              
+                                              ##*** #                                               
+                                                ***                                                 
+                                                 *                                                  
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <!-- Footer Logo Scroll Removed -->
+
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon">
+                    <img src="assets/Group.svg" alt="ExWord" class="logo-text">
+                </div>
+                <p class="footer-tagline">Connecting games with players worldwide</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <a href="#">Community Building</a>
+                    <a href="#">Content Strategy</a>
+                    <a href="#">Influencer Partnerships</a>
+                    <a href="#">Analytics</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Press</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Blog</a>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2022 ExWord. All rights reserved.</p>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
