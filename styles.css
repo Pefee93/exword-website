@@ -918,27 +918,74 @@ section {
     margin-right: 0;
     /* Slight overlap or tightening */
     z-index: 1;
+    position: relative;
+    /* For absolute logo positioning */
 }
+
+.character-bg-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 800px;
+    max-width: none;
+    height: auto;
+    opacity: 1;
+    z-index: -1;
+    pointer-events: none;
+    /* Tint to purple --color-primary #7575F2 */
+    filter: brightness(0) saturate(100%) invert(54%) sepia(90%) saturate(3000%) hue-rotate(220deg) brightness(95%) contrast(95%);
+}
+
 
 /* The Knight Image */
 .pixel-art-character {
     width: 100%;
     height: auto;
-    max-height: 700px;
-    /* Bigger */
+    max-height: 850px;
+    /* Increased to avoid clipping */
     object-fit: contain;
-    object-position: left top;
-    /* Key for alignment */
-    /* Smooth Transition Mask */
-    -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+    object-position: left bottom;
+    /* Anchor to bottom */
+
+    /* Removed mask-image to prevent cutting off cape/spear */
+    /* Removed mask - doing fade via container overlay instead */
+    /* Composite Mask: Fades bottom (fog) AND left edge (cape blending) */
+    -webkit-mask-image:
+        linear-gradient(to bottom, black 70%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 15%, black 100%);
+    mask-image:
+        linear-gradient(to bottom, black 70%, transparent 100%),
+        linear-gradient(to right, transparent 0%, black 15%, black 100%);
+
+    /* Ensure only the intersection of opaque areas remains visible */
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
 
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.25));
-    /* Removed transition */
     /* Adjust margin to align pixel art edge with text */
-    margin-left: -35px;
-    /* Tuned to align visual weight of image with text */
+    margin-left: -50px;
+    /* Pull slightly left to create dynamic overlap */
+    position: relative;
+    z-index: 2;
+    overflow: visible;
 }
+
+/* Ensure container doesn't clip and no overlays exist */
+.character-panel {
+    overflow: visible !important;
+    position: relative;
+}
+
+.character-panel::after,
+.character-panel::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+}
+
+/* Gradient Fade Overlay - Fixes the "broken" mask look by smoothly covering bottom */
+
 
 /* Removed Hover Effect */
 
@@ -950,7 +997,7 @@ section {
     flex-direction: column;
     align-items: flex-end;
     /* Align Grid to Right Edge */
-    padding: 150px 0 0 0;
+    padding: 280px 0 0 0;
     /* Pushed down to align with image center */
     background: transparent;
     border: none;
@@ -1009,33 +1056,32 @@ section {
     display: none;
 }
 
-/* Hover: Etched/Pressed Into Background */
+/* Hover: Gradient Pressed Effect */
 .inventory-slot.hex-slot:hover {
-    /* Darker than background - looks recessed */
-    background: linear-gradient(180deg, #dcdce0 0%, #e8e8ec 100%) !important;
-    transform: scale(0.97);
-    z-index: 1;
+    /* Gradient: Darker top creates concave illusion */
+    background: linear-gradient(to bottom, #5353E5 0%, #8585f5 100%) !important;
 
-    /* Remove ALL shadows - etched objects don't float */
-    filter: none;
+    /* Slight downward movement */
+    transform: translateY(2px);
+    z-index: 10;
+
+    /* Inner shadow mainly at the top/left to suggest light source is top-left */
+    box-shadow: inset 2px 4px 8px rgba(0, 0, 0, 0.3);
+
+    /* Reduced drop shadow closer to surface */
+    filter: drop-shadow(0 2px 6px rgba(117, 117, 242, 0.3));
 }
 
-/* Top shadow overlay - simulates light blocked by carved edge */
-.inventory-slot.hex-slot:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background: linear-gradient(180deg,
-            rgba(0, 0, 0, 0.15) 0%,
-            rgba(0, 0, 0, 0.08) 15%,
-            transparent 35%,
-            transparent 100%);
-    pointer-events: none;
+/* Invert icons to white on hover */
+.inventory-slot.hex-slot:hover img,
+.inventory-slot.hex-slot:hover .item-icon-svg {
+    filter: brightness(0) invert(1) !important;
+    opacity: 1 !important;
+    transform: scale(1.1);
+    transition: all 0.2s ease;
 }
+
+
 
 /* Override Rarity Classes (Ensure no random bg colors) */
 .inventory-slot.hex-slot.rarity-common,
@@ -3530,4 +3576,30 @@ section {
 .reveal-on-scroll.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* ================================
+   Scroll Snap Control Overrides
+   ================================ */
+
+/* Disable snapping globally for all major sections */
+section,
+.hero,
+.inventory-section,
+.stats,
+.testimonials,
+.consultation-cta,
+.banner-section,
+footer {
+    scroll-snap-align: none !important;
+}
+
+/* "One at the end of Projects page" - Snap bottom of projects to viewport bottom */
+#projects {
+    scroll-snap-align: end !important;
+}
+
+/* "One that centers the Contacts page" - Snap center of contact section to viewport */
+#contact {
+    scroll-snap-align: center !important;
 }
