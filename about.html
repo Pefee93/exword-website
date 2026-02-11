@@ -5,157 +5,679 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExWord - About Us</title>
-    <link rel="stylesheet" href="styles.css">
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=VT323&family=Oswald:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* INLINE STYLES FOR RETRO SLIDESHOW CONTENT - BLUE THEME */
+
+        /* Force Pixelated Rendering globally for this page */
+        * {
+            font-family: 'VT323', monospace !important;
+            -webkit-font-smoothing: none !important;
+            -moz-osx-font-smoothing: none !important;
+            text-rendering: optimizeSpeed !important;
+        }
+
+        /* Layout Structure */
+        .tv-layout-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            /* Full viewport height inside the TV container */
+            position: relative;
+            z-index: 10;
+        }
+
+        .tv-content-scrollable {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            padding-bottom: 20px;
+            scrollbar-width: thin;
+            scrollbar-color: #7575f2 #050510;
+        }
+
+        /* Scrollbar styling for Retro Feel */
+        .tv-content-scrollable::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .tv-content-scrollable::-webkit-scrollbar-track {
+            background: #050510;
+        }
+
+        .tv-content-scrollable::-webkit-scrollbar-thumb {
+            background: #7575f2;
+            border: 2px solid #050510;
+        }
+
+        .tv-slide {
+            display: none;
+            /* Hidden by default */
+            flex-direction: column;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            animation: fadeInSlide 0.5s ease-out;
+        }
+
+        .tv-slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer Controls Area */
+        .tv-footer-controls {
+            flex-shrink: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(5, 5, 20, 0.9);
+            border-top: 1px solid rgba(117, 117, 242, 0.3);
+            position: relative;
+            z-index: 20;
+        }
+
+        /* Text Styling */
+        .retro-title {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 0 #7575f2, -2px 0 #ff00de;
+            /* Glitch Shadow */
+            border-bottom: 2px solid #7575f2;
+            padding-bottom: 10px;
+            animation: textGlitch 3s infinite alternate;
+        }
+
+        @keyframes textGlitch {
+            0% {
+                text-shadow: 2px 0 #7575f2, -2px 0 #ff00de;
+            }
+
+            20% {
+                text-shadow: -2px 0 #7575f2, 2px 0 #ff00de;
+            }
+
+            40% {
+                text-shadow: 2px 0 #ff00de, -2px 0 #7575f2;
+            }
+
+            100% {
+                text-shadow: 2px 0 #7575f2, -2px 0 #ff00de;
+            }
+        }
+
+        .retro-title small {
+            font-size: 0.6em;
+            opacity: 0.8;
+            display: block;
+            margin-top: 5px;
+            text-shadow: none;
+            color: #7575f2;
+        }
+
+        .retro-text {
+            color: #ffffff !important;
+            /* Force White */
+            font-size: 1.5rem;
+            line-height: 1.6;
+            text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+            /* Slight shadow for contrast against scanlines */
+            opacity: 1 !important;
+        }
+
+        .retro-text p {
+            margin-bottom: 25px;
+            color: #ffffff !important;
+            opacity: 1 !important;
+        }
+
+        /* Buttons */
+        .retro-btn {
+            background: rgba(117, 117, 242, 0.1);
+            border: 2px solid #7575f2;
+            color: #ffffff;
+            font-size: 1.6rem;
+            padding: 12px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            /* Spacer */
+            align-self: flex-start;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(117, 117, 242, 0.3);
+        }
+
+        .retro-btn:hover {
+            background: #7575f2;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(117, 117, 242, 0.8);
+            text-shadow: 0 0 5px #fff;
+        }
+
+        /* Values Grid */
+        .retro-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .retro-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .retro-card {
+            border: 1px solid rgba(117, 117, 242, 0.3);
+            padding: 25px;
+            background: rgba(10, 10, 30, 0.6);
+            transition: transform 0.3s;
+        }
+
+        .retro-card:hover {
+            transform: translateY(-5px);
+            border-color: #7575f2;
+            box-shadow: 0 0 15px rgba(117, 117, 242, 0.2);
+        }
+
+        .retro-card h3 {
+            color: #7575f2;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(117, 117, 242, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .retro-card p {
+            color: #ffffff;
+            /* White text */
+            font-size: 1.3rem;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        /* Timeline */
+        .retro-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid rgba(117, 117, 242, 0.3);
+            margin-left: 10px;
+        }
+
+        .timeline-entry {
+            position: relative;
+            padding-left: 30px;
+            opacity: 0;
+            animation: slideInRight 1.5s forwards;
+        }
+
+        .timeline-entry::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            /* Align with line center */
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: #050510;
+            border: 2px solid #7575f2;
+            box-shadow: 0 0 5px #7575f2;
+            border-radius: 50%;
+        }
+
+        .timeline-entry:hover::before {
+            background: #7575f2;
+        }
+
+        .timeline-entry:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .timeline-entry:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .timeline-entry:nth-child(3) {
+            animation-delay: 2.5s;
+        }
+
+        .timeline-entry:nth-child(4) {
+            animation-delay: 3.5s;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-year {
+            font-size: 2.2rem;
+            color: #ffffff;
+            font-weight: bold;
+            display: block;
+            text-shadow: 0 0 5px rgba(117, 117, 242, 0.8);
+        }
+
+        .timeline-title {
+            font-size: 1.6rem;
+            color: #7575f2;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* Founder Layout */
+        .founder-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        @media (min-width: 900px) {
+            .founder-layout {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+
+        .founder-retro-visual {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            aspect-ratio: 3/4;
+            border: 2px solid #7575f2;
+            padding: 5px;
+            background: rgba(10, 10, 30, 0.8);
+            box-shadow: 0 0 20px rgba(117, 117, 242, 0.4);
+            flex-shrink: 0;
+        }
+
+        .founder-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: contrast(1.1) brightness(0.9) grayscale(20%);
+        }
+
+        .founder-glitch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            pointer-events: none;
+            mix-blend-mode: hard-light;
+            filter: sepia(1) hue-rotate(190deg) saturate(3) brightness(1.2);
+            animation: blueGlitch 4s infinite;
+        }
+
+        @keyframes blueGlitch {
+
+            0%,
+            90% {
+                opacity: 0;
+            }
+
+            91% {
+                opacity: 0.8;
+                transform: translate(-2px, 0);
+            }
+
+            92% {
+                opacity: 0.3;
+                transform: translate(2px, 0);
+            }
+
+            95% {
+                opacity: 0.6;
+                transform: translate(0, 2px);
+                filter: sepia(1) hue-rotate(190deg) saturate(5);
+            }
+
+            96% {
+                opacity: 0;
+            }
+        }
+
+        /* Navbar Updates for Retro */
+        .tv-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(117, 117, 242, 0.3);
+            background: rgba(5, 5, 20, 0.95);
+            position: relative;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        .tv-logo-link {
+            color: #ffffff;
+            font-size: 1.8rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tv-logo-link:hover {
+            color: #7575f2;
+            text-shadow: 0 0 10px #7575f2;
+        }
+
+        .tv-nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .tv-nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.4rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .tv-nav-link:hover,
+        .tv-nav-link.active {
+            color: #7575f2;
+            text-shadow: 0 0 8px #7575f2;
+            transform: scale(1.1);
+        }
+
+        /* Progress Dots (Now in Footer) */
+        .slide-progress {
+            display: flex;
+            gap: 15px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(117, 117, 242, 0.3);
+            border: 1px solid #7575f2;
+            transform: rotate(45deg);
+            transition: all 0.3s;
+        }
+
+        .progress-dot.active {
+            background: #7575f2;
+            box-shadow: 0 0 10px #7575f2;
+            transform: rotate(45deg) scale(1.2);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .tv-nav-links {
+                display: none;
+            }
+
+            .founder-layout {
+                flex-direction: column;
+            }
+
+            .retro-title {
+                font-size: 2rem;
+            }
+
+            .tv-content-scrollable {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body class="about-glitch-page">
 
     <div class="tv-screen-container">
-        <!-- Effects Layers -->
+        <!-- Reusing existing CSS classes for Noise/Scanlines -->
         <div class="scanline-layer"></div>
         <div class="noise-layer"></div>
 
-        <!-- Integrated Pixel Navbar -->
-        <nav class="tv-navbar">
-            <div class="tv-nav-left">
-                <span class="tv-logo-text">EXWORD//SYSTEMS</span>
-                <a href="services.html" class="tv-nav-link">SERVICES</a>
-                <a href="index.html#projects" class="tv-nav-link">MEMORIES</a>
-            </div>
-            <div class="tv-nav-right">
-                <a href="about.html" class="tv-nav-link active">STATUS</a>
-                <a href="index.html#contact" class="tv-nav-link">TRANSMIT</a>
-            </div>
-        </nav>
+        <!-- Flex Layout Wrapper -->
+        <div class="tv-layout-wrapper">
 
-        <!-- Main TV Content -->
-        <div class="tv-content">
-            <!-- Background Logos Inside Screen -->
-            <div class="bg-glitch-logo left"></div>
-            <div class="bg-glitch-logo right"></div>
-
-            <!-- VIEW: MAIN MENU -->
-            <div id="view-menu" class="tv-view active">
-                <h1 class="glitch-header">
-                    > SYSTEM MESSAGE:<br>
-                    WE CONNECT GAMES WITH PLAYERS THROUGH<br>ORGANIC SIGNAL TRANSMISSION. <span
-                        class="tv-cursor"></span>
-                </h1>
-
-                <div class="tv-options">
-                    <div class="tv-option" onclick="switchTvView('view-contact')">
-                        <span>> WHERE CAN I SEND A MESSAGE?</span>
-                        <span class="tv-tag">CONTACT</span>
-                    </div>
-                    <div class="tv-option" onclick="switchTvView('view-team')">
-                        <span>> WHO IS BEHIND THIS SYSTEM?</span>
-                        <span class="tv-tag">TEAM ALPHA</span>
-                    </div>
-                    <div class="tv-option" onclick="switchTvView('view-partner')">
-                        <span>> WE ARE A PUBLISHER, COLLABORATE?</span>
-                        <span class="tv-tag">PARTNERSHIP</span>
-                    </div>
-                    <a href="index.html" class="tv-option" style="text-decoration: none;">
-                        <span>> FLEE SIMULATION</span>
-                        <span class="tv-tag">EXIT</span>
-                    </a>
+            <!-- Navbar -->
+            <nav class="tv-navbar">
+                <a href="index.html" class="tv-logo-link">EXWORD//SYSTEMS</a>
+                <div class="tv-nav-links">
+                    <a href="about.html" class="tv-nav-link active">ABOUT</a>
+                    <a href="services.html" class="tv-nav-link">SERVICES</a>
+                    <a href="index.html#projects" class="tv-nav-link">CASE STUDIES</a>
+                    <a href="index.html#contact" class="tv-nav-link">CONTACT</a>
                 </div>
-            </div>
+            </nav>
 
-            <!-- VIEW: TEAM -->
-            <div id="view-team" class="tv-view hidden">
-                <h2 class="glitch-header">> PERSONNEL DATABASE_</h2>
-                <div class="tv-team-grid">
-                    <!-- Agent Alpha -->
-                    <div class="tv-member-card">
-                        <div class="tv-card-inner">
-                            <img src="assets/Vector Male.svg" alt="Alpha" class="tv-member-img">
-                            <h3>AGENT ALPHA</h3>
-                            <p class="tv-role">STRATEGY LEAD</p>
+            <!-- Scrollable Content Area -->
+            <div class="tv-content-scrollable">
+
+                <!-- SLIDE 1: STORY -->
+                <div id="slide-story" class="tv-slide active">
+                    <h1 class="retro-title">SYSTEM LOG: OUR STORY <small>Loading narrative protocols...</small></h1>
+                    <div class="retro-text">
+                        <p>ExWord started from a simple desire - to help indie game studios stand out in the vast sea of
+                            the video game market. Early on, we realized that organic and authentic marketing is the way
+                            forward, because players don't just buy games - they form bonds and relationships with the
+                            worlds they play in and the studios behind them. Our goal was to turn that emotional
+                            connection into high-level marketing, and we successfully did so.</p>
+                        <p>We began on Reddit, advising studios and developers on how to become valuable members of the
+                            platform and promote their games in ways that truly resonate with players. This brought us
+                            early success because we knew every corner of Reddit by heart. Being lifelong gamers and
+                            Redditors ourselves, we'd spent countless hours immersed in its communities - making it
+                            second nature for us to navigate, understand, and connect.</p>
+                        <p>As the studio grew, over time, we expanded our expertise beyond Reddit - first into community
+                            management and Steam marketing, then into influencer campaigns, and most recently into
+                            visual content creation and TikTok marketing. With that, ExWord evolved into a full-stack
+                            marketing studio for games. However, we've never forgotten the roots that made us successful
+                            in the first place - authentic, high-quality marketing built on trust, creativity, and
+                            genuine understanding of gaming culture. We apply those same principles to every campaign we
+                            run - whether it's Reddit strategy, content creation, or influencer collaborations.</p>
+                        <p>Today, ExWord is an established gaming marketing studio with over 80 campaigns behind us and
+                            deep experience across titles of all sizes - from indies to AAA. We're proud to be the go-to
+                            partner for game developers who want to build real, lasting connections with their players.
+                        </p>
+                        <p>Through our experience, we've learned that when marketing is done by people who genuinely
+                            live and breathe games, everyone wins: developers find their ideal audience, players
+                            discover games they love, and lasting communities grow stronger.</p>
+                    </div>
+                    <!-- Button to next slide -->
+                    <button class="retro-btn" onclick="showSlide('slide-values', 2)">>> INITIATE CORE VALUES</button>
+                </div>
+
+                <!-- SLIDE 2: VALUES -->
+                <div id="slide-values" class="tv-slide">
+                    <h1 class="retro-title">CORE VALUES <small>Principles guiding system operations</small></h1>
+                    <div class="retro-grid">
+                        <div class="retro-card">
+                            <h3>AUTHENTICITY FIRST</h3>
+                            <p>We believe genuine connections with gaming communities create lasting impact. Honest,
+                                high-quality storytelling that resonates with players.</p>
+                        </div>
+                        <div class="retro-card">
+                            <h3>GAMERS UNDERSTANDING GAMERS</h3>
+                            <p>Our team lives and breathes gaming culture. We understand what motivates gamers because
+                                we are lifelong gamers ourselves.</p>
+                        </div>
+                        <div class="retro-card">
+                            <h3>RESULTS-DRIVEN CREATIVITY</h3>
+                            <p>Creativity is nothing without impact. Every concept we create is guided by data, shaped
+                                by insight, and executed with creativity.</p>
+                        </div>
+                        <div class="retro-card">
+                            <h3>COMMUNITY-CENTRIC APPROACH</h3>
+                            <p>We don't just market - we connect, contribute, and build lasting relationships within the
+                                gaming communities that benefit everyone.</p>
                         </div>
                     </div>
-                    <!-- Agent Beta -->
-                    <div class="tv-member-card">
-                        <div class="tv-card-inner">
-                            <img src="assets/Vector Female.svg" alt="Beta" class="tv-member-img">
-                            <h3>AGENT BETA</h3>
-                            <p class="tv-role">CREATIVE DIR</p>
+                    <button class="retro-btn" onclick="showSlide('slide-journey', 3)">>> LOAD TIMELINE_DATA</button>
+                </div>
+
+                <!-- SLIDE 3: JOURNEY (TIMELINE) -->
+                <div id="slide-journey" class="tv-slide">
+                    <h1 class="retro-title">SYSTEM HISTORY <small>Temporal Data Log</small></h1>
+                    <div class="retro-timeline">
+                        <!-- 2022 -->
+                        <div class="timeline-entry">
+                            <span class="timeline-year">2022</span>
+                            <h3 class="timeline-title">The Beginning</h3>
+                            <p class="retro-text" style="font-size: 1.2rem;">Founded by a veteran of gaming marketing
+                                with a mission to help indie studios grow and thrive. Our first project achieved
+                                100,000+ conversions.</p>
+                        </div>
+                        <!-- 2023 -->
+                        <div class="timeline-entry">
+                            <span class="timeline-year">2023</span>
+                            <h3 class="timeline-title">Community Growth</h3>
+                            <p class="retro-text" style="font-size: 1.2rem;">Expanded our team and community, built
+                                lasting collaborations with content creators, and launched our signature organic social
+                                media marketing methodology.</p>
+                        </div>
+                        <!-- 2024 -->
+                        <div class="timeline-entry">
+                            <span class="timeline-year">2024</span>
+                            <h3 class="timeline-title">Global Expansion</h3>
+                            <p class="retro-text" style="font-size: 1.2rem;">Partnered with 20+ game studios worldwide.
+                                Developed our influencer tier system and advanced analytics platform.</p>
+                        </div>
+                        <!-- 2025 -->
+                        <div class="timeline-entry">
+                            <span class="timeline-year">2025</span>
+                            <h3 class="timeline-title">Industry Leadership</h3>
+                            <p class="retro-text" style="font-size: 1.2rem;">Widely recognized for our expertise in
+                                authentic gaming marketing and organic community engagement. Expanded our services to
+                                include Content Creation and TikTok Campaigns.</p>
                         </div>
                     </div>
-                    <!-- The Knight -->
-                    <div class="tv-member-card">
-                        <div class="tv-card-inner">
-                            <img src="assets/knight_nobackground.png" alt="Knight" class="tv-member-img">
-                            <h3>THE KNIGHT</h3>
-                            <p class="tv-role">SECURITY</p>
+                    <button class="retro-btn" onclick="showSlide('slide-founder', 4)">>> VIEW ADMIN PROFILE</button>
+                </div>
+
+                <!-- SLIDE 4: FOUNDER -->
+                <div id="slide-founder" class="tv-slide">
+                    <h1 class="retro-title">ADMIN PROFILE <small>Ognjen Srdanović</small></h1>
+                    <div class="founder-layout">
+                        <div class="founder-retro-text" style="flex: 1;">
+                            <h2 class="retro-title" style="font-size: 2rem; border-color: rgba(117,117,242,0.5);">CEO &
+                                FOUNDER</h2>
+                            <div class="retro-text">
+                                <p>With a Master's degree in Philosophy and a lifelong passion for gaming, building a
+                                    career in gaming marketing felt like a natural evolution. The analytical mindset and
+                                    creative problem-solving I developed during my years of studying philosophy became
+                                    invaluable tools in crafting unique, out-of-the-box methods for connecting with
+                                    gaming communities. Combined with my deep love for video games, that foundation
+                                    continues to fuel every campaign with purpose and authenticity.</p>
+                                <p>I've always believed that every gamer deserves to find their perfect game - and every
+                                    game deserves to reach the audience that will truly appreciate it. That belief
+                                    became the cornerstone of ExWord: understanding the desires of players searching for
+                                    their next virtual world, and the qualities within each game that make it special.
+                                </p>
+                                <p>Since founding ExWord, I've had the privilege of leading campaigns for more than 60
+                                    game studios worldwide, helping them reach over 90 million gamers and drive more
+                                    than 5 million copies sold - and I'd love to see how we could elevate your game
+                                    next.</p>
+                            </div>
+                        </div>
+
+                        <div class="founder-retro-visual">
+                            <img src="assets/ognjen-srdanovic-CU4y9-B9.jpg" alt="Ognjen" class="founder-img">
+                            <!-- Glitch Overlay Image -->
+                            <img src="assets/ognjen-dither.png" alt="Glitch" class="founder-glitch">
+                        </div>
+                    </div>
+                    <button class="retro-btn" onclick="showSlide('slide-cta', 5)">>> INITIATE CONTACT</button>
+                </div>
+
+                <!-- SLIDE 5: CTA -->
+                <div id="slide-cta" class="tv-slide">
+                    <div style="text-align: center; margin-top: 50px;">
+                        <h1 class="retro-title" style="border: none; font-size: 4rem; text-shadow: 0 0 20px #7575f2;">
+                            Let's Write Your Success Story</h1>
+                        <p class="retro-text" style="margin: 0 auto; text-align: center;">Ready to partner with a team
+                            that deeply understands gaming culture? Let's discuss how we can help your game find its
+                            community.</p>
+
+                        <div class="cta-buttons"
+                            style="display: flex; gap: 30px; justify-content: center; margin-top: 50px;">
+                            <a href="index.html#contact" class="retro-btn" style="font-size: 1.8rem;">START
+                                CONVERSATION</a>
+                            <a href="services.html" class="retro-btn"
+                                style="font-size: 1.8rem; background: transparent; border-color: #fff;">EXPLORE
+                                SERVICES</a>
                         </div>
                     </div>
                 </div>
-                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
-                    &lt; RETURN TO ROOT
+
+            </div> <!-- End Scrollable Content -->
+
+            <!-- Footer for Progress Indicators -->
+            <div class="tv-footer-controls">
+                <div class="slide-progress">
+                    <div class="progress-dot active" id="dot-1"></div>
+                    <div class="progress-dot" id="dot-2"></div>
+                    <div class="progress-dot" id="dot-3"></div>
+                    <div class="progress-dot" id="dot-4"></div>
+                    <div class="progress-dot" id="dot-5"></div>
                 </div>
             </div>
 
-            <!-- VIEW: CONTACT -->
-            <div id="view-contact" class="tv-view hidden">
-                <h2 class="glitch-header">> COMM CHANNELS_</h2>
-                <div class="tv-text-block">
-                    <p>> ESTABLISHING SECURE CONNECTION...</p>
-                    <p>> SIGNAL STRENGTH: 100%</p>
-                    <br>
-                    <p>TRANSMIT DATA TO:</p>
-                    <a href="mailto:hello@exword.com" class="tv-big-link">HELLO@EXWORD.COM</a>
-
-                    <div class="tv-social-grid">
-                        <a href="#" class="tv-social-link">[ TWITTER / X ]</a>
-                        <a href="#" class="tv-social-link">[ LINKEDIN ]</a>
-                        <a href="#" class="tv-social-link">[ DISCORD ]</a>
-                    </div>
-                </div>
-                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
-                    &lt; RETURN TO ROOT
-                </div>
-            </div>
-
-            <!-- VIEW: PARTNERSHIP -->
-            <div id="view-partner" class="tv-view hidden">
-                <h2 class="glitch-header">> COLLABORATION PROTOCOLS_</h2>
-                <div class="tv-text-block">
-                    <p>> QUERY: PUBLISHER RELATIONSHIP</p>
-                    <p>> STATUS: OPEN</p>
-                    <br>
-                    <p>We work with publishers to amplify reach. Our organic signal protocols ensure maximum visibility
-                        without triggering spam filters.</p>
-                    <p>Initiate a partnership request via Comms.</p>
-                </div>
-                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
-                    &lt; RETURN TO ROOT
-                </div>
-            </div>
-
-        </div>
+        </div> <!-- End Layout Wrapper -->
     </div>
 
     <script src="script.js"></script>
     <script>
-        function switchTvView(viewId) {
-            // Hide all views
-            document.querySelectorAll('.tv-view').forEach(el => {
-                el.classList.add('hidden');
-                el.classList.remove('active');
-            });
+        // Inline script to handle slide switching
+        window.showSlide = function (slideId, step) {
+            // Hide all active slides
+            const slides = document.querySelectorAll('.tv-slide');
+            slides.forEach(s => s.classList.remove('active'));
+
             // Show target
-            const target = document.getElementById(viewId);
+            const target = document.getElementById(slideId);
             if (target) {
-                target.classList.remove('hidden');
                 target.classList.add('active');
+                // Scroll to top of content
+                document.querySelector('.tv-content-scrollable').scrollTop = 0;
+            }
+
+            // Update dots
+            document.querySelectorAll('.progress-dot').forEach(d => d.classList.remove('active'));
+            if (step) {
+                document.getElementById('dot-' + step).classList.add('active');
             }
         }
     </script>

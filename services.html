@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=VT323&family=Metamorphous&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="services-page-new">
+<body class="services-overview-page">
     <!-- Paper Texture Overlay (Same as Landing) -->
     <div class="paper-texture"></div>
     <svg style="width: 0; height: 0; position: absolute;">
@@ -55,158 +55,244 @@
         </div>
     </nav>
 
-    <main class="services-container">
+    <main class="services-overview-page">
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 240px 20px 100px;">
 
-        <div class="services-header">
-            <h1 class="page-title">Our Expertise</h1>
-            <p class="page-subtitle">Select a stamp to uncover our strategies.</p>
-        </div>
-
-        <!-- Services Tabs (Logos Only, Imprinted Effect) -->
-        <div class="services-tabs-wrapper">
-            <div class="services-tabs" id="servicesTabs">
-                <button class="service-tab-icon active" data-target="reddit" aria-label="Reddit Operations">
-                    <img src="assets/logos/reddit-143-svgrepo-com.svg" alt="Reddit">
-                </button>
-                <button class="service-tab-icon" data-target="community" aria-label="Community Management">
-                    <img src="assets/logos/discord-icon-svgrepo-com.svg" alt="Discord">
-                </button>
-                <button class="service-tab-icon" data-target="youtube" aria-label="YouTube Strategy">
-                    <img src="assets/logos/youtube-168-svgrepo-com.svg" alt="YouTube">
-                </button>
-                <button class="service-tab-icon" data-target="tiktok" aria-label="TikTok Viral">
-                    <img src="assets/logos/tiktok-svgrepo-com.svg" alt="TikTok">
-                </button>
-                <button class="service-tab-icon" data-target="content" aria-label="Content Production">
-                    <img src="assets/logos/adobepremierepro-svgrepo-com.svg" alt="Content">
-                </button>
-                <button class="service-tab-icon" data-target="influencer" aria-label="Influencer Network">
-                    <img src="assets/logos/instagram-svgrepo-com.svg" alt="Influencer">
-                </button>
+            <!-- Page Heading -->
+            <div class="centered-header" style="margin-bottom: 100px;">
+                <h1 class="page-title big-headline">Where fandom starts</h1>
+                <p class="sub-headline">Marketing that feels like conversation, not a campaign</p>
             </div>
-        </div>
 
-        <!-- Service Content Display (Letter/Card Style) -->
-        <div class="service-display-area">
+            <!-- Sticky Scroll Container -->
+            <div class="sticky-scroll-layout">
 
-            <!-- Reddit -->
-            <div class="service-card active" id="reddit">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/reddit-143-svgrepo-com.svg" alt="Reddit">
+                <!-- Left Sticky Sidebar -->
+                <aside class="services-sidebar">
+                    <h3 class="sidebar-label">Our Services</h3>
+                    <nav class="sidebar-nav">
+                        <a href="#service-reddit" class="sidebar-link active" data-target="service-reddit">Reddit
+                            Operations</a>
+                        <a href="#service-bg" class="sidebar-link" data-target="service-community">Community
+                            Management</a>
+                        <a href="#service-yt" class="sidebar-link" data-target="service-youtube">YouTube Marketing</a>
+                        <a href="#service-tt" class="sidebar-link" data-target="service-tiktok">TikTok Campaigns</a>
+                        <a href="#service-in" class="sidebar-link" data-target="service-influencer">Influencer
+                            Networks</a>
+                        <a href="#service-cp" class="sidebar-link" data-target="service-content">Content Production</a>
+                    </nav>
+                </aside>
+
+                <!-- Right Scrollable Content -->
+                <div class="services-content-flow">
+
+                    <!-- Reddit Operations -->
+                    <div id="service-reddit" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">Reddit Operations</span>
+                                <h2 class="service-tagline">Show up in the right threads, the right way.</h2>
+                                <p class="service-body">We design and run Reddit activity that actually respects the
+                                    communities you’re in. From posting strategy and comment routing to AMA support and
+                                    long-term presence, we help your game become a trusted voice — not another promo
+                                    post people scroll past.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You know Reddit matters for your genre, but you don’t have the time (or the
+                                        karma) to do it properly.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Subreddit mapping and opportunity report</li>
+                                        <li>Post and comment calendar</li>
+                                        <li>AMA planning and live support</li>
+                                        <li>Brand account guidelines and tone of voice</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/redditPic.jpg" alt="Reddit Operations Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>Reddit Operations</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">Authentic engagement within gaming communities through strategically placed
-                        posts, organic discussions, and targeted Reddit advertising campaigns.</p>
-                    <ul class="service-features">
-                        <li>Community Engagement</li>
-                        <li>Viral Content Creation</li>
-                        <li>Targeted Ads</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Community -->
-            <div class="service-card" id="community">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/discord-icon-svgrepo-com.svg" alt="Discord">
+                    <!-- Community Management -->
+                    <div id="service-community" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">Community Management</span>
+                                <h2 class="service-tagline">Turn your Discord into a world players want to live in.</h2>
+                                <p class="service-body">We help you build, launch, and maintain communities that feel
+                                    like part of your game’s universe. From server structure and roles to daily
+                                    engagement, events, and moderation support, we keep the vibes healthy and the
+                                    conversation flowing.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You have a Discord, but it feels more like a quiet lobby than a buzzing hub.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Server setup or restructuring</li>
+                                        <li>Community guidelines and role systems</li>
+                                        <li>Event concepts (playtests, Q&As, “ask the dev” sessions)</li>
+                                        <li>Ongoing engagement calendars and mod playbooks</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/discordPic.jpg" alt="Community Management Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>Community Management</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">Comprehensive community management across Discord, Reddit, and social
-                        platforms - including events, collaborations, and ongoing engagement.</p>
-                    <ul class="service-features">
-                        <li>Discord Server Setup & Mgmt</li>
-                        <li>Event Coordination</li>
-                        <li>24/7 Moderation</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- YouTube -->
-            <div class="service-card" id="youtube">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/youtube-168-svgrepo-com.svg" alt="YouTube">
+                    <!-- YouTube Marketing -->
+                    <div id="service-youtube" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">YouTube Marketing</span>
+                                <h2 class="service-tagline">Put your game in front of players who actually watch.</h2>
+                                <p class="service-body">We work with creators, formats, and channels that fit your game
+                                    — not just whoever has the biggest numbers. From finding the right partners to
+                                    shaping video concepts and measuring impact, we help you build sustainable
+                                    visibility on YouTube.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You’re tired of one-off sponsored videos that disappear the moment they’re
+                                        uploaded.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Creator shortlist and outreach</li>
+                                        <li>Campaign concepts and briefs</li>
+                                        <li>Key messaging and talking points</li>
+                                        <li>Post-campaign performance recap</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/youtubePic.jpg" alt="YouTube Marketing Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>YouTube Strategy</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">Strategic YouTube comment placement to drive community discussions that feel
-                        natural and drive genuine interest in your game.</p>
-                    <ul class="service-features">
-                        <li>Comment Strategy</li>
-                        <li>Community Discussions</li>
-                        <li>Trend Analysis</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- TikTok -->
-            <div class="service-card" id="tiktok">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/tiktok-svgrepo-com.svg" alt="TikTok">
+                    <!-- TikTok Campaigns -->
+                    <div id="service-tiktok" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">TikTok Campaigns</span>
+                                <h2 class="service-tagline">Short-form content that doesn’t feel cringe.</h2>
+                                <p class="service-body">We help you show up natively on TikTok with concepts that match
+                                    the platform’s rhythm. Whether it’s dev-log style content, meme formats, or
+                                    creator-led clips, we build campaigns that feel like TikToks first and marketing
+                                    second.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You know your game belongs on TikTok but don’t want to become a full-time creator
+                                        to make it happen.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Content and hook concepts</li>
+                                        <li>Posting schedule and format strategy</li>
+                                        <li>Creator sourcing for TikTok-native talent</li>
+                                        <li>Performance tracking and iteration recommendations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/tiktokPic.jpg" alt="TikTok Campaigns Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>TikTok Viral</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">Viral short-form content that captures the essence of your game and reaches
-                        millions of potential players on TikTok.</p>
-                    <ul class="service-features">
-                        <li>Short-Form Production</li>
-                        <li>Trend Jacking</li>
-                        <li>Algorithm Optimization</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Content -->
-            <div class="service-card" id="content">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/adobepremierepro-svgrepo-com.svg" alt="Content">
+                    <!-- Influencer Networks -->
+                    <div id="service-influencer" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">Influencer Networks</span>
+                                <h2 class="service-tagline">Build a circle of creators who actually care.</h2>
+                                <p class="service-body">Instead of chasing one-off sponsorships, we help you build a
+                                    network of creators who stay with your game over time. We map who makes sense for
+                                    your genre, handle outreach and relationship management, and design ways to keep
+                                    them excited to come back.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You’d rather have 20 genuinely invested creators than one big channel that never
+                                        mentions you again.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Creator landscape and tiered targeting</li>
+                                        <li>Outreach messaging and coordination</li>
+                                        <li>Relationship and key beat calendar</li>
+                                        <li>Long-term ambassador or partner program concepts</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/influencerPic.jpg" alt="Influencer Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>Content Production</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">Engaging gameplay videos, cinematic trailers, and short-form content
-                        optimized for maximum engagement across all platforms.</p>
-                    <ul class="service-features">
-                        <li>Trailers & Teasers</li>
-                        <li>Gameplay Highlights</li>
-                        <li>Social Media Assets</li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Influencer -->
-            <div class="service-card" id="influencer">
-                <div class="service-icon-header">
-                    <div class="stamp-circle">
-                        <img src="assets/logos/instagram-svgrepo-com.svg" alt="Influencer">
+                    <!-- Content Production -->
+                    <div id="service-content" class="service-detail-block">
+                        <div class="service-block-grid">
+                            <div class="service-text-content">
+                                <span class="service-label">Content Production</span>
+                                <h2 class="service-tagline">Words, visuals, and clips that sound like you.</h2>
+                                <p class="service-body">We create posts, scripts, short-form videos, and community
+                                    assets that feel true to your game’s voice. Every piece of content is designed to
+                                    live naturally on its platform, whether it’s a Reddit deep-dive, a Discord
+                                    announcement, or a TikTok hook.</p>
+
+                                <div class="good-for-box">
+                                    <strong>Good for you if…</strong>
+                                    <p>You know what you want to say, but don’t have the time or bandwidth to package it
+                                        properly.</p>
+                                </div>
+
+                                <div class="deliverables-section">
+                                    <h4>Example deliverables:</h4>
+                                    <ul class="deliverables-list">
+                                        <li>Social copy and announcement packs</li>
+                                        <li>Short-form video scripts and shot ideas</li>
+                                        <li>Dev update and patch note copy</li>
+                                        <li>Visual templates for recurring formats</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="service-visual-content">
+                                <img src="assets/contentPic.jpg" alt="Content Production Visual">
+                            </div>
+                        </div>
                     </div>
-                    <h2>Influencer Network</h2>
-                </div>
-                <div class="service-body">
-                    <p class="service-desc">High-value influencer collaborations across all tiers, from micro to macro,
-                        with transparent ROI tracking and performance-oriented campaign development.</p>
-                    <ul class="service-features">
-                        <li>Micro to Macro Tiers</li>
-                        <li>Campaign Management</li>
-                        <li>Performance Tracking</li>
-                    </ul>
+
                 </div>
             </div>
 
-            <div class="cta-wrapper" style="text-align: center; margin-top: 60px;">
-                <a href="index.html#contact" class="btn btn-primary cta-brown">Start Your Journey</a>
+            <!-- CTA -->
+            <div class="cta-wrapper" style="text-align: center; margin-top: 120px;">
+                <h2 class="h2" style="margin-bottom: 20px;">Ready to grow?</h2>
+                <p class="body-text" style="max-width: 600px; margin: 0 auto 30px;">Tell us where your game is right
+                    now, and we’ll recommend a strategy.</p>
+                <a href="index.html#contact" class="btn btn-primary cta-brown">Talk to us about your game</a>
             </div>
-
         </div>
     </main>
 
@@ -247,22 +333,7 @@
 
     <script src="script.js"></script>
     <script>
-        // Inline script for tabs
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.service-tab-icon');
-            const cards = document.querySelectorAll('.service-card');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    cards.forEach(c => c.classList.remove('active'));
-                    tab.classList.add('active');
-                    const targetId = tab.getAttribute('data-target');
-                    const targetCard = document.getElementById(targetId);
-                    if (targetCard) targetCard.classList.add('active');
-                });
-            });
-        });
+        // No inline scripts needed
     </script>
 </body>
 

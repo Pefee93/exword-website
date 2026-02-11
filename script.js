@@ -493,6 +493,7 @@ function initRpgContact() {
 
     const contactSection = document.getElementById('contact');
     const testimonialsSection = document.getElementById('testimonials');
+    const marqueeSection = document.querySelector('.glitch-marquee-wrapper');
 
     if (contactSection) {
         typeObserver.observe(contactSection);
@@ -500,6 +501,9 @@ function initRpgContact() {
     }
     if (testimonialsSection) {
         navObserver.observe(testimonialsSection);
+    }
+    if (marqueeSection) {
+        navObserver.observe(marqueeSection);
     }
 
     // Show Form
@@ -809,4 +813,47 @@ function initRpgDialogue() {
 // Add to DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     initRpgDialogue();
+    initStickyScrollSpy();
 });
+
+/**
+ * Sticky Scroll Spy for Services Page
+ * Updates sidebar active state based on scroll position
+ */
+function initStickyScrollSpy() {
+    const serviceBlocks = document.querySelectorAll('.service-detail-block');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    if (serviceBlocks.length === 0 || sidebarLinks.length === 0) return;
+
+    // Use IntersectionObserver to detect active block
+    const observerOptions = {
+        root: null,
+        // Trigger when block is in the upper middle of viewport
+        rootMargin: '-20% 0px -50% 0px',
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all
+                sidebarLinks.forEach(link => link.classList.remove('active'));
+
+                // Add active to current
+                const id = entry.target.id;
+                // Find link with matching href hash or data-target
+                let activeLink = null;
+                sidebarLinks.forEach(link => {
+                    if (link.dataset.target === id || link.getAttribute('href') === `#${id}`) {
+                        activeLink = link;
+                    }
+                });
+
+                if (activeLink) activeLink.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    serviceBlocks.forEach(block => observer.observe(block));
+}
