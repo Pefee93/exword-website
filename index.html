@@ -16,12 +16,22 @@
 </head>
 
 <body>
+    <!-- Rough Paper Texture Overlay -->
+    <div class="paper-texture"></div>
+    <svg style="width: 0; height: 0; position: absolute;">
+        <filter id='roughpaper'>
+            <feTurbulence type="fractalNoise" baseFrequency='0.04' result='noise' numOctaves="5" />
+            <feDiffuseLighting in='noise' lighting-color='#f5f5f7' surfaceScale='2'>
+                <feDistantLight azimuth='45' elevation='60' />
+            </feDiffuseLighting>
+        </filter>
+    </svg>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-left">
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link">Case Studies</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="#projects" class="nav-link">Case Studies</a>
             </div>
             <div class="nav-logo">
                 <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon">
@@ -29,8 +39,8 @@
                 <span class="logo-rpg-text">EXWORD//</span>
             </div>
             <div class="nav-right">
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link nav-cta">Contact</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="#contact" class="nav-link nav-cta">Contact</a>
             </div>
         </div>
     </nav>
@@ -116,7 +126,9 @@
 
                 <!-- Left: Character Art -->
                 <div class="character-panel">
-                    <img src="assets/Logo.svg" alt="" class="character-bg-logo">
+                    <div class="knight-bg-logo">
+                        <img src="assets/Logo.svg" alt="Background Logo">
+                    </div>
                     <img src="assets/knight_nobackground.png" alt="RPG Character" class="pixel-art-character">
                 </div>
 
@@ -148,6 +160,10 @@
                             <img src="assets/logos/youtube-168-svgrepo-com.svg" class="item-icon-svg" alt="YouTube">
                         </div>
                     </div>
+
+                    <div class="inventory-cta">
+                        <a href="services.html" class="hex-link-styled">See all services &rarr;</a>
+                    </div>
                 </div>
 
             </div>
@@ -159,7 +175,15 @@
                     be rooted in genuine interactions, not numbers on a spreadsheet. Each campaign we create begins with
                     a deep understanding of the gaming culture, the needs of players, and the identity of the games we
                     represent - ensuring every connection feels natural and authentic. When marketers understand gamers,
-                    magic happens."</p>
+                    magic happens."
+                    <br><br>
+                    <span class="philosophy-highlight">Every game
+                        has a story, let's tell yours.</span>
+                </p>
+
+                <div class="philosophy-cta" style="margin-top: 2rem;">
+                    <a href="#" class="cta-button-sched">Schedule Free Consultation</a>
+                </div>
             </div>
         </div>
     </section>
@@ -398,15 +422,21 @@
 
 
 
-    <!-- Consultation CTA Section -->
-    <section class="consultation-cta">
-        <div class="cta-card-container">
-            <h2 class="cta-heading">Every game has a story, let's tell yours.</h2>
-            <p class="cta-subheading">Let's explore the best opportunities to help it grow and reach its ideal audience.
-            </p>
-            <a href="#" class="cta-button-sched">Schedule Free Consultation</a>
+    <!-- Consultation CTA Section REMOVED (Moved to Philosophy) -->
+
+    <!-- Glitch Marquee Transition -->
+    <div class="glitch-marquee-wrapper">
+        <div class="glitch-marquee-bar">
+            <div class="glitch-track">
+                <span class="glitch-text">EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // EXWORD //
+                    LOADING
+                    // EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // </span>
+                <span class="glitch-text">EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // EXWORD //
+                    LOADING
+                    // EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // EXWORD // LOADING // </span>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- RPG Contact Section -->
     <section class="rpg-contact" id="contact">

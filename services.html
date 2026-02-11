@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExWord - Our Services</title>
+    <!-- Use same fonts as Landing Page -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=VT323&family=Metamorphous&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="services-page-new">
+    <!-- Paper Texture Overlay (Same as Landing) -->
+    <div class="paper-texture"></div>
+    <svg style="width: 0; height: 0; position: absolute;">
+        <filter id='roughpaper'>
+            <feTurbulence type="fractalNoise" baseFrequency='0.04' result='noise' numOctaves="5" />
+            <feDiffuseLighting in='noise' lighting-color='#f5f5f7' surfaceScale='2'>
+                <feDistantLight azimuth='45' elevation='60' />
+            </feDiffuseLighting>
+        </filter>
+    </svg>
+
+    <!-- Navbar (Paper Mode Forced) -->
+    <nav id="navbar" class="navbar nav-paper-mode">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="services.html" class="nav-link active">Services</a>
+                <a href="index.html#projects" class="nav-link">Case Studies</a>
+            </div>
+
+            <a href="index.html" class="nav-logo-link">
+                <!-- Brown Logo via CSS Filter in nav-paper-mode -->
+                <div class="nav-logo">
+                    <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon">
+                    <img src="assets/Group.svg" alt="ExWord" class="logo-text">
+                </div>
+            </a>
+
+            <div class="nav-right">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link nav-cta btn-primary">Contact</a>
+            </div>
+
+            <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="services-container">
+
+        <div class="services-header">
+            <h1 class="page-title">Our Expertise</h1>
+            <p class="page-subtitle">Select a stamp to uncover our strategies.</p>
+        </div>
+
+        <!-- Services Tabs (Logos Only, Imprinted Effect) -->
+        <div class="services-tabs-wrapper">
+            <div class="services-tabs" id="servicesTabs">
+                <button class="service-tab-icon active" data-target="reddit" aria-label="Reddit Operations">
+                    <img src="assets/logos/reddit-143-svgrepo-com.svg" alt="Reddit">
+                </button>
+                <button class="service-tab-icon" data-target="community" aria-label="Community Management">
+                    <img src="assets/logos/discord-icon-svgrepo-com.svg" alt="Discord">
+                </button>
+                <button class="service-tab-icon" data-target="youtube" aria-label="YouTube Strategy">
+                    <img src="assets/logos/youtube-168-svgrepo-com.svg" alt="YouTube">
+                </button>
+                <button class="service-tab-icon" data-target="tiktok" aria-label="TikTok Viral">
+                    <img src="assets/logos/tiktok-svgrepo-com.svg" alt="TikTok">
+                </button>
+                <button class="service-tab-icon" data-target="content" aria-label="Content Production">
+                    <img src="assets/logos/adobepremierepro-svgrepo-com.svg" alt="Content">
+                </button>
+                <button class="service-tab-icon" data-target="influencer" aria-label="Influencer Network">
+                    <img src="assets/logos/instagram-svgrepo-com.svg" alt="Influencer">
+                </button>
+            </div>
+        </div>
+
+        <!-- Service Content Display (Letter/Card Style) -->
+        <div class="service-display-area">
+
+            <!-- Reddit -->
+            <div class="service-card active" id="reddit">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/reddit-143-svgrepo-com.svg" alt="Reddit">
+                    </div>
+                    <h2>Reddit Operations</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">Authentic engagement within gaming communities through strategically placed
+                        posts, organic discussions, and targeted Reddit advertising campaigns.</p>
+                    <ul class="service-features">
+                        <li>Community Engagement</li>
+                        <li>Viral Content Creation</li>
+                        <li>Targeted Ads</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Community -->
+            <div class="service-card" id="community">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/discord-icon-svgrepo-com.svg" alt="Discord">
+                    </div>
+                    <h2>Community Management</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">Comprehensive community management across Discord, Reddit, and social
+                        platforms - including events, collaborations, and ongoing engagement.</p>
+                    <ul class="service-features">
+                        <li>Discord Server Setup & Mgmt</li>
+                        <li>Event Coordination</li>
+                        <li>24/7 Moderation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="service-card" id="youtube">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/youtube-168-svgrepo-com.svg" alt="YouTube">
+                    </div>
+                    <h2>YouTube Strategy</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">Strategic YouTube comment placement to drive community discussions that feel
+                        natural and drive genuine interest in your game.</p>
+                    <ul class="service-features">
+                        <li>Comment Strategy</li>
+                        <li>Community Discussions</li>
+                        <li>Trend Analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TikTok -->
+            <div class="service-card" id="tiktok">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/tiktok-svgrepo-com.svg" alt="TikTok">
+                    </div>
+                    <h2>TikTok Viral</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">Viral short-form content that captures the essence of your game and reaches
+                        millions of potential players on TikTok.</p>
+                    <ul class="service-features">
+                        <li>Short-Form Production</li>
+                        <li>Trend Jacking</li>
+                        <li>Algorithm Optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="service-card" id="content">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/adobepremierepro-svgrepo-com.svg" alt="Content">
+                    </div>
+                    <h2>Content Production</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">Engaging gameplay videos, cinematic trailers, and short-form content
+                        optimized for maximum engagement across all platforms.</p>
+                    <ul class="service-features">
+                        <li>Trailers & Teasers</li>
+                        <li>Gameplay Highlights</li>
+                        <li>Social Media Assets</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Influencer -->
+            <div class="service-card" id="influencer">
+                <div class="service-icon-header">
+                    <div class="stamp-circle">
+                        <img src="assets/logos/instagram-svgrepo-com.svg" alt="Influencer">
+                    </div>
+                    <h2>Influencer Network</h2>
+                </div>
+                <div class="service-body">
+                    <p class="service-desc">High-value influencer collaborations across all tiers, from micro to macro,
+                        with transparent ROI tracking and performance-oriented campaign development.</p>
+                    <ul class="service-features">
+                        <li>Micro to Macro Tiers</li>
+                        <li>Campaign Management</li>
+                        <li>Performance Tracking</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-wrapper" style="text-align: center; margin-top: 60px;">
+                <a href="index.html#contact" class="btn btn-primary cta-brown">Start Your Journey</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Light (Brown Theme) -->
+    <footer class="footer footer-light">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon">
+                    <img src="assets/Group.svg" alt="ExWord" class="logo-text">
+                </div>
+                <p class="footer-tagline">Connecting games with players worldwide</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <a href="#">Reddit</a>
+                    <a href="#">Discord</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">TikTok</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Socials</h4>
+                    <a href="#">Twitter/X</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ExWord. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Inline script for tabs
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.service-tab-icon');
+            const cards = document.querySelectorAll('.service-card');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    cards.forEach(c => c.classList.remove('active'));
+                    tab.classList.add('active');
+                    const targetId = tab.getAttribute('data-target');
+                    const targetCard = document.getElementById(targetId);
+                    if (targetCard) targetCard.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

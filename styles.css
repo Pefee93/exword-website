@@ -2,11 +2,12 @@
    CSS Custom Properties (Design Tokens)
    ================================ */
 :root {
-    /* Colors - Purple Gaming Theme */
-    --color-primary: #7575F2;
-    --color-primary-light: #9494FF;
-    --color-primary-dark: #5353E5;
-    --color-accent: #3B38A5;
+    /* Colors - Purple Gaming Theme - UPDATED for AA Contrast */
+    --color-primary: #4F46E5;
+    /* Darker Indigo for >4.5:1 contrast with white */
+    --color-primary-light: #818CF8;
+    --color-primary-dark: #4338CA;
+    --color-accent: #3730A3;
 
     /* Backgrounds */
     --bg-dark: #080816;
@@ -14,17 +15,19 @@
     --bg-light: #f5f5f7;
     --bg-card: rgba(20, 20, 40, 0.6);
     --bg-card-light: #ffffff;
-    --bg-glass: rgba(117, 117, 242, 0.1);
+    --bg-glass: rgba(79, 70, 229, 0.1);
 
     /* Text */
     --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.7);
-    --text-muted: rgba(255, 255, 255, 0.5);
+    --text-secondary: rgba(255, 255, 255, 0.9);
+    /* Increased opacity for contrast */
+    --text-muted: rgba(255, 255, 255, 0.7);
     --text-dark: #080816;
-    --text-dark-secondary: #666666;
+    --text-dark-secondary: #444444;
+    /* Darkened from #666 for better visibility */
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, #7575F2 0%, #9494FF 50%, #5353E5 100%);
+    --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #818CF8 50%, #4338CA 100%);
     --gradient-dark: linear-gradient(180deg, #080816 0%, #0a0a1a 100%);
     --gradient-glow: radial-gradient(circle at center, rgba(117, 117, 242, 0.3) 0%, transparent 70%);
 
@@ -96,10 +99,31 @@ html {
 
 body {
     font-family: var(--font-primary);
-    background: var(--bg-light);
+    background-color: var(--bg-light);
     color: var(--text-dark);
     line-height: var(--line-height-body);
     overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+    /* Create stacking context */
+}
+
+/* Rough Paper Texture Overlay */
+.paper-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Apply user's requested filter */
+    filter: url(#roughpaper);
+    /* Make it subtle and blend with background color */
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    background: #ffffff;
+    /* Base for filter to act on */
 }
 
 /* Scanlines Effect */
@@ -441,8 +465,10 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Removed overlay to keep video fully visible */
     background: transparent;
     pointer-events: none;
+    z-index: 1;
 }
 
 .hero::after {
@@ -488,12 +514,18 @@ section {
 .hero-title {
     font-family: var(--font-primary);
     font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 400;
+    font-weight: 600;
+    /* Increased weight */
     line-height: 1.3;
     letter-spacing: -0.01em;
     margin-bottom: var(--space-lg);
-    color: var(--text-primary);
-    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    /* Pure white */
+    /* Strong text shadow for contrast without overlay */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        0 0 10px rgba(0, 0, 0, 0.5);
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -537,22 +569,31 @@ section {
 }
 
 .cta-button-sched {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background: var(--color-primary);
     color: #ffffff;
-    padding: var(--space-md) var(--space-xl);
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 0.95rem;
+    padding: 12px 32px;
+    border-radius: 4px;
+    /* Boxy pixel style */
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+    /* Pixel-art pressed effect shadow */
+    margin-top: var(--space-md);
 }
 
 .cta-button-sched:hover {
-    background: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(117, 117, 242, 0.4);
+    background: var(--color-primary-light);
+    transform: translateY(2px);
+    /* Press down effect */
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 }
 
 
@@ -569,13 +610,18 @@ section {
 
 .hero-subtitle {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 400;
+    color: #ffffff;
+    /* maximize contrast */
+    font-weight: 500;
+    /* thicker text */
     max-width: 600px;
     margin: var(--space-lg) auto var(--space-xl);
     line-height: 1.6;
     animation: fadeInUp 1s ease-out 0.2s backwards;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    /* Strong shadow */
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero-buttons {
@@ -716,8 +762,9 @@ section {
    Logo Scroll / Marquee
    ================================ */
 .logo-scroll {
-    background: var(--bg-light);
-    padding: var(--space-2xl) 0 var(--space-md);
+    /* Transparent to show body texture */
+    background: transparent;
+    padding: var(--space-2xl) 0 var(--space-lg);
     overflow: hidden;
     scroll-snap-align: start;
 }
@@ -813,8 +860,9 @@ section {
    Classic RPG Inventory UI (Clean)
    ================================ */
 .inventory-section {
-    background: var(--bg-light);
-    padding: var(--space-3xl) 0;
+    /* Transparent to show body texture */
+    background: transparent;
+    padding: var(--space-xl) 0 var(--space-lg);
     color: var(--text-dark);
 }
 
@@ -1056,10 +1104,10 @@ section {
     display: none;
 }
 
-/* Hover: Gradient Pressed Effect */
+/* Hover: Gradient Pressed Effect - Updated for Contrast */
 .inventory-slot.hex-slot:hover {
-    /* Gradient: Darker top creates concave illusion */
-    background: linear-gradient(to bottom, #5353E5 0%, #8585f5 100%) !important;
+    /* Gradient: Brown to Gold */
+    background: linear-gradient(to bottom, #3C2415 0%, #C9A96E 100%) !important;
 
     /* Slight downward movement */
     transform: translateY(2px);
@@ -1069,7 +1117,7 @@ section {
     box-shadow: inset 2px 4px 8px rgba(0, 0, 0, 0.3);
 
     /* Reduced drop shadow closer to surface */
-    filter: drop-shadow(0 2px 6px rgba(117, 117, 242, 0.3));
+    filter: drop-shadow(0 2px 6px rgba(60, 36, 21, 0.4));
 }
 
 /* Invert icons to white on hover */
@@ -2258,15 +2306,31 @@ section {
 /* ================================
    Testimonials Header Redesign
    ================================ */
+.testimonials {
+    background: var(--bg-dark) !important;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
 .testimonials .section-header {
     display: flex;
     align-items: flex-end;
-    margin-top: 100px;
-    margin-bottom: var(--space-xl);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-md);
     padding: 0 var(--space-lg);
     width: 100%;
     max-width: none;
     position: relative;
+    z-index: 2;
+    /* Ensure header sits above texture */
 }
 
 .testimonials .section-title {
@@ -2275,20 +2339,23 @@ section {
     font-weight: 300;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--text-dark);
-    margin-left: auto;
-    text-align: right;
+    color: var(--color-primary-light) !important;
+    margin-right: auto;
+    margin-left: 0;
+    text-align: left;
     width: auto;
+    text-shadow: 0 0 15px rgba(117, 117, 242, 0.8), 0 0 30px rgba(117, 117, 242, 0.4);
+    animation: glitchFlicker 5s infinite;
 }
 
 .testimonials .section-subtitle {
     position: absolute;
-    left: var(--space-lg);
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
-    text-align: left;
+    transform: translate(-50%, -50%);
+    text-align: center;
     max-width: 400px;
-    color: var(--text-dark-secondary);
+    color: rgba(255, 255, 255, 0.6);
     font-size: 1.1rem;
     margin: 0;
 }
@@ -2301,16 +2368,19 @@ section {
     align-items: center;
     justify-content: center;
     gap: var(--space-lg);
-    padding: var(--space-2xl) 0;
+    gap: var(--space-lg);
+    padding: 0 var(--space-lg);
+    /* Removed large top padding to allow flex center */
     position: relative;
+    width: 100%;
 }
 
 /* Wrapper for positioning character and box together */
 .dialogue-wrapper {
     position: relative;
-    max-width: 900px;
+    max-width: 1100px;
     width: 100%;
-    padding-right: 180px;
+    padding-right: 250px;
     /* Space for character */
 }
 
@@ -2352,7 +2422,6 @@ section {
     border-radius: 8px;
     padding: var(--space-lg) var(--space-2xl);
     padding-top: 50px;
-    /* Min height for consistency, can grow for longer text */
     min-height: 200px;
     display: flex;
     align-items: flex-start;
@@ -2381,9 +2450,9 @@ section {
 .dialogue-character {
     position: absolute;
     right: -30px;
-    bottom: 0;
-    width: 220px;
-    height: 280px;
+    bottom: -20px;
+    width: 320px;
+    height: 400px;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -2393,10 +2462,11 @@ section {
 .character-silhouette {
     width: 100%;
     height: auto;
-    max-height: 280px;
+    max-height: 400px;
     object-fit: contain;
-    filter: invert(1) drop-shadow(0 0 20px rgba(117, 117, 242, 0.3));
-    opacity: 0.95;
+    filter: invert(1) drop-shadow(0 0 15px #7575f2) drop-shadow(0 0 30px rgba(117, 117, 242, 0.6));
+    opacity: 1;
+    animation: glitchFlicker 4s infinite;
 }
 
 .dialogue-content {
@@ -2412,20 +2482,15 @@ section {
 
 .dialogue-text {
     font-family: 'VT323', monospace;
-    font-size: 1.5rem;
-    line-height: 1.5;
+    font-size: 2rem;
+    line-height: 1.4;
     color: rgba(255, 255, 255, 0.95);
     margin: 0;
 }
 
 .dialogue-cursor {
-    display: inline-block;
-    width: 14px;
-    height: 4px;
-    background: var(--color-primary);
-    margin-left: 6px;
-    vertical-align: middle;
-    animation: blink 1s step-end infinite;
+    display: none;
+    /* Removed typing animation per user request */
 }
 
 /* Navigation Arrows */
@@ -2555,12 +2620,56 @@ section {
 
 /* ================================
    Stats Section
+/* ================================
+   Stats Section (Glitch Background Match)
    ================================ */
 .stats {
     background: var(--bg-dark);
     padding: var(--space-xl) 0 40px;
     scroll-snap-align: start;
     color: white;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    /* For pseudo elements */
+}
+
+/* Glitch Background Pseudo-elements for Stats */
+.stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(117, 117, 242, 0.03) 3px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 0;
+    animation: scanlines 8s linear infinite;
+}
+
+.stats::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    animation: noiseMove 0.5s steps(10) infinite;
+}
+
+/* Ensure content sits above background */
+.stats-header,
+.stats-grid {
     position: relative;
     z-index: 2;
 }
@@ -2574,7 +2683,8 @@ section {
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 300;
     letter-spacing: -0.02em;
-    color: var(--text-dark);
+    color: #ffffff !important;
+    /* Force white on dark bg */
     max-width: 100%;
 }
 
@@ -2913,12 +3023,12 @@ section {
    RPG Contact Section
    ================================ */
 .rpg-contact {
-    padding: var(--space-3xl) var(--space-lg);
+    padding: var(--space-2xl) var(--space-lg);
     background: var(--bg-dark);
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: auto;
     scroll-snap-align: start;
     position: relative;
     overflow: hidden;
@@ -3387,24 +3497,27 @@ section {
 
 .cta-button-sched {
     margin-top: 20px;
-    background: var(--color-primary);
-    /* Brand Purple */
-    color: white;
+    background: #3C2415;
+    color: #F5ECD7;
     padding: 18px 36px;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-family: var(--font-primary);
     font-weight: 600;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: all 0.2s ease;
-    box-shadow: 0 0 15px rgba(117, 117, 242, 0.4);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(60, 36, 21, 0.3);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    border: 2px solid #5C3A1E;
+    display: inline-block;
 }
 
 .cta-button-sched:hover {
     transform: translateY(-3px);
-    box-shadow: 0 0 25px rgba(117, 117, 242, 0.6);
-    background: #5d5df0;
+    box-shadow: 0 6px 20px rgba(60, 36, 21, 0.4);
+    background: #5C3A1E;
+    color: #ffffff;
 }
 
 @media (max-width: 768px) {
@@ -3420,14 +3533,15 @@ section {
 .philosophy-container {
     text-align: center;
     max-width: 900px;
-    margin: 80px auto 0;
-    padding: 0 var(--space-md);
+    margin: var(--space-xl) auto 0;
+    padding: 0 var(--space-md) var(--space-md);
     animation: fadeInUp 1s ease-out;
 }
 
 .philosophy-title {
     font-family: var(--font-primary);
-    font-weight: 300;
+    font-weight: 600;
+    /* Bolder to pop out as a heading */
     font-size: clamp(2rem, 4vw, 3rem);
     color: var(--text-dark);
     margin-bottom: var(--space-lg);
@@ -3443,6 +3557,14 @@ section {
     font-weight: 400;
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Make the highlight span match the philosophy text exactly */
+.philosophy-highlight {
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    font-weight: inherit;
 }
 
 /* ================================
@@ -3469,6 +3591,40 @@ section {
     transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
     /* Elegant easing */
     will-change: width, border-radius;
+}
+
+/* Glitch Overlays for Banner (Match Stats/Projects) */
+.banner-expansion-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(117, 117, 242, 0.03) 3px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 2;
+    /* On top of image and gradient */
+    animation: scanlines 8s linear infinite;
+}
+
+.banner-expansion-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.4;
+    animation: noiseMove 0.5s steps(10) infinite;
 }
 
 .banner-expansion-wrapper.expanded {
@@ -3602,4 +3758,1427 @@ footer {
 /* "One that centers the Contacts page" - Snap center of contact section to viewport */
 #contact {
     scroll-snap-align: center !important;
+}
+
+/* ================================
+   Typography Overrides (Feedback Fixes)
+   ================================ */
+/* Make section titles BLACK but keep THIN look as requested */
+.section-title,
+.philosophy-title,
+.section-header.split-header .section-title {
+    color: #000000 !important;
+    font-weight: 300 !important;
+    /* Revert to thin */
+    opacity: 1 !important;
+    /* Removed uppercase transform */
+}
+
+/* ================================
+   Projects Glitch Updates (User Request)
+   ================================ */
+
+/* Apply Dark Glitch Background to Projects */
+#projects {
+    background: var(--bg-dark);
+    position: relative;
+    overflow: hidden;
+    /* Ensure text is white on dark background */
+    color: white;
+}
+
+/* Override title color for dark background */
+#projects .section-title {
+    color: #ffffff !important;
+    text-shadow: 0 0 10px rgba(117, 117, 242, 0.5);
+    /* Subtle glow */
+    /* Add occasional glitch to Title */
+    animation: glitchFlicker 5s infinite;
+}
+
+/* Glitch Background Pseudo-elements (duplicated from .rpg-contact for safety) */
+#projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(117, 117, 242, 0.03) 3px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 0;
+    animation: scanlines 8s linear infinite;
+}
+
+#projects::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    animation: noiseMove 0.5s steps(10) infinite;
+}
+
+/* Push content above overlays */
+#projects .section-container,
+#projects .character-select {
+    position: relative;
+    z-index: 2;
+}
+
+/* Glitch Animation for Stats Numbers & Plus Signs */
+.stat-number,
+.stat-suffix {
+    animation: glitchFlicker 3s infinite alternate-reverse;
+    /* Slightly different timing for variation */
+    display: inline-block;
+    /* Required for transform animation */
+}
+
+/* ================================
+   Section Title Color Override
+   ================================ */
+/* Ensure "Our Expertise" and "Our Philosophy" use default font but stay black */
+#services .section-title,
+.philosophy-title {
+    /* Use default font (same as Projects) */
+    /* Just ensure color is black, not blue or white */
+    color: #000000 !important;
+    /* Make headings bolder to pop out */
+    font-weight: 600 !important;
+    /* Make all three the same size for uniformity */
+    font-size: clamp(2rem, 4vw, 3rem) !important;
+    /* Don't transform to uppercase */
+    text-transform: none !important;
+}
+
+/* Force Testimonials Title Blue (Match Projects) */
+#testimonials .section-title {
+    color: var(--color-primary-light) !important;
+    text-shadow: 0 0 15px rgba(117, 117, 242, 0.8), 0 0 30px rgba(117, 117, 242, 0.4);
+}
+
+/* ================================
+   Testimonials Glitch Background
+   ================================ */
+.testimonials::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        repeating-linear-gradient(0deg,
+            transparent,
+            transparent 2px,
+            rgba(117, 117, 242, 0.03) 3px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 0;
+    animation: scanlines 8s linear infinite;
+}
+
+.testimonials::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    animation: noiseMove 0.5s steps(10) infinite;
+}
+
+/* Ensure content is above background */
+.testimonials .section-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ================================
+   Navbar Paper Mode (User Request)
+   ================================ */
+.nav-paper-mode .nav-cta {
+    background: #3C2415 !important;
+    color: #F5ECD7 !important;
+    border: 2px solid #5C3A1E !important;
+    box-shadow: 0 4px 12px rgba(60, 36, 21, 0.3) !important;
+    font-family: var(--font-primary) !important;
+    /* Ensure it stays sans-serif/primary unless RPG mode overrides it? */
+    /* Wait, RPG mode uses VT323. Paper mode should probably match the paper button font (Primary). */
+}
+
+.nav-paper-mode .nav-cta:hover {
+    background: #5C3A1E !important;
+    color: #ffffff !important;
+}
+
+/* Navbar Logo - Brown in Paper Mode */
+.nav-paper-mode .nav-logo img,
+.nav-paper-mode .nav-logo .logo-icon,
+.nav-paper-mode .nav-logo .logo-text {
+    /* Approx filter for #3C2415 (Dark Brown) from White base */
+    /* Notes: brightness(0) = black. invert(1) = white. */
+    /* Target color: #3C2415 (HSL: 26, 45%, 19%) */
+    /* Sepia(1) gives tan. brightness(0.2) darkens. saturate(2) boosts color. */
+    filter: brightness(0.3) sepia(1) saturate(3) hue-rotate(-25deg) !important;
+}
+
+/* Knight Background Logo - Brown/Gold Gradient */
+.knight-bg-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    /* Larger than knight */
+    height: 140%;
+    z-index: -1;
+    opacity: 0.15;
+    /* Subtle */
+    pointer-events: none;
+
+    /* Colorize SVG using mask */
+    mask-image: url('assets/Logo.svg');
+    -webkit-mask-image: url('assets/Logo.svg');
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+
+    background: linear-gradient(to bottom, #3C2415, #C9A96E);
+}
+
+/* Hide original IMG inside, we use the div background */
+.knight-bg-logo img {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Inventory CTA (Text Link Style) */
+.inventory-cta {
+    margin-top: 5rem;
+    text-align: right;
+    width: 100%;
+}
+
+.hex-link-styled {
+    display: inline-block;
+    padding: 10px 0;
+    /* Remove horizontal padding for pure text look */
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    color: #3C2415;
+    /* Brown to match paper aesthetic */
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: right center;
+}
+
+.hex-link-styled:hover {
+    transform: scale(1.15);
+    /* Pop */
+    color: #5C3A1E;
+    /* Lighter Brown */
+    text-shadow: 0 0 15px rgba(92, 58, 30, 0.4);
+    /* Brown/Gold Glow */
+    cursor: pointer;
+}
+
+/* ================================
+   Services Page - New Paper Theme
+   ================================ */
+.services-page-new {
+    background-color: #f5f5f7;
+    /* Match Landing Page Light BG */
+    font-family: var(--font-primary);
+    color: #3C2415;
+    /* Brown Text default */
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body.services-page-new .paper-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url('assets/background-texture-seamless-strange-medieval-parch_upscayl_4x_upscayl-standard-4x.png');
+    background-repeat: repeat;
+    background-size: 500px;
+    /* Adjust scale */
+    opacity: 0.15;
+    /* Much more subtle for readability */
+    filter: none;
+    /* Remove SVG filter */
+    mix-blend-mode: multiply;
+    /* Blend with background color */
+}
+
+/* Navbar Fix - Relative to push content down */
+.services-page-new .navbar {
+    position: relative !important;
+    width: 100%;
+    z-index: 100;
+    margin-bottom: 0;
+    padding-top: 20px;
+    /* Ensure space at top */
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 80px auto 20px;
+    /* Minimized bottom margin */
+    padding: 0 20px;
+    text-align: center;
+}
+
+.services-header {
+    margin-bottom: 60px;
+}
+
+.services-header .page-title {
+    font-family: 'Metamorphous', 'Old London', serif;
+    font-size: 4rem;
+    color: #3C2415;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.services-header .page-subtitle {
+    font-size: 1.2rem;
+    color: #665;
+    font-style: italic;
+}
+
+/* Tabs / Carousel - WAX SEAL STAMPS */
+.services-tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.services-tabs {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-tab-icon {
+    width: 90px;
+    height: 90px;
+    border: none;
+    background: transparent;
+    background-image: url('assets/perfect-red-wax-seal-isolated.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Inactive State: Grayed out */
+    opacity: 0.5;
+    filter: grayscale(1);
+}
+
+.service-tab-icon img {
+    width: 32px;
+    height: 32px;
+    /* White Icon */
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.9;
+    transform: rotate(-5deg);
+}
+
+.service-tab-icon:hover {
+    opacity: 0.8;
+    filter: grayscale(0.5);
+    transform: scale(1.05);
+}
+
+.service-tab-icon.active {
+    opacity: 1;
+    filter: grayscale(0);
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+/* Display Area / Cards */
+.service-display-area {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    min-height: 400px;
+}
+
+.service-card {
+    display: none;
+    /* Parchment Background Container */
+    position: relative;
+    background: transparent;
+    /* See pseudo */
+    border-radius: 20px;
+    /* Rounded corners for the container */
+    padding: 80px 60px;
+    text-align: left;
+    overflow: hidden;
+    /* Clip the parchment */
+    /* Animation: Unfurl */
+    transform-origin: top center;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/parchment.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    /* Adjust if too strong, user said adjust so it looks fine */
+    z-index: -1;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(60, 36, 21, 0.2);
+}
+
+.service-card.active {
+    display: block;
+    /* Slower Animation */
+    animation: unfurl 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes unfurl {
+    from {
+        clip-path: inset(0 0 100% 0);
+        /* Hidden from bottom */
+        opacity: 0;
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+        /* Fully visible */
+        opacity: 1;
+    }
+}
+
+.service-icon-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid rgba(60, 36, 21, 0.2);
+    padding-bottom: 20px;
+}
+
+/* Stamp Circle Styles - BIGGER */
+.stamp-circle {
+    width: 150px;
+    height: 150px;
+    /* Increased Size */
+    /* Use Seal Background + White Icon */
+    background-image: url('assets/perfect-red-wax-seal-isolated.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    /* Removed dashed border */
+    border-radius: 0;
+    /* Seal is irregular shape inside, div is square-ish/rect but bg handles shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-5deg);
+    opacity: 1;
+    flex-shrink: 0;
+}
+
+.stamp-circle img {
+    width: 60px;
+    height: 60px;
+    /* Bigger Icon */
+    /* Force White Icon */
+    filter: brightness(0) invert(1) !important;
+}
+
+.service-card h2 {
+    font-family: 'Metamorphous', 'Old London', serif;
+    font-size: 2.8rem;
+    color: #3C2415;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.service-body .service-desc {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #3C2415;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-family: var(--font-primary);
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.service-features li {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: #5C3A1E;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-features li::before {
+    content: '•';
+    color: #3C2415;
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    top: -2px;
+}
+
+/* Nav Paper Mode Overrides */
+.nav-paper-mode .nav-link {
+    color: #3C2415 !important;
+    font-family: var(--font-primary) !important;
+}
+
+.nav-paper-mode .nav-link:hover,
+.nav-paper-mode .nav-link.active {
+    color: #5C3A1E !important;
+    text-decoration: underline !important;
+}
+
+/* Navbar Logo Force Brown - Corrected Filter (Less Red) */
+.nav-paper-mode .logo-text,
+.nav-paper-mode .logo-icon {
+    /* Corrected filter for #3C2415 */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(30%) saturate(2222%) hue-rotate(345deg) brightness(98%) contrast(92%) !important;
+}
+
+/* Navbar Button Force Brown */
+.nav-paper-mode .nav-cta,
+.nav-paper-mode .btn-primary {
+    background-color: #3C2415 !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.nav-paper-mode .nav-cta:hover {
+    background-color: #5C3A1E !important;
+}
+
+/* CTA Brown Button (Bottom) */
+.cta-brown {
+    background-color: #3C2415 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 12px 30px !important;
+    border-radius: 4px !important;
+}
+
+.cta-brown:hover {
+    background-color: #5C3A1E !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(60, 36, 21, 0.3);
+}
+
+/* Footer Light Theme */
+.footer-light {
+    background: transparent !important;
+    color: #3C2415;
+    border-top: none;
+    padding: 0;
+    /* Zero padding */
+    margin-top: 0;
+    /* Zero margin */
+    font-family: var(--font-primary);
+}
+
+.footer-light .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: start;
+}
+
+.footer-light .footer-brand {
+    max-width: 250px;
+}
+
+.footer-light .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+/* Apply Strong Brown Filter to Footer Logo as well */
+.footer-light .logo-icon,
+.footer-light .logo-text {
+    /* Corrected filter for #3C2415 */
+    filter: brightness(0) saturate(100%) invert(13%) sepia(30%) saturate(2222%) hue-rotate(345deg) brightness(98%) contrast(92%) !important;
+}
+
+.footer-light .footer-tagline {
+    font-size: 0.8rem;
+    color: #5C3A1E;
+    margin: 0;
+}
+
+.footer-light .footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-light .footer-column h4 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #3C2415;
+    text-transform: uppercase;
+}
+
+.footer-light .footer-column a {
+    display: block;
+    margin-bottom: 6px;
+    color: #5C3A1E;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.footer-light .footer-column a:hover {
+    color: #8B4513;
+    text-decoration: underline;
+}
+
+.footer-light .footer-bottom {
+    border-top: none;
+    margin-top: 10px;
+    padding-top: 0;
+    padding-bottom: 20px;
+    /* Slight padding at very bottom */
+    text-align: center;
+    color: #5C3A1E;
+    font-size: 0.8rem;
+}
+
+
+/* ================================
+   About Page - Retro TV
+   ================================ */
+.about-page {
+    background: #111;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'VT323', monospace;
+}
+
+.tv-container {
+    width: 90vw;
+    height: 80vh;
+    max-width: 1200px;
+    background: #2b2b2b;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 4px solid #444;
+}
+
+.tv-frame {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 20px;
+    /* CRT Screen Curvature */
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tv-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    overflow-y: auto;
+    /* Allow internal scrolling if content overflows */
+    padding-right: 10px;
+}
+
+/* Scanlines & Glow */
+.scanlines-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 2px);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.crt-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    z-index: 11;
+}
+
+/* Content Styles */
+.retro-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #0f0;
+    padding-bottom: 20px;
+}
+
+.retro-glitch-title {
+    color: #0f0;
+    /* Terminal Green */
+    font-size: 4rem;
+    text-shadow: 0 0 10px #0f0;
+    margin: 0;
+    animation: textGlitch 3s infinite;
+}
+
+.system-status {
+    color: #0f0;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.status-ok {
+    color: #fff;
+    font-weight: bold;
+    animation: blink 1s infinite;
+}
+
+.company-bio-box {
+    color: #ccc;
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* Employee Grid */
+.employee-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.employee-card {
+    background: rgba(0, 255, 0, 0.05);
+    /* Very subtle green tint */
+    border: 2px solid #0f0;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+.employee-card:hover {
+    transform: scale(1.05);
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.employee-img-wrapper {
+    width: 100%;
+    height: 200px;
+    background: #000;
+    border: 1px solid #0f0;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.employee-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2) brightness(0.8);
+    /* Make vectors look pixelated/retro */
+    image-rendering: pixelated;
+}
+
+.pixel-knight {
+    object-fit: contain;
+}
+
+.retro-name {
+    color: #fff;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.retro-role {
+    color: #0f0;
+    font-size: 1.2rem;
+}
+
+/* Animations */
+@keyframes textGlitch {
+    0% {
+        transform: translate(0);
+        text-shadow: 2px 2px #f0f;
+    }
+
+    2% {
+        transform: translate(-2px, 2px);
+        text-shadow: -2px -2px #0ff;
+    }
+
+    4% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px 2px #f0f;
+    }
+
+    6% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+
+    100% {
+        transform: translate(0);
+        text-shadow: none;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Navbar Force Mode Overrides */
+.nav-retro-mode {
+    background: #000 !important;
+    border-bottom: 1px solid #0f0 !important;
+}
+
+.nav-retro-mode .nav-link {
+    color: #0f0 !important;
+    font-family: 'VT323', monospace !important;
+    font-size: 1.2rem !important;
+}
+
+.nav-retro-mode .nav-link.active {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+
+.nav-retro-mode .logo-text {
+    color: #0f0 !important;
+    font-family: 'VT323', monospace !important;
+}
+
+.nav-retro-mode .logo-icon {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%) !important;
+    /* Matrix Green Filter */
+}
+
+/* Paper Mode (Services) - reuse .nav-paper-mode */
+.services-page .nav-paper-mode {
+    background: transparent !important;
+    /* Let scroll show */
+    /* Or parchment color if sticky */
+}
+
+/* ================================
+   About Page - Full Screen TV Glitch Style
+   ================================ */
+.about-glitch-page {
+    background-color: #000;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tv-screen-container {
+    position: relative;
+    width: 96vw;
+    height: 94vh;
+    background: radial-gradient(circle at 50% 50%, #0a0a20 0%, #000 120%);
+    border: 3px solid #4F46E5;
+    border-radius: 20px;
+    box-shadow:
+        0 0 40px rgba(79, 70, 229, 0.6),
+        inset 0 0 100px rgba(79, 70, 229, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: screenFlicker 0.1s infinite;
+}
+
+/* Subtle Screen Flicker */
+@keyframes screenFlicker {
+    0% {
+        opacity: 0.99;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.98;
+    }
+}
+
+/* Inner Glow Line */
+.tv-screen-container::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(79, 70, 229, 0.4);
+    border-radius: 12px;
+    pointer-events: none;
+    z-index: 50;
+    box-shadow: inset 0 0 20px rgba(79, 70, 229, 0.2);
+}
+
+/* Scanlines Overlay - Stronger */
+.scanline-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.15),
+            rgba(0, 0, 0, 0.15) 2px,
+            transparent 2px,
+            transparent 4px);
+    pointer-events: none;
+    z-index: 40;
+    animation: scrollScanlines 5s linear infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes scrollScanlines {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 100px;
+    }
+}
+
+/* Background Noise Overlay */
+.noise-layer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 35;
+    animation: noiseMove 0.2s steps(4) infinite;
+    opacity: 0.1;
+}
+
+/* Content Wrapper */
+.tv-content {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 100px;
+    overflow-y: auto;
+    /* Custom Scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #4F46E5 rgba(0, 0, 0, 0.3);
+}
+
+.tv-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tv-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tv-content::-webkit-scrollbar-thumb {
+    background: #4F46E5;
+    border-radius: 4px;
+    box-shadow: 0 0 10px #4F46E5;
+    border: 2px solid transparent;
+    background-clip: content-box;
+    /* Makes it look thinner/cleaner */
+}
+
+.tv-content::-webkit-scrollbar-thumb:hover {
+    background: #818CF8;
+    box-shadow: 0 0 15px #818CF8;
+}
+
+/* Navbar inside TV */
+.tv-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(79, 70, 229, 0.3);
+    font-family: 'VT323', monospace;
+    z-index: 30;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tv-nav-left,
+.tv-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.tv-logo-text {
+    font-size: 1.8rem;
+    color: #4F46E5;
+    text-shadow: 0 0 5px #4F46E5;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.tv-nav-link {
+    color: #818CF8;
+    text-decoration: none;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    transition: all 0.2s;
+}
+
+.tv-nav-link:hover,
+.tv-nav-link.active {
+    color: #fff;
+    text-shadow: 0 0 10px #4F46E5;
+}
+
+/* Header Text - Stronger Glitch */
+.glitch-header {
+    font-family: 'VT323', monospace;
+    font-size: 3.5rem;
+    color: #fff;
+    margin-top: 40px;
+    margin-bottom: 60px;
+    position: relative;
+    text-shadow: 3px 0 #f0f, -3px 0 #0ff;
+    animation: textGlitch 2s infinite alternate-reverse;
+    line-height: 1.1;
+}
+
+@keyframes textGlitch {
+    0% {
+        text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+        opacity: 1;
+    }
+
+    2% {
+        text-shadow: -2px 0 #f0f, 2px 0 #0ff;
+        transform: translateX(2px);
+    }
+
+    4% {
+        text-shadow: 1px 0 #f0f, -1px 0 #0ff;
+        transform: translateX(-2px);
+    }
+
+    6% {
+        text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+        transform: translateX(0);
+    }
+
+    100% {
+        text-shadow: 2px 0 #f0f, -2px 0 #0ff;
+        opacity: 1;
+    }
+}
+
+.tv-cursor {
+    display: inline-block;
+    width: 20px;
+    height: 4px;
+    background: #4F46E5;
+    animation: blink 0.5s step-end infinite;
+}
+
+/* Options */
+.tv-options {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 900px;
+}
+
+.tv-option {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: #a0a0ff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(79, 70, 229, 0.3);
+    padding-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.tv-option:hover {
+    color: #fff;
+    text-shadow: 0 0 15px #4F46E5, 0 0 30px #4F46E5;
+    border-bottom-style: solid;
+    border-color: #4F46E5;
+    padding-left: 20px;
+}
+
+.tv-tag {
+    font-size: 1.2rem;
+    border: 1px solid #4F46E5;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #4F46E5;
+    box-shadow: 0 0 5px rgba(79, 70, 229, 0.3);
+}
+
+.tv-option:hover .tv-tag {
+    background: #4F46E5;
+    color: #fff;
+    box-shadow: 0 0 15px #4F46E5;
+}
+
+/* Background Logos */
+.bg-glitch-logo {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: url('assets/Logo.svg') no-repeat center/contain;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 1;
+    filter: drop-shadow(0 0 20px #4F46E5);
+}
+
+.bg-glitch-logo.left {
+    left: -150px;
+    top: 20%;
+}
+
+.bg-glitch-logo.right {
+    right: -150px;
+    bottom: 0;
+    transform: scaleX(-1);
+}
+
+/* ================================
+   TV Views & Navigation
+   ================================ */
+.tv-view {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    animation: viewGlitch 0.4s steps(4);
+}
+
+.tv-view.active {
+    display: flex;
+}
+
+@keyframes viewGlitch {
+    0% {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Back Button */
+.tv-back-btn {
+    margin-top: 40px;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    color: #4F46E5;
+    cursor: pointer;
+    border: 1px dashed #4F46E5;
+    padding: 10px 20px;
+    align-self: flex-start;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.tv-back-btn:hover {
+    background: #4F46E5;
+    color: #fff;
+    box-shadow: 0 0 15px #4F46E5;
+}
+
+/* Team Grid */
+.tv-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.tv-member-card {
+    border: 2px solid rgba(79, 70, 229, 0.4);
+    background: rgba(0, 0, 20, 0.6);
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.tv-member-card:hover {
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+    transform: translateY(-5px);
+}
+
+.tv-member-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    filter: sepia(100%) hue-rotate(190deg) saturate(300%) contrast(1.2) drop-shadow(0 0 5px #4F46E5);
+    transition: filter 0.3s;
+}
+
+.tv-member-card:hover .tv-member-img {
+    filter: drop-shadow(0 0 8px #fff);
+}
+
+.tv-card-inner h3 {
+    font-family: 'VT323';
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.tv-role {
+    font-family: 'VT323';
+    color: #818CF8;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* Contact / Text Block */
+.tv-text-block {
+    font-family: 'VT323';
+    font-size: 1.6rem;
+    color: #a0a0ff;
+    line-height: 1.4;
+    max-width: 800px;
+}
+
+.tv-text-block p {
+    margin-bottom: 10px;
+}
+
+.tv-big-link {
+    display: inline-block;
+    font-size: 3rem;
+    color: #fff;
+    text-decoration: none;
+    margin: 30px 0;
+    text-shadow: 0 0 10px #4F46E5;
+    transition: all 0.3s;
+    border-bottom: 2px solid #4F46E5;
+}
+
+.tv-big-link:hover {
+    letter-spacing: 2px;
+    text-shadow: 0 0 20px #f0f;
+    border-color: #f0f;
+}
+
+.tv-social-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.tv-social-link {
+    font-size: 1.4rem;
+    color: #4F46E5;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.tv-social-link:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #4F46E5;
+}
+
+/* ================================
+   Glitch Marquee (Landing Transition)
+   ================================ */
+.glitch-marquee-wrapper {
+    width: 100%;
+    background: #080816;
+    /* Match --bg-dark to avoid white paper background */
+    padding: 100px 0;
+    /* Vertical centering spacing */
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 20;
+}
+
+.glitch-marquee-bar {
+    background: #000;
+    border-top: 1px solid #4F46E5;
+    border-bottom: 1px solid #4F46E5;
+    padding: 8px 0;
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.glitch-track {
+    display: flex;
+    animation: marqueeScroll 30s linear infinite;
+    width: max-content;
+}
+
+.glitch-text {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    /* Small, refined font */
+    color: #4F46E5;
+    padding-right: 0;
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+    animation: marqueeFlicker 5s infinite;
+    /* Even slower subtle flicker */
+    display: block;
+}
+
+@keyframes marqueeScroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Subtle Flicker */
+@keyframes marqueeFlicker {
+
+    0%,
+    94% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        transform: skewX(0);
+    }
+
+    95% {
+        opacity: 0.8;
+        text-shadow: 2px 0 rgba(255, 0, 255, 0.4), -2px 0 rgba(0, 255, 255, 0.4);
+        transform: skewX(3deg);
+    }
+
+    96% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        transform: skewX(0);
+    }
+
+    98% {
+        opacity: 0.9;
+        transform: skewX(-1deg);
+    }
+
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 5px rgba(79, 70, 229, 0.5);
+        transform: skewX(0);
+    }
 }

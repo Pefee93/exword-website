@@ -185,6 +185,13 @@ function initVideoLoop() {
  */
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
+
+    // Force paper mode for Services Page (disable scroll logic)
+    if (document.body.classList.contains('services-page-new')) {
+        navbar.classList.add('nav-paper-mode');
+        return;
+    }
+
     const hero = document.getElementById('hero');
 
     // Sections that should trigger white navbar text (Dark Backgrounds)
@@ -208,7 +215,7 @@ function initNavbarScroll() {
             navbar.classList.remove('scrolled');
         }
 
-        // Check if navbar is over any dark section
+        // Check if navbar is over any dark section (for white text)
         let overDark = false;
         darkSections.forEach(section => {
             if (!section) return;
@@ -224,6 +231,28 @@ function initNavbarScroll() {
             navbar.classList.add('dark-section');
         } else {
             navbar.classList.remove('dark-section');
+        }
+
+        // Check if navbar is over any PAPER section (for brown button)
+        // Paper sections = Services, Philosophy (inside Services), Logo Scroll
+        const paperSections = [
+            document.getElementById('services'),
+            document.querySelector('.logo-scroll')
+        ];
+
+        let overPaper = false;
+        paperSections.forEach(section => {
+            if (!section) return;
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= navbarHeight && rect.bottom >= 0) {
+                overPaper = true;
+            }
+        });
+
+        if (overPaper) {
+            navbar.classList.add('nav-paper-mode');
+        } else {
+            navbar.classList.remove('nav-paper-mode');
         }
     };
 
@@ -438,26 +467,39 @@ function initRpgContact() {
     }, { threshold: 0.3 });
 
     // Observer for Navbar Style
+    // Observer for Navbar Style
+    const visibleRpgSections = new Set();
     const navObserver = new IntersectionObserver((entries) => {
         const navbar = document.getElementById('navbar');
         if (!navbar) return;
 
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                navbar.classList.add('nav-rpg-mode');
+                visibleRpgSections.add(entry.target);
             } else {
-                navbar.classList.remove('nav-rpg-mode');
+                visibleRpgSections.delete(entry.target);
             }
         });
+
+        if (visibleRpgSections.size > 0) {
+            navbar.classList.add('nav-rpg-mode');
+        } else {
+            navbar.classList.remove('nav-rpg-mode');
+        }
     }, {
         threshold: 0,
         rootMargin: "-2% 0px -85% 0px"
     });
 
     const contactSection = document.getElementById('contact');
+    const testimonialsSection = document.getElementById('testimonials');
+
     if (contactSection) {
         typeObserver.observe(contactSection);
         navObserver.observe(contactSection);
+    }
+    if (testimonialsSection) {
+        navObserver.observe(testimonialsSection);
     }
 
     // Show Form
@@ -713,27 +755,8 @@ function initRpgDialogue() {
 
     if (!dialogueCharacter || !dialogueName || !dialogueStudio || !dialogueText) return;
 
-    let typewriterInterval = null;
-
-    function typewriterEffect(element, text, speed = 15) {
-        // Clear any existing typewriter
-        if (typewriterInterval) {
-            clearInterval(typewriterInterval);
-        }
-
-        element.textContent = '';
-        let index = 0;
-
-        typewriterInterval = setInterval(() => {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-            } else {
-                clearInterval(typewriterInterval);
-                typewriterInterval = null;
-            }
-        }, speed);
-    }
+    // Removed typewriter effect per user request
+    // function typewriterEffect(element, text, speed = 15) { ... }
 
     function updateTestimonial(index, animate = true) {
         const testimonial = testimonials[index];
@@ -748,12 +771,8 @@ function initRpgDialogue() {
         dialogueName.textContent = testimonial.name;
         dialogueStudio.textContent = testimonial.studio;
 
-        // Typewriter effect for text (or instant for initial load)
-        if (animate) {
-            typewriterEffect(dialogueText, testimonial.text, 8);
-        } else {
-            dialogueText.textContent = testimonial.text;
-        }
+        // Instant text update
+        dialogueText.textContent = testimonial.text;
 
         // Update indicators
         indicators.forEach((indicator, i) => {

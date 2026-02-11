@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExWord - About Us</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=VT323&family=Oswald:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="about-glitch-page">
+
+    <div class="tv-screen-container">
+        <!-- Effects Layers -->
+        <div class="scanline-layer"></div>
+        <div class="noise-layer"></div>
+
+        <!-- Integrated Pixel Navbar -->
+        <nav class="tv-navbar">
+            <div class="tv-nav-left">
+                <span class="tv-logo-text">EXWORD//SYSTEMS</span>
+                <a href="services.html" class="tv-nav-link">SERVICES</a>
+                <a href="index.html#projects" class="tv-nav-link">MEMORIES</a>
+            </div>
+            <div class="tv-nav-right">
+                <a href="about.html" class="tv-nav-link active">STATUS</a>
+                <a href="index.html#contact" class="tv-nav-link">TRANSMIT</a>
+            </div>
+        </nav>
+
+        <!-- Main TV Content -->
+        <div class="tv-content">
+            <!-- Background Logos Inside Screen -->
+            <div class="bg-glitch-logo left"></div>
+            <div class="bg-glitch-logo right"></div>
+
+            <!-- VIEW: MAIN MENU -->
+            <div id="view-menu" class="tv-view active">
+                <h1 class="glitch-header">
+                    > SYSTEM MESSAGE:<br>
+                    WE CONNECT GAMES WITH PLAYERS THROUGH<br>ORGANIC SIGNAL TRANSMISSION. <span
+                        class="tv-cursor"></span>
+                </h1>
+
+                <div class="tv-options">
+                    <div class="tv-option" onclick="switchTvView('view-contact')">
+                        <span>> WHERE CAN I SEND A MESSAGE?</span>
+                        <span class="tv-tag">CONTACT</span>
+                    </div>
+                    <div class="tv-option" onclick="switchTvView('view-team')">
+                        <span>> WHO IS BEHIND THIS SYSTEM?</span>
+                        <span class="tv-tag">TEAM ALPHA</span>
+                    </div>
+                    <div class="tv-option" onclick="switchTvView('view-partner')">
+                        <span>> WE ARE A PUBLISHER, COLLABORATE?</span>
+                        <span class="tv-tag">PARTNERSHIP</span>
+                    </div>
+                    <a href="index.html" class="tv-option" style="text-decoration: none;">
+                        <span>> FLEE SIMULATION</span>
+                        <span class="tv-tag">EXIT</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- VIEW: TEAM -->
+            <div id="view-team" class="tv-view hidden">
+                <h2 class="glitch-header">> PERSONNEL DATABASE_</h2>
+                <div class="tv-team-grid">
+                    <!-- Agent Alpha -->
+                    <div class="tv-member-card">
+                        <div class="tv-card-inner">
+                            <img src="assets/Vector Male.svg" alt="Alpha" class="tv-member-img">
+                            <h3>AGENT ALPHA</h3>
+                            <p class="tv-role">STRATEGY LEAD</p>
+                        </div>
+                    </div>
+                    <!-- Agent Beta -->
+                    <div class="tv-member-card">
+                        <div class="tv-card-inner">
+                            <img src="assets/Vector Female.svg" alt="Beta" class="tv-member-img">
+                            <h3>AGENT BETA</h3>
+                            <p class="tv-role">CREATIVE DIR</p>
+                        </div>
+                    </div>
+                    <!-- The Knight -->
+                    <div class="tv-member-card">
+                        <div class="tv-card-inner">
+                            <img src="assets/knight_nobackground.png" alt="Knight" class="tv-member-img">
+                            <h3>THE KNIGHT</h3>
+                            <p class="tv-role">SECURITY</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
+                    &lt; RETURN TO ROOT
+                </div>
+            </div>
+
+            <!-- VIEW: CONTACT -->
+            <div id="view-contact" class="tv-view hidden">
+                <h2 class="glitch-header">> COMM CHANNELS_</h2>
+                <div class="tv-text-block">
+                    <p>> ESTABLISHING SECURE CONNECTION...</p>
+                    <p>> SIGNAL STRENGTH: 100%</p>
+                    <br>
+                    <p>TRANSMIT DATA TO:</p>
+                    <a href="mailto:hello@exword.com" class="tv-big-link">HELLO@EXWORD.COM</a>
+
+                    <div class="tv-social-grid">
+                        <a href="#" class="tv-social-link">[ TWITTER / X ]</a>
+                        <a href="#" class="tv-social-link">[ LINKEDIN ]</a>
+                        <a href="#" class="tv-social-link">[ DISCORD ]</a>
+                    </div>
+                </div>
+                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
+                    &lt; RETURN TO ROOT
+                </div>
+            </div>
+
+            <!-- VIEW: PARTNERSHIP -->
+            <div id="view-partner" class="tv-view hidden">
+                <h2 class="glitch-header">> COLLABORATION PROTOCOLS_</h2>
+                <div class="tv-text-block">
+                    <p>> QUERY: PUBLISHER RELATIONSHIP</p>
+                    <p>> STATUS: OPEN</p>
+                    <br>
+                    <p>We work with publishers to amplify reach. Our organic signal protocols ensure maximum visibility
+                        without triggering spam filters.</p>
+                    <p>Initiate a partnership request via Comms.</p>
+                </div>
+                <div class="tv-back-btn" onclick="switchTvView('view-menu')">
+                    &lt; RETURN TO ROOT
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function switchTvView(viewId) {
+            // Hide all views
+            document.querySelectorAll('.tv-view').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('active');
+            });
+            // Show target
+            const target = document.getElementById(viewId);
+            if (target) {
+                target.classList.remove('hidden');
+                target.classList.add('active');
+            }
+        }
+    </script>
+</body>
+
+</html>
