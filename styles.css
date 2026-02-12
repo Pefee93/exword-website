@@ -7391,3 +7391,44 @@ textarea.rpg-input {
         /* Further lowered */
     }
 }
+
+/* =========================================
+   USER REQUEST OVERRIDES (Step 7216 - REFINED CONTACT)
+   ========================================= */
+
+/* Make Contact Terminal huge width but compact height */
+.rpg-box {
+    max-width: 1250px !important;
+    width: 95% !important;
+    margin: 0 auto !important;
+    padding: 30px !important;
+    /* SIGNIFICANTLY REDUCED PADDING */
+    min-height: auto !important;
+    /* Allow it to shrink */
+}
+
+/* Reduce gap between Question and Answers */
+.rpg-text-area {
+    margin-bottom: 5px !important;
+    /* Tighten gap */
+}
+
+.rpg-options {
+    margin-top: 5px !important;
+    /* Tighten gap */
+}
+
+/* Optimize font for wider layout */
+.rpg-text-area,
+.rpg-text,
+.rpg-option,
+.rpg-input,
+textarea.rpg-input {
+    font-size: 1.5rem !important;
+    /* Slightly smaller for better fit */
+    line-height: 1.4 !important;
+    /* Tighter lines */
+    max-width: 100% !important;
+    letter-spacing: 0.5px !important;
+    /* Slightly tighter tracking */
+}
