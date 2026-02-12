@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeroScroll();
     initBannerExpansion();
     initScrollReveal();
+    initHexReveal();
 });
 
 /**
@@ -713,6 +714,29 @@ function initScrollReveal() {
     });
 
     elements.forEach(el => observer.observe(el));
+}
+
+/**
+ * Hexagon Scroll Reveal
+ * Animates hex slots into view with staggered entrance + pulse
+ */
+function initHexReveal() {
+    const hexSlots = document.querySelectorAll('.inventory-slot.hex-slot');
+    if (!hexSlots.length) return;
+
+    const hexObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('hex-visible');
+                hexObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: "0px 0px -30px 0px"
+    });
+
+    hexSlots.forEach(slot => hexObserver.observe(slot));
 }
 
 /**

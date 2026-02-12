@@ -830,15 +830,8 @@ section {
     justify-content: center;
     padding: var(--space-sm) var(--space-md);
     filter: grayscale(100%);
-    /* Grayscale */
     opacity: 0.5;
-    /* Match text opacity */
-    transition: all 0.3s ease;
-}
-
-.logo-item:hover {
-    filter: grayscale(0%);
-    opacity: 1;
+    transition: none;
 }
 
 .logo-placeholder {
@@ -1096,6 +1089,56 @@ section {
     /* Soft Shadow to define edges */
     filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.08));
     box-shadow: none;
+
+    /* Scroll entrance animation */
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+}
+
+/* Staggered entrance delays */
+.inventory-slot.hex-slot:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.inventory-slot.hex-slot:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.inventory-slot.hex-slot:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.inventory-slot.hex-slot:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.inventory-slot.hex-slot:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.inventory-slot.hex-slot:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* When visible (triggered by JS) */
+.inventory-slot.hex-slot.hex-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: hexPulse 1.5s ease-in-out 1s 1;
+}
+
+/* Gentle pulse to hint clickability */
+@keyframes hexPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 /* Remove Pseudo-border */
@@ -6628,4 +6671,43 @@ main {
 .btn-secondary-about:hover {
     background: #fff;
     color: #3C2415;
+}
+
+/* Marquee Logo Tint Adjustment (White to Dark Gray) */
+.logo-item img {
+    filter: brightness(0.2) opacity(0.9);
+    width: auto;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Fix Clever Plays Logo (No Tint) */
+.logo-item img[src*="clever"] {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Disable all pointer events to prevent any hover state */
+.logo-item,
+.logo-item img {
+    pointer-events: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+/* Pillar Cards - Subtle Animation */
+.philosophy-container .reveal-on-scroll>div[style*="border"] {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.philosophy-container .reveal-on-scroll>div[style*="border"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(60, 36, 21, 0.08);
+}
+
+/* Fix h4 inside philosophy - prevent uppercase */
+.philosophy-container h4 {
+    text-transform: none !important;
+    font-family: var(--font-primary) !important;
+    font-weight: 600;
 }
