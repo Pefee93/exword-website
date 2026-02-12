@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBannerExpansion();
     initScrollReveal();
     initHexReveal();
+    initRandomGlitch();
+    initLoader();
 });
 
 /**
@@ -77,74 +79,112 @@ function initHeroScroll() {
  */
 function initCaseStudyModal() {
     const modal = document.getElementById('caseStudyModal');
-    const modalClose = document.getElementById('modalClose');
+    const modalClose = document.getElementById('csModalClose');
     const modalOverlay = modal?.querySelector('.modal-overlay');
     const characterCards = document.querySelectorAll('.character-card');
 
     // Project data for each case study
     const projectData = {
-        alpha: {
-            title: 'Project Alpha',
-            genre: 'RPG Adventure',
-            icon: '🎮',
-            challenge: 'Project Alpha was launching in a crowded RPG market with limited marketing budget. They needed to build an engaged community before launch to drive organic growth.',
-            approach: 'We developed a Discord-first community strategy, partnered with mid-tier RPG streamers, and created a compelling behind-the-scenes content series showcasing the development journey.',
-            stats: ['+320%', '75K+', '4.9★']
+        diplomacy: {
+            title: 'Diplomacy is Not an Option',
+            genre: 'Door 407',
+            image: 'assets/projects/diplomacy-is-not-an-option-DILQjmth.jpg',
+            challenge: 'Strategic marketing campaign that helped this indie strategy game reach millions of players through organic Reddit engagement.',
+            platforms: ['Steam'],
+            stats: ['4M+', '500k+', '3000+'],
+            statLabels: ['Players Reached', 'Launch Day Wishlists', 'Organic Social Media Shares']
         },
-        battle: {
-            title: 'Battle Arena',
-            genre: 'Action MOBA',
-            icon: '⚔️',
-            challenge: 'Breaking into the competitive MOBA space dominated by established titles. The studio needed to carve out a unique identity and build a dedicated player base.',
-            approach: 'Focused on competitive esports partnerships and tournament organization. Created content highlighting unique mechanics and fostered a competitive community culture.',
-            stats: ['+450%', '120K+', '4.7★']
+        astral: {
+            title: 'Astral Ascent',
+            genre: 'Hibernian Workshop',
+            image: 'assets/projects/astral-ascent-cover-DaaHsuMo.jpg',
+            challenge: 'Presented the game to over 2M+ players, built widespread hype, and helped establish Astral Ascent as one of the most talked-about roguelites on social media.',
+            platforms: ['Steam', 'Console'],
+            stats: ['2M+', '91%', '12+'], // Changed from '12+ Months'
+            statLabels: ['Players Reached', 'Positive Engagement Rate', 'Months of Organic Buzz Sustained'] // Updated label
         },
-        space: {
-            title: 'Space Voyage',
-            genre: 'Sci-Fi Explorer',
-            icon: '🚀',
-            challenge: 'A niche space exploration game needed to find its audience among space enthusiasts and casual gamers interested in discovery-based gameplay.',
-            approach: 'Partnered with space-themed content creators and science communicators. Created educational content that bridged gaming with real space exploration.',
-            stats: ['+280%', '45K+', '4.8★']
+        vail: {
+            title: 'Vail VR',
+            genre: 'AEXLAB',
+            image: 'assets/projects/vail-vr-CFhHfYeD.png',
+            challenge: 'Helped establish VAIL VR as one of the leading VR shooters on social media, positioned it in front of key VR communities, and organized engaging community events that strengthened the game\'s presence and expanded its player base.',
+            platforms: ['Steam', 'Meta', 'VR'],
+            stats: ['5M+', '20+', '5,000+'],
+            statLabels: ['Players Reached', 'Community Events Organized', 'Positive Social Media Engagements']
         },
-        kingdom: {
-            title: 'Kingdom Rise',
-            genre: 'Strategy Builder',
-            icon: '🏰',
-            challenge: 'The strategy game market demanded sophisticated marketing. Kingdom Rise needed to stand out with deep gameplay while remaining accessible.',
-            approach: 'Built a community around player creativity, showcasing impressive player-created kingdoms. Organized building competitions and featured top creators.',
-            stats: ['+190%', '60K+', '4.6★']
+        atre: {
+            title: 'Atre: Dominance Wars',
+            genre: 'Ironward',
+            image: 'assets/projects/atre-dominance-wars-ClSNUBvy.avif',
+            challenge: 'Identified and targeted their ideal Reddit audience, helping the studio build genuine connections that led to new wishlists, long-term supporters, and a streamer collaboration sparked by a post that caught their attention.',
+            platforms: ['Steam'],
+            stats: ['1M+', '92%', '400%+'],
+            statLabels: ['Players Reached', 'Positive Player Sentiment', 'Increase in Social Media Mentions']
         },
-        precision: {
-            title: 'Precision',
-            genre: 'FPS Tactical',
-            icon: '🎯',
-            challenge: 'Launching a tactical FPS in a market dominated by major AAA titles. Needed to highlight what made Precision different and better for certain players.',
-            approach: 'Focused on hardcore FPS community engagement, pro player partnerships, and content showcasing the game\'s unique tactical depth.',
-            stats: ['+380%', '95K+', '4.8★']
+        galactic: {
+            title: 'Galactic Glitch',
+            genre: 'Crunchy Leaf Games',
+            image: 'assets/projects/galactic-glitch-COuJvM3i.jpg',
+            challenge: 'Elevated Galactic Glitch by identifying the game\'s ideal audience on social media and forging impactful influencer collaborations that reignited post-launch momentum - driving the game to a new all-time peak months after release.',
+            platforms: ['Steam'],
+            stats: ['2M+', '10+', '39%'],
+            statLabels: ['Players Reached', 'High-value Influencer Collaborations', 'Higher All-time Player Peak']
         }
     };
 
     // Open modal when clicking a card
     characterCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const projectId = card.dataset.project;
+        card.addEventListener('click', (e) => {
+            const projectId = card.getAttribute('data-project') || card.dataset.project;
             const data = projectData[projectId];
 
             if (data) {
                 // Populate modal with project data
-                document.getElementById('modalTitle').textContent = data.title;
-                document.getElementById('modalGenre').textContent = data.genre;
-                document.getElementById('modalImage').textContent = data.icon;
-                document.getElementById('modalChallenge').textContent = data.challenge;
-                document.getElementById('modalApproach').textContent = data.approach;
-                document.getElementById('modalStat1').textContent = data.stats[0];
-                document.getElementById('modalStat2').textContent = data.stats[1];
-                document.getElementById('modalStat3').textContent = data.stats[2];
-            }
+                document.getElementById('csModalTitle').textContent = data.title;
+                document.getElementById('csModalGenre').textContent = data.genre;
 
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+                // Update Image
+                const imgContainer = document.getElementById('csModalImage');
+                if (imgContainer) {
+                    imgContainer.innerHTML = `<img src="${data.image}" alt="${data.title}" style="width:100%; height:100%; object-fit:cover; display:block;">`;
+                }
+
+                const challengeEl = document.getElementById('csModalChallenge');
+                if (challengeEl) challengeEl.textContent = data.challenge;
+
+                // Update Platforms (Badges)
+                const platformsContainer = document.getElementById('csModalPlatforms');
+                if (platformsContainer) {
+                    platformsContainer.innerHTML = '';
+                    if (data.platforms && data.platforms.length > 0) {
+                        data.platforms.forEach(p => {
+                            const badge = document.createElement('span');
+                            badge.className = 'platform-badge';
+                            badge.textContent = p;
+                            platformsContainer.appendChild(badge);
+                        });
+                    }
+                }
+
+                // Update Stats
+                const s1 = document.getElementById('csModalStat1');
+                const l1 = document.getElementById('csModalStatLabel1');
+                const s2 = document.getElementById('csModalStat2');
+                const l2 = document.getElementById('csModalStatLabel2');
+                const s3 = document.getElementById('csModalStat3');
+                const l3 = document.getElementById('csModalStatLabel3');
+
+                if (s1) s1.textContent = data.stats[0];
+                if (l1) l1.textContent = data.statLabels[0];
+                if (s2) s2.textContent = data.stats[1];
+                if (l2) l2.textContent = data.statLabels[1];
+                if (s3) s3.textContent = data.stats[2];
+                if (l3) l3.textContent = data.statLabels[2];
+
+                // Open modal only when data is valid
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         });
     });
 
@@ -568,39 +608,39 @@ function initRpgContact() {
 const skillData = {
     reddit: {
         title: "Reddit Operations",
-        icon: "💬",
-        desc: "Authentic engagement within gaming communities through strategically placed posts, organic discussions, and targeted Reddit advertising campaigns.",
-        tags: ["Community Engagement", "Viral Content Creation", "Reddit Ads"]
+        icon: '<img src="assets/logos/reddit-143-svgrepo-com.svg" class="diablo-icon" alt="Reddit">',
+        desc: "Authentic presence in key gaming subreddits through smart post strategy, comment engagement, and long-term community trust — not spammy promos.",
+        tags: ["Community Engagement", "Thread & AMA Strategy", "Discovery-Focused Posting"]
     },
     community: {
         title: "Community Management",
-        icon: "👥",
-        desc: "Comprehensive community management across Discord, Reddit, and social platforms - including events, collaborations, and ongoing engagement.",
-        tags: ["Discord Management", "Events & Collaborations", "Social Media Engagement"]
+        icon: '<img src="assets/logos/discord-icon-svgrepo-com.svg" class="diablo-icon" alt="Discord">',
+        desc: "Hands-on Discord and community management that turns your server into a welcoming hub — with structure, events, and healthy moderation.",
+        tags: ["Server Setup & Structure", "Ongoing Engagement", "Events & Mod Support"]
     },
     youtube: {
-        title: "YouTube Strategy",
-        icon: "▶️",
-        desc: "Strategic YouTube comment placement to drive community discussions that feel natural and drive genuine interest in your game.",
-        tags: ["YouTube Strategy", "Community Engagement", "Natural Conversations"]
+        title: "YouTube Marketing",
+        icon: '<img src="assets/logos/youtube-168-svgrepo-com.svg" class="diablo-icon" alt="YouTube">',
+        desc: "Strategic YouTube campaigns with creators who genuinely fit your game, built around formats that feel natural and drive lasting visibility.",
+        tags: ["Creator Sourcing", "Campaign Concepts", "Performance Recaps"]
     },
     tiktok: {
-        title: "TikTok Viral",
-        icon: "📱",
-        desc: "Viral short-form content that captures the essence of your game and reaches millions of potential players on TikTok.",
-        tags: ["Gameplay Videos", "Viral Content Creation", "Short-Form Content"]
+        title: "TikTok Campaigns",
+        icon: '<img src="assets/logos/tiktok-svgrepo-com.svg" class="diablo-icon" alt="TikTok">',
+        desc: "Native-feeling TikToks that match the platform’s rhythm — from devlogs and memes to creator-led clips that don’t feel like ads.",
+        tags: ["Content & Hook Ideas", "Posting Strategy", "TikTok Creator Collabs"]
     },
     content: {
         title: "Content Production",
-        icon: "🎬",
-        desc: "Engaging gameplay videos, cinematic trailers, and short-form content optimized for maximum engagement across all platforms.",
-        tags: ["Gameplay Videos", "Immersive Trailers", "Short-form Content"]
+        icon: '<img src="assets/logos/adobepremierepro-svgrepo-com.svg" class="diablo-icon" alt="Content">',
+        desc: "Platform-ready copy, visuals, and short-form video that sound like your game and slot straight into Reddit, Discord, YouTube, and TikTok.",
+        tags: ["Social & Community Copy", "Short-Form Video Scripts", "Announcement & Update Packs"]
     },
     influencer: {
-        title: "Influencer Network",
-        icon: "📢",
-        desc: "High-value influencer collaborations across all tiers, from micro to macro, with transparent ROI tracking and performance-oriented campaign development.",
-        tags: ["Tiered Strategy", "Creative Campaigns", "Performance Tracking"]
+        title: "Influencer Networks",
+        icon: '<img src="assets/logos/instagram-svgrepo-com.svg" class="diablo-icon" alt="Influencer">',
+        desc: "Long-term creator relationships instead of one-off promos, building a circle of partners who keep coming back to your game.",
+        tags: ["Creator Mapping", "Outreach & Coordination", "Ambassador Program Concepts"]
     }
 };
 
@@ -622,7 +662,7 @@ function initSkillTree() {
         const data = skillData[id];
         if (!data) return;
 
-        mIcon.textContent = data.icon;
+        mIcon.innerHTML = data.icon;
         mTitle.textContent = data.title;
         mDesc.textContent = data.desc;
 
@@ -746,27 +786,27 @@ function initHexReveal() {
 function initRpgDialogue() {
     const testimonials = [
         {
-            name: "Alex Rivera",
-            studio: "Relume Studios",
-            text: "\"Working with ExWord felt like having an extension of our own team. They understood our game's vision and connected us with players who truly care.\"",
+            name: "Clever Plays",
+            studio: "",
+            text: "\"Working with ExWord on the Happy Bastards campaign has been fantastic. The ExWord team is highly knowledgeable about games, internet culture, and community building for new titles. They are professional, genuinely care about games, and value strong relationships. Partnering with them was a no-brainer for us.\"",
             gender: "male"
         },
         {
-            name: "Sarah Chen",
-            studio: "PixelDreams Interactive",
-            text: "\"Our Discord grew by 15,000 members in just 3 months. The community engagement strategies they implemented were unlike anything we'd seen before.\"",
+            name: "Filmic Studios",
+            studio: "",
+            text: "\"I am incredibly impressed with the personal touch that ExWord has brought to our game. They take the time to really understand our vision and goals. What sets them apart is their deep understanding of the channels that gamers use. I highly recommend this game promotion company to developers looking to elevate their game.\"",
             gender: "female"
         },
         {
-            name: "Marcus Webb",
-            studio: "Indie Forge Games",
-            text: "\"They just get it. The best agency partner we've worked with. They speak the language of gamers because they ARE gamers.\"",
+            name: "Hibernian Workshop",
+            studio: "",
+            text: "\"ExWord took time to understand our game and our needs to help us grow our community. As a self-publishing studio, it was great getting support on this. They provided reports of their work and have been following us closely since we started working together. We will be happy working with them again in the future.\"",
             gender: "male"
         },
         {
-            name: "Elena Vance",
-            studio: "Neon Knight Studios",
-            text: "\"From zero to a thriving community in record time. ExWord's approach to organic marketing transformed our game's launch trajectory completely.\"",
+            name: "AEXLAB",
+            studio: "",
+            text: "\"I recommend ExWord, as they really helped us reach out to community leaders and organize and set up events for grassroots marketing. This all really helped us as we were growing our game and looking for new players to add to our community. They are easy to work with, dedicated, and focused on delivering the best results.\"",
             gender: "female"
         }
     ];
@@ -880,4 +920,58 @@ function initStickyScrollSpy() {
     }, observerOptions);
 
     serviceBlocks.forEach(block => observer.observe(block));
+}
+
+/**
+ * Random Signal Loss Glitch Effect on Cards
+ */
+function initRandomGlitch() {
+    const cards = document.querySelectorAll('.character-card');
+    if (!cards.length) return;
+
+    function triggerGlitch() {
+        // Pick random card
+        const randomIndex = Math.floor(Math.random() * cards.length);
+        const card = cards[randomIndex];
+
+        // Add glitch class
+        card.classList.add('signal-lost');
+
+        // Remove after random short duration (150ms - 400ms)
+        const duration = 150 + Math.random() * 250;
+        setTimeout(() => {
+            card.classList.remove('signal-lost');
+            scheduleNextGlitch();
+        }, duration);
+    }
+
+    function scheduleNextGlitch() {
+        // Random delay between glitches (2s - 6s)
+        const delay = 2000 + Math.random() * 4000;
+        setTimeout(triggerGlitch, delay);
+    }
+
+    // Start loop
+    scheduleNextGlitch();
+}
+
+/**
+ * Loading Screen Logic
+ * Hides loader when window is fully loaded (images + video)
+ */
+function initLoader() {
+    const loader = document.getElementById('loader-wrapper');
+    if (!loader) return;
+
+    window.addEventListener('load', () => {
+        // Minimum load time of 1s to show logo
+        setTimeout(() => {
+            loader.classList.add('fade-out');
+
+            // Remove from DOM after fade
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }, 1000);
+    });
 }
