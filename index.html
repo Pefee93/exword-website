@@ -53,6 +53,23 @@
                 <a href="about.html" class="nav-link">About</a>
                 <a href="#contact" class="nav-link nav-cta">Contact</a>
             </div>
+
+            <!-- Mobile Toggle -->
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <a href="services.html" class="mobile-link">Services</a>
+                <a href="#projects" class="mobile-link">Case Studies</a>
+                <a href="about.html" class="mobile-link">About</a>
+                <a href="#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a>
+            </div>
         </div>
     </nav>
 
@@ -67,16 +84,30 @@
         </div>
 
         <!-- Hero Content -->
-        <div class="hero-content">
+        <!-- Hero Content -->
+        <div class="hero-content"
+            style="text-align: left; align-items: flex-start; max-width: 1400px; margin: 0 auto; width: 100%; padding: 0 5%;">
             <h1 class="hero-title"
-                style="font-size: clamp(2.5rem, 5vw, 4.8rem); line-height: 1.1; text-wrap: balance; max-width: 1200px; margin-left: auto; margin-right: auto; text-shadow: 0 4px 8px rgba(0,0,0,0.4);">
-                Marketing studio that helps games find their people
+                style="display: flex; flex-direction: column; align-items: flex-start; font-size: clamp(2.2rem, 9vw, 8rem); line-height: 0.95; font-weight: 900; text-transform: uppercase; margin: 0 0 30px 0; text-shadow: 0 4px 16px rgba(0,0,0,0.6);">
+                <span>GAMES<span style="color: #6366f1;">.</span></span>
+                <span>COMMUNITIES<span style="color: #6366f1;">.</span></span>
+                <span>MOMENTUM<span style="color: #6366f1;">.</span></span>
             </h1>
-            <p class="hero-subtitle" style="text-shadow: 0 2px 4px rgba(0,0,0,0.6);">We’re a small, hands-on studio that
-                lives in the same spaces as your audience. We hang out in niche subreddits, Discord servers, and comment
-                sections - paying attention to what players really care about.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Start Your Journey</a>
+
+            <!-- Subtext & Button Flexible Layout -->
+            <div class="hero-sub-layout"
+                style="display: flex; align-items: center; gap: 40px; margin-top: 10px; flex-wrap: wrap;">
+                <p class="hero-subtitle"
+                    style="text-align: left; margin: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.8); max-width: 500px; font-size: 1.1rem; line-height: 1.5;">
+                    We’re a small, hands-on studio that
+                    lives in the same spaces as your audience. We hang out in niche subreddits, Discord servers, and
+                    comment
+                    sections - paying attention to what players really care about.</p>
+                <div class="hero-buttons" style="justify-content: flex-start; margin: 0;">
+                    <a href="#contact" class="btn btn-primary"
+                        style="padding: 1.2rem 3rem; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;">Start
+                        Your Journey</a>
+                </div>
             </div>
         </div>
 
@@ -136,7 +167,7 @@
     <section class="inventory-section" id="services">
         <div class="section-container">
             <div class="section-header split-header">
-                <h2 class="section-title reveal-on-scroll">What we do</h2>
+                <h2 class="section-title philosophy-title reveal-on-scroll">What we do</h2>
                 <div class="section-description">
                     <p class="reveal-on-scroll" style="transition-delay: 0.1s;">We grow communities from the ground up —
                         setting up Discord servers people actually want to hang out in, running organic Reddit campaigns
@@ -204,7 +235,7 @@
                 </p>
 
                 <!-- Three Pillars -->
-                <div class="reveal-on-scroll"
+                <div class="philosophy-grid reveal-on-scroll"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; transition-delay: 0.2s;">
                     <div
                         style="text-align: left; padding: 2rem; border: 1px solid rgba(60,36,21,0.1); border-radius: 12px;">

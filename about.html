@@ -459,6 +459,30 @@
 
             .tv-content-scrollable {
                 padding: 20px;
+                overflow-x: hidden;
+            }
+
+            /* Fix CTA Buttons Mobile Layout */
+            .cta-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 15px !important;
+                margin-top: 30px !important;
+            }
+
+            .cta-buttons .retro-btn {
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                font-size: 1.4rem !important;
+                /* Reduce inline font size */
+                margin: 0 !important;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                white-space: normal;
+                /* Allow text wrap if needed */
             }
         }
     </style>

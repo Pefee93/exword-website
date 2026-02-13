@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHexReveal();
     initRandomGlitch();
     initLoader();
+    initMobileMenu();
 });
 
 /**
@@ -228,7 +229,7 @@ function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
 
     // Force paper mode for Services Page (disable scroll logic)
-    if (document.body.classList.contains('services-page-new')) {
+    if (document.body.classList.contains('services-page-new') || document.body.classList.contains('services-overview-page')) {
         navbar.classList.add('nav-paper-mode');
         return;
     }
@@ -973,5 +974,33 @@ function initLoader() {
                 loader.style.display = 'none';
             }, 500);
         }, 1000);
+    });
+}
+
+/**
+ * Mobile Menu Toggle
+ */
+function initMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.getElementById('mobile-menu');
+    const links = document.querySelectorAll('.mobile-link');
+
+    if (!hamburger || !menu) return;
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+
+    // Close on link click
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
     });
 }

@@ -7433,6 +7433,54 @@ textarea.rpg-input {
     /* Slightly tighter tracking */
 }
 
+/* Enhanced Contact Terminal UI (Global/Desktop) */
+.rpg-option {
+    display: block;
+    /* Create distinct clickable blocks */
+    background: rgba(117, 117, 242, 0.15);
+    /* Theme Blue Tint */
+    border: 1px solid rgba(117, 117, 242, 0.5);
+    padding: 15px 25px;
+    /* Comfortable click area */
+    margin-bottom: 12px;
+    border-radius: 8px;
+    /* Rounded corners */
+
+    color: #fff;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Ensure font size matches scale but allow override */
+    font-size: inherit;
+}
+
+.rpg-option:hover {
+    background: rgba(117, 117, 242, 0.3);
+    transform: translateX(5px);
+    /* Subtle interaction feedback */
+    box-shadow: 0 6px 12px rgba(117, 117, 242, 0.2);
+    border-color: #7575f2;
+}
+
+.rpg-option:active {
+    transform: scale(0.98) translateX(5px);
+}
+
+/* Animate the arrow span */
+.rpg-selector {
+    color: #7575f2;
+    margin-right: 12px;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.rpg-option:hover .rpg-selector {
+    transform: translateX(4px);
+}
+
 /* =========================================
    User Request (Step 7245 - Loading Screen)
    ========================================= */
@@ -7524,8 +7572,766 @@ textarea.rpg-input {
         width: 50%;
     }
 
-    100% {
-        left: 100%;
-        width: 50%;
+}
+
+/* Enhanced Section Sub-Headings (Global) - Tasteful Size */
+.philosophy-title,
+.section-title.philosophy-title,
+#services .section-title,
+h2.philosophy-title,
+h3.philosophy-title {
+    font-size: clamp(1.8rem, 2.5vw, 2.8rem) !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 2rem !important;
+    line-height: 1.1 !important;
+    text-transform: uppercase !important;
+    opacity: 1 !important;
+    color: var(--text-dark) !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+/* =========================================
+   USER REQUEST (Step 7304 - Mobile Fixes)
+   ========================================= */
+
+/* Default Hide */
+.hamburger,
+.mobile-menu {
+    display: none;
+}
+
+/* Mobile View Only */
+@media (max-width: 768px) {
+
+    /* Navbar Adjustment */
+    .nav-left,
+    .nav-right {
+        display: none !important;
+    }
+
+    /* Show Hamburger */
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 6px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 100002;
+        /* Above menu */
+        color: #fff;
+        /* Default white */
+    }
+
+    .hamburger span {
+        width: 30px;
+        height: 3px;
+        background: currentColor;
+        transition: 0.3s;
+        border-radius: 2px;
+    }
+
+    .navbar.scrolled .hamburger {
+        color: #fff;
+    }
+
+    /* Visible on scroll */
+    .nav-container {
+        justify-content: space-between !important;
+        padding: 0 20px !important;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 16, 0.98);
+        /* Deep dark BG */
+        z-index: 100000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-100%);
+        /* Hidden top */
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu {
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(5, 5, 16, 0.98);
+        /* Deep dark BG */
+        z-index: 100000;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-100%);
+        /* Hidden top */
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-menu.active {
+        transform: translateY(0);
+        display: flex !important;
+    }
+
+    /* Fix Stacking */
+    .mobile-menu-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+    }
+
+    .mobile-link {
+        font-size: 1.8rem;
+        /* Smaller size */
+        color: #fff;
+        margin: 0;
+        text-decoration: none;
+        font-family: 'Exo 2', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.3s;
+        display: block;
+        /* Ensure it's a block */
+    }
+
+    .mobile-menu.active .mobile-link {
+        opacity: 1;
+        transform: translateY(0);
+        /* Stagger done via JS or just CSS delay? Simple for now */
+    }
+
+    /* Hex Grid Fix - Left Align */
+    .inventory-display.classic-rpg-ui {
+        flex-direction: column !important;
+        height: auto !important;
+        padding-top: 0 !important;
+        /* Left align content */
+        align-items: flex-start !important;
+    }
+
+    .character-panel {
+        display: none !important;
+        /* Hide character for space */
+    }
+
+    .inventory-main {
+        width: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        /* Enable Flex for alignment */
+        flex-direction: column !important;
+        /* Left align content */
+        align-items: flex-start !important;
+    }
+
+    .inventory-mesh.grid-hex {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        justify-items: center !important;
+
+        /* Grid Container Sizing */
+        width: 100% !important;
+        max-width: 320px !important;
+
+        /* Left Align Grid */
+        margin: 0 !important;
+        padding: 0 !important;
+
+        /* Nuclear resets */
+        transform: none !important;
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        float: none !important;
+    }
+
+    /* Remove potential ghosts pushing content */
+    .inventory-mesh.grid-hex::before,
+    .inventory-mesh.grid-hex::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .inventory-slot.hex-slot {
+        width: 85px !important;
+        height: 98px !important;
+        margin: 0 !important;
+        background: transparent !important;
+        clip-path: none !important;
+
+        /* Grid handles positioning, flex handles content */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .inventory-slot.hex-slot img {
+        width: 60% !important;
+        height: 60% !important;
+        object-fit: contain !important;
+    }
+
+    /* Button Fix */
+    .inventory-cta {
+        margin-top: 30px !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .hex-link-styled {
+        display: block !important;
+        width: 80% !important;
+        margin: 0 auto !important;
+        font-size: 1.1rem !important;
+        padding: 15px 20px !important;
+        white-space: normal !important;
+        /* Allow wrap */
+        line-height: 1.3 !important;
+
+    }
+
+    /* Fix Projects Header Overlay - Vertical Layout Split */
+    #projects .section-header {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 15px !important;
+        margin-bottom: 30px !important;
+        padding-bottom: 0 !important;
+        padding: 0 10px !important;
+        width: 100% !important;
+    }
+
+    #projects .section-title {
+        font-size: 3.5rem !important;
+        writing-mode: vertical-rl !important;
+        text-orientation: mixed !important;
+        transform: none !important;
+        /* Top-to-Bottom flow */
+
+        flex: 0 0 auto !important;
+        position: static !important;
+        opacity: 1 !important;
+        margin: 0 !important;
+        color: #fff !important;
+        -webkit-text-stroke: 0 !important;
+        width: auto !important;
+        line-height: 1 !important;
+        text-align: center !important;
+    }
+
+    #projects .section-subtitle {
+        text-align: left !important;
+        position: static !important;
+        /* Let flex handle */
+        margin: 0 !important;
+        z-index: 2 !important;
+        font-size: 1rem !important;
+        padding: 0 !important;
+        flex: 1 !important;
+        max-width: none !important;
+    }
+
+    /* Mobile - Swipeable Project Cards (Carousel) */
+    .character-select {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+
+        /* Break out of container to full screen width */
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+
+        height: 65vh !important;
+        /* Substantial height */
+        padding-bottom: 0 !important;
+        gap: 0 !important;
+
+        /* Hide Scrollbar */
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .character-select::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .character-card {
+        min-width: 100vw !important;
+        /* Full width */
+        width: 100vw !important;
+        height: 100% !important;
+        scroll-snap-align: start !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        /* No padding */
+
+        /* Reset Desktop Styles */
+        transform: none !important;
+        clip-path: none !important;
+        border: none !important;
+        background: transparent !important;
+        position: relative !important;
+        opacity: 1 !important;
+        /* Ensure visible */
+    }
+
+    /* Ensure image fills card */
+    .character-image {
+        width: 100% !important;
+        height: 100% !important;
+        clip-path: none !important;
+        transform: none !important;
+        border: none !important;
+        position: static !important;
+        /* Reset absolute if present */
+        margin: 0 !important;
+    }
+
+    .character-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 0 !important;
+        filter: brightness(0.9);
+        display: block !important;
+    }
+
+    /* Info Overlay - readable at bottom */
+    .character-info {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 40px 20px 30px !important;
+        background: linear-gradient(to top, rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0)) !important;
+        text-align: left !important;
+        transform: none !important;
+        z-index: 5 !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+        /* Let swipes pass nicely? */
+    }
+
+    .character-name {
+        font-size: 2rem !important;
+        font-family: 'Exo 2', sans-serif !important;
+        color: #fff !important;
+        margin-bottom: 5px !important;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    .character-role {
+        font-size: 1.1rem !important;
+        color: #ccc !important;
+        font-weight: 400 !important;
+    }
+
+    /* Mobile Spacing Fixes (Remove huge gaps) */
+    .hero {
+        min-height: auto !important;
+        /* Collapse empty space */
+        height: auto !important;
+        padding-bottom: 20px !important;
+    }
+
+    #projects {
+        padding-top: 10px !important;
+        margin-top: 0 !important;
+    }
+
+    .hero-footer {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        transform: none !important;
+        padding: 20px 0 !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        justify-content: center !important;
+    }
+
+    /* Adjust stats spacing */
+    .stats {
+        flex-wrap: wrap !important;
+        gap: 15px !important;
+        justify-content: center !important;
+        padding: 10px !important;
+    }
+
+    /* Fix Testimonials / Real Voices on Mobile */
+    #testimonials .section-container {
+        padding: 0 10px !important;
+        width: 100% !important;
+    }
+
+    #testimonials .rpg-dialogue-container {
+        display: flex !important;
+        flex-direction: column !important;
+        /* Stack vertically if needed, or keep row with absolute buttons */
+        align-items: center !important;
+        position: relative !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+
+    #testimonials .dialogue-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+    }
+
+    #testimonials .rpg-dialogue-box {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 200px !important;
+        padding: 30px 20px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    #testimonials .dialogue-text {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+        white-space: normal !important;
+        width: 100% !important;
+    }
+
+    /* Hide Character Portrait - Not needed on mobile */
+    .dialogue-character {
+        display: none !important;
+    }
+
+    /* Absolute positioning for arrows */
+    #testimonials .dialogue-nav {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 40px !important;
+        height: 40px !important;
+        background: rgba(5, 5, 16, 0.9) !important;
+        border: 1px solid #7575f2 !important;
+        z-index: 20 !important;
+        border-radius: 50% !important;
+    }
+
+    #testimonials .dialogue-prev {
+        left: -10px !important;
+        /* Allow slight overlap or push out? Maybe inside box? */
+        /* Let's put slightly inside so visible on small screens */
+        left: 0 !important;
+    }
+
+    #testimonials .dialogue-next {
+        right: 0 !important;
+    }
+
+    /* Name Badge Adjust */
+    .dialogue-name-badge {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        margin: 0 auto 10px !important;
+        /* Center above box */
+        transform: none !important;
+        display: inline-block !important;
+    }
+
+    /* Fix Real Voices Header - Absolute Positioning (Nuclear option) */
+    #testimonials .section-header {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        /* Push Title to Right */
+        align-items: center !important;
+        position: relative !important;
+        width: 100% !important;
+        min-height: 250px !important;
+        /* Ensure height */
+        margin-bottom: 30px !important;
+        padding: 0 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    #testimonials .section-title {
+        font-size: 3.5rem !important;
+        writing-mode: vertical-rl !important;
+        text-orientation: mixed !important;
+        transform: none !important;
+
+        position: relative !important;
+        margin: 0 !important;
+        color: #fff !important;
+        -webkit-text-stroke: 0 !important;
+        width: auto !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        z-index: 1 !important;
+    }
+
+    #testimonials .section-subtitle {
+        position: absolute !important;
+        left: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+
+        text-align: left !important;
+        width: 60% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        z-index: 2 !important;
+        font-size: 1rem !important;
+    }
+
+    /* Fix Contact Terminal (Buttons vs Text) */
+    #contact .rpg-box {
+        padding: 25px 20px !important;
+    }
+
+    #contact .rpg-text {
+        margin-bottom: 30px !important;
+        font-size: 1.1rem !important;
+        line-height: 1.6 !important;
+        color: #eee !important;
+        text-align: center !important;
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #contact .rpg-options {
+        display: flex;
+        /* REMOVED !important: Allow JS to toggle display:none */
+        flex-direction: column !important;
+        gap: 15px !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    #contact .rpg-option {
+        display: block !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        /* Button size constraint */
+        background: rgba(117, 117, 242, 0.15) !important;
+        border: 1px solid rgba(117, 117, 242, 0.5) !important;
+        padding: 15px 20px !important;
+        margin: 0 !important;
+        border-radius: 8px !important;
+        color: #fff !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        text-align: center !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    #contact .rpg-option:active {
+        transform: scale(0.98) !important;
+        background: rgba(117, 117, 242, 0.3) !important;
+    }
+
+    /* Add 'Action' indicator */
+    #contact .rpg-option::before {
+        content: '► ' !important;
+        color: #7575f2 !important;
+        margin-right: 8px !important;
+        font-size: 0.9em !important;
+    }
+
+    /* Fix Form Layout - Stack Buttons */
+    #contact .form-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    #contact .rpg-submit,
+    #contact .rpg-back {
+        width: 100% !important;
+        padding: 15px !important;
+        text-align: center !important;
+        display: block !important;
+    }
+
+    /* Philosophy Grid Swipeable (Cards) */
+    .philosophy-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 20px !important;
+
+        /* Break out full width */
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        padding: 0 20px 30px 20px !important;
+        /* Extra bottom padding for scrollbar */
+        /* Left/Right padding */
+
+        scroll-snap-type: none !important;
+        /* No snap as requested */
+        -webkit-overflow-scrolling: touch !important;
+
+        /* Reset Grid styles */
+        grid-template-columns: none !important;
+        transition-delay: 0s !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Scrollbar Styling for Indicator */
+    .philosophy-grid::-webkit-scrollbar {
+        display: block !important;
+        height: 4px !important;
+        /* Thin line */
+        background: transparent !important;
+    }
+
+    .philosophy-grid::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-radius: 2px !important;
+        margin: 0 20px !important;
+        /* Inset from edges */
+    }
+
+    .philosophy-grid::-webkit-scrollbar-thumb {
+        background: rgba(117, 117, 242, 0.5) !important;
+        /* Theme Color */
+        border-radius: 2px !important;
+    }
+
+    .philosophy-grid>div {
+        min-width: 78vw !important;
+        /* Reduced width for better "peek" */
+        /* Nearly full width cards */
+        width: 78vw !important;
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        opacity: 1 !important;
+        /* Ensure visible */
+    }
+
+    /* Remove Scroll Snap from Projects Carousel */
+    .character-select {
+        scroll-snap-type: none !important;
+    }
+
+    .character-card {
+        scroll-snap-align: none !important;
+    }
+
+    /* Hide Scroll Indicator on Mobile */
+    .scroll-indicator {
+        display: none !important;
+    }
+
+    /* Fix Overlay Issues (Black Line) */
+    .glitch-marquee-wrapper,
+    .logo-scroll {
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    /* Ensure Navbar is top */
+    .navbar {
+        z-index: 10000 !important;
+    }
+
+    /* Fix Mobile Navbar Gap (Black Bar) */
+    .navbar.scrolled {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        border-radius: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding: 15px 20px !important;
+    }
+
+    /* Hide Services Sidebar on Mobile (User Request) */
+    .services-sidebar {
+        display: none !important;
+    }
+
+    /* Ensure hamburger is visible on paper mode (Brown) */
+    .nav-paper-mode .hamburger {
+        color: #5D4037 !important;
+    }
+
+    .nav-paper-mode .hamburger span {
+        background-color: #5D4037 !important;
+    }
+
+    /* Revert to white when open (on dark overlay) */
+    .nav-paper-mode .hamburger.active span {
+        background-color: #fff !important;
+    }
+
+    /* Reset layout to single column stack */
+    .sticky-scroll-layout {
+        display: block !important;
+    }
+
+    .services-content-flow {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Hero Section Mobile Layout */
+    .hero-sub-layout {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 24px !important;
+        margin-top: 20px !important;
+    }
+
+    .hero-subtitle {
+        max-width: 100% !important;
+        font-size: 1rem !important;
+    }
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: auto !important;
+        min-width: 150px;
+        justify-content: center;
+        padding: 12px 25px !important;
+        font-size: 0.9rem !important;
     }
 }
