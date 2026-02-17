@@ -8623,3 +8623,58 @@ h3.philosophy-title {
         flex-shrink: 0 !important;
     }
 }
+
+/* =========================================
+   User Request: Desktop Project Reorder
+   ========================================= */
+@media (min-width: 769px) {
+    .character-select {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        /* Keep as row for desktop skew effect */
+        justify-content: center !important;
+    }
+
+    .character-card[data-project="atre"] {
+        order: 1 !important;
+    }
+
+    /* Fix Atre (First) Cutoff: Shift Right by 12vw to enter screen */
+    .character-card[data-project="atre"] .character-info {
+        left: 0 !important;
+        width: 100% !important;
+        transform: translateX(12vw) skewX(10deg) !important;
+        padding-left: 0 !important;
+    }
+
+    .character-card[data-project="astral"] {
+        order: 2 !important;
+    }
+
+    .character-card[data-project="diplomacy"] {
+        order: 3 !important;
+    }
+
+    /* Verify Diplomacy Center */
+    .character-card[data-project="diplomacy"] .character-info {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .character-card[data-project="vail"] {
+        order: 4 !important;
+    }
+
+    .character-card[data-project="galactic"] {
+        order: 5 !important;
+    }
+
+    /* Fix Galactic (Last) Cutoff: Shift Left by 15vw to enter screen */
+    .character-card[data-project="galactic"] .character-info {
+        left: 0 !important;
+        width: 100% !important;
+        transform: translateX(-15vw) skewX(10deg) !important;
+        padding-right: 0 !important;
+    }
+}
