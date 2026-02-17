@@ -8636,22 +8636,24 @@ h3.philosophy-title {
         justify-content: center !important;
     }
 
+    /* 1. Atre (First) */
     .character-card[data-project="atre"] {
         order: 1 !important;
     }
 
-    /* Fix Atre (First) Cutoff: Shift Right by 12vw to enter screen */
-    .character-card[data-project="atre"] .character-info {
-        left: 0 !important;
-        width: 100% !important;
-        transform: translateX(12vw) skewX(10deg) !important;
-        padding-left: 0 !important;
+    /* Shift Text ONLY to preserve overlay */
+    .character-card[data-project="atre"] .character-name,
+    .character-card[data-project="atre"] .character-role {
+        transform: translateX(12vw) !important;
+        display: block !important;
     }
 
+    /* 2. Astral */
     .character-card[data-project="astral"] {
         order: 2 !important;
     }
 
+    /* 3. Diplomacy */
     .character-card[data-project="diplomacy"] {
         order: 3 !important;
     }
@@ -8662,19 +8664,20 @@ h3.philosophy-title {
         align-items: center !important;
     }
 
+    /* 4. Vail */
     .character-card[data-project="vail"] {
         order: 4 !important;
     }
 
+    /* 5. Galactic (Last) */
     .character-card[data-project="galactic"] {
         order: 5 !important;
     }
 
-    /* Fix Galactic (Last) Cutoff: Shift Left by 15vw to enter screen */
-    .character-card[data-project="galactic"] .character-info {
-        left: 0 !important;
-        width: 100% !important;
-        transform: translateX(-15vw) skewX(10deg) !important;
-        padding-right: 0 !important;
+    /* Shift Text Center (Reset) */
+    .character-card[data-project="galactic"] .character-name,
+    .character-card[data-project="galactic"] .character-role {
+        transform: translateX(0) !important;
+        display: block !important;
     }
 }
