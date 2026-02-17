@@ -4419,9 +4419,11 @@ main {
     position: relative;
     padding-left: 20px;
     margin-bottom: 10px;
-    font-size: 0.95rem;
-    color: #5C3A1E;
-    line-height: 1.4;
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    display: flex;
+    align-items: baseline;
 }
 
 .deliverables-list li::before {
@@ -5516,31 +5518,46 @@ main {
     }
 }
 
-/* Navbar Force Mode Overrides */
-.nav-retro-mode {
+/* Navbar Force Mode Overrides - Increased Specificity */
+#navbar.nav-rpg-mode {
     background: #000 !important;
-    border-bottom: 1px solid #0f0 !important;
+    border-bottom: none !important;
 }
 
-.nav-retro-mode .nav-link {
-    color: #0f0 !important;
+#navbar.nav-rpg-mode .nav-link {
+    color: #fff !important;
     font-family: 'VT323', monospace !important;
-    font-size: 1.2rem !important;
+    font-size: 1.7rem !important;
 }
 
-.nav-retro-mode .nav-link.active {
+#navbar.nav-rpg-mode .nav-link.active {
     color: #fff !important;
     text-decoration: underline !important;
 }
 
-.nav-retro-mode .logo-text {
-    color: #0f0 !important;
+#navbar.nav-rpg-mode .logo-text {
+    color: #fff !important;
     font-family: 'VT323', monospace !important;
+    font-size: 2rem !important;
 }
 
-.nav-retro-mode .logo-icon {
-    filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%) !important;
-    /* Matrix Green Filter */
+#navbar.nav-rpg-mode .logo-icon {
+    filter: brightness(0) invert(1) !important;
+    /* White Filter */
+}
+
+#navbar.nav-rpg-mode .nav-cta {
+    font-size: 1.8rem !important;
+    font-weight: bold !important;
+    letter-spacing: 1px !important;
+    border: 2px solid #fff !important;
+    color: #fff !important;
+    background: transparent !important;
+}
+
+#navbar.nav-rpg-mode .nav-cta:hover {
+    background: #fff !important;
+    color: #000 !important;
 }
 
 /* Paper Mode (Services) - reuse .nav-paper-mode */
@@ -6686,7 +6703,7 @@ main {
 }
 
 /* Fix Clever Plays Logo (No Tint) */
-.logo-item img[src*="clever"] {
+.logo-item img[src*="CLEVER"] {
     filter: none !important;
     opacity: 1 !important;
 }
@@ -7953,10 +7970,15 @@ h3.philosophy-title {
 
     /* Mobile Spacing Fixes (Remove huge gaps) */
     .hero {
-        min-height: auto !important;
-        /* Collapse empty space */
-        height: auto !important;
-        padding-bottom: 20px !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        height: 100vh !important;
+        height: 100dvh !important;
+        /* Ensure full screen centering */
+        padding-bottom: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
 
     #projects {
@@ -8333,5 +8355,271 @@ h3.philosophy-title {
         justify-content: center;
         padding: 12px 25px !important;
         font-size: 0.9rem !important;
+    }
+}
+
+/* =========================================
+   Quick Fixes for Contact Terminal Readability
+   ========================================= */
+
+/* Use pixel font again but ensure it's large and readable */
+#contact .rpg-text-area,
+#rpg-text,
+#contact .rpg-option,
+#contact .rpg-input {
+    font-family: 'VT323', monospace !important;
+    letter-spacing: 0.05em !important;
+}
+
+/* Increase font size significantly to compensate for pixel font readability */
+#contact .rpg-text-area,
+#rpg-text {
+    font-size: 1.8rem !important;
+    /* Larger than sans-serif equivalent to match visual weight */
+    line-height: 1.4 !important;
+    color: #ffffff !important;
+    margin-bottom: 1rem !important;
+    /* Reduced space between question and options as requested */
+    display: block !important;
+}
+
+/* Adjust box padding for larger text */
+#contact .rpg-box {
+    padding: 3rem !important;
+    /* More breathing room */
+    min-height: 350px !important;
+    max-width: 900px !important;
+    /* Wider on desktop */
+    margin: 0 auto !important;
+}
+
+/* Adjust options */
+#contact .rpg-option {
+    font-size: 1.5rem !important;
+    /* Increased for readability with pixel font */
+    padding: 1rem 1.5rem !important;
+    margin-bottom: 0.8rem !important;
+    text-align: left !important;
+}
+
+/* Adjust input fields */
+#contact .rpg-input {
+    font-size: 1.1rem !important;
+    padding: 1rem !important;
+    height: auto !important;
+}
+
+/* =========================================
+   Step 3: Testimonial Logos Styling
+   ========================================= */
+
+.dialogue-name-badge {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 15px !important;
+}
+
+.dialogue-info-col {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+}
+
+.dialogue-logo {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    /* White Filter to match dark theme + character silhouette assumption */
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.9 !important;
+}
+
+.dialogue-name,
+.dialogue-studio {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+}
+
+/* =========================================
+   User Request: Mobile Stats Layout (2 Columns)
+   ========================================= */
+@media (max-width: 768px) {
+    .stats-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px 10px !important;
+        width: 100% !important;
+        justify-items: center !important;
+        padding: 0 10px !important;
+
+        /* Reset any flexbox properties */
+        flex-wrap: wrap !important;
+    }
+
+    .stat-item {
+        width: 100% !important;
+        margin: 0 !important;
+        text-align: center !important;
+        padding: 0 !important;
+
+        /* Use block layout to allow inline spans to sit together */
+        display: block !important;
+    }
+
+    /* Hide dividers in grid layout to avoid layout breakage */
+    .stat-divider {
+        display: none !important;
+    }
+
+    /* Keep Number and Suffix Inline */
+    .stat-number {
+        font-size: clamp(2.5rem, 8vw, 3.5rem) !important;
+        line-height: 1 !important;
+        margin-bottom: 0 !important;
+        display: inline-block !important;
+        /* Sit next to suffix */
+        color: #ffffff !important;
+    }
+
+    .stat-suffix {
+        font-size: 2rem !important;
+        /* Slightly smaller than number */
+        font-weight: 700 !important;
+        margin-left: 2px !important;
+        display: inline-block !important;
+        /* Sit next to number */
+        color: #818CF8 !important;
+        /* Primary Light */
+        transform: translateY(-2px);
+        /* Slight optical alignment */
+    }
+
+    .stat-label {
+        display: block !important;
+        /* Force new line */
+        font-size: 0.85rem !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        margin-top: 5px !important;
+        width: 100% !important;
+    }
+
+    /* =========================================
+       User Request: FIX TEXT CENTERING AND VISIBILITY (NUCLEAR)
+       ========================================= */
+    .character-info {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 60%, transparent 100%) !important;
+        padding: 40px 10px 30px !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        /* STRICT CENTER */
+        justify-content: flex-end !important;
+
+        text-align: center !important;
+        /* STRICT CENTER */
+        width: 100% !important;
+        left: 0 !important;
+        bottom: 0 !important;
+    }
+
+    .character-name {
+        font-size: clamp(1.2rem, 5vw, 1.5rem) !important;
+        line-height: 1.2 !important;
+        margin-bottom: 10px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+
+        /* STRICT WRAPPING */
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+
+        /* Center and Constrain */
+        width: 100% !important;
+        max-width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+
+        display: block !important;
+        text-align: center !important;
+    }
+
+    .character-role {
+        font-size: 0.9rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+        color: #818CF8 !important;
+        /* Primary Light */
+        font-weight: 600 !important;
+        opacity: 1 !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    /* =========================================
+       User Request: FIX MOBILE CONTACT TERMINAL
+       ========================================= */
+    #contact .section-container,
+    #contact .rpg-container {
+        padding: 0 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #contact .rpg-box {
+        padding: 25px 15px !important;
+        /* More space for text */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        min-height: auto !important;
+        margin: 0 !important;
+    }
+
+    #contact .rpg-text,
+    #contact .rpg-text-area {
+        font-size: 1.1rem !important;
+        line-height: 1.4 !important;
+        margin-bottom: 20px !important;
+        text-align: left !important;
+        width: 100% !important;
+        white-space: normal !important;
+        font-family: 'VT323', monospace !important;
+    }
+
+    #contact .rpg-options {
+        display: flex;
+        /* REMOVED !important to allow JS hiding */
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    #contact .rpg-option {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left !important;
+        padding: 15px !important;
+        font-size: 1.1rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        white-space: normal !important;
+        height: auto !important;
+        font-family: 'VT323', monospace !important;
+    }
+
+    #contact .rpg-option::before {
+        margin-right: 12px !important;
+        flex-shrink: 0 !important;
     }
 }

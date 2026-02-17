@@ -89,47 +89,47 @@ function initCaseStudyModal() {
         diplomacy: {
             title: 'Diplomacy is Not an Option',
             genre: 'Door 407',
-            image: 'assets/projects/diplomacy-is-not-an-option-DILQjmth.jpg',
-            challenge: 'Strategic marketing campaign that helped this indie strategy game reach millions of players through organic Reddit engagement.',
+            image: 'assets/projects/diplomacy.jpg',
+            challenge: 'We helped the game find its target audience on Reddit through a combination of targeted organic Reddit marketing and highly specialized Reddit ads. Through the combination of the two, Diplomacy is Not an Option was put in front of over 5 million players and established as one of the leading real-time strategy games.\n\nDue to the campaign’s success, the studio decided to continue working with ExWord as their long-term partners after the initial campaign for Diplomacy is Not an Option in 2024. Since then, we’ve helped them promote, alongside Diplomacy is Not an Option, their newest title, Abra Cooking Dabra, and other side projects.',
             platforms: ['Steam'],
-            stats: ['4M+', '500k+', '3000+'],
-            statLabels: ['Players Reached', 'Launch Day Wishlists', 'Organic Social Media Shares']
+            stats: ['12M+', '500k+', '1,000,000+'],
+            statLabels: ['Players Reached', 'Launch Day Wishlists', 'Total Copies Sold']
         },
         astral: {
             title: 'Astral Ascent',
             genre: 'Hibernian Workshop',
             image: 'assets/projects/astral-ascent-cover-DaaHsuMo.jpg',
-            challenge: 'Presented the game to over 2M+ players, built widespread hype, and helped establish Astral Ascent as one of the most talked-about roguelites on social media.',
+            challenge: 'Through a highly specialized, targeted Reddit strategy, we put Astral Ascent in front of 4M+ players on Reddit, built widespread hype, and established the game as one of the most talked-about roguelites on social media.\n\nAfter the initial collaboration was finished and the initial goal was reached, Hibernian Workshop collaborated with ExWord on two other occasions - the first time for the promotion of a big update for Astral Ascent, and the second time for the help promoting the Kickstarter campaign of their latest project - Fallen Fates.',
             platforms: ['Steam', 'Console'],
-            stats: ['2M+', '91%', '12+'], // Changed from '12+ Months'
-            statLabels: ['Players Reached', 'Positive Engagement Rate', 'Months of Organic Buzz Sustained'] // Updated label
+            stats: ['5M+', '91%', '12+'],
+            statLabels: ['Players Reached', 'Positive Engagement Rate', 'Months of Organic Buzz Sustained']
         },
         vail: {
-            title: 'Vail VR',
+            title: 'VAIL VR',
             genre: 'AEXLAB',
             image: 'assets/projects/vail-vr-CFhHfYeD.png',
-            challenge: 'Helped establish VAIL VR as one of the leading VR shooters on social media, positioned it in front of key VR communities, and organized engaging community events that strengthened the game\'s presence and expanded its player base.',
+            challenge: 'Helped establish VAIL VR as one of the leading VR shooters on social media, positioned it in front of key VR communities, and organized engaging community events that strengthened the game\'s presence and expanded its player base. Alongside that, we helped the developers establish long-lasting, high-value collaborations with key Esports and VR gaming communities that propelled the game’s popularity to new heights.',
             platforms: ['Steam', 'Meta', 'VR'],
-            stats: ['5M+', '20+', '5,000+'],
+            stats: ['10M+', '20+', '5,000+'],
             statLabels: ['Players Reached', 'Community Events Organized', 'Positive Social Media Engagements']
         },
         atre: {
             title: 'Atre: Dominance Wars',
             genre: 'Ironward',
             image: 'assets/projects/atre-dominance-wars-ClSNUBvy.avif',
-            challenge: 'Identified and targeted their ideal Reddit audience, helping the studio build genuine connections that led to new wishlists, long-term supporters, and a streamer collaboration sparked by a post that caught their attention.',
+            challenge: 'As an emerging and unique 4X strategy game blending the RTS and 4X genres, the real challenge for Atre was finding its true audience on Reddit. We published a few posts, tracked their performance, and identified the best-performing communities in which we built Atre’s reputation later on and established a long-term presence.',
             platforms: ['Steam'],
-            stats: ['1M+', '92%', '400%+'],
+            stats: ['3M+', '92%', '400%+'],
             statLabels: ['Players Reached', 'Positive Player Sentiment', 'Increase in Social Media Mentions']
         },
         galactic: {
             title: 'Galactic Glitch',
             genre: 'Crunchy Leaf Games',
             image: 'assets/projects/galactic-glitch-COuJvM3i.jpg',
-            challenge: 'Elevated Galactic Glitch by identifying the game\'s ideal audience on social media and forging impactful influencer collaborations that reignited post-launch momentum - driving the game to a new all-time peak months after release.',
+            challenge: 'Due to regular, big updates produced by the studio, we designed a strategy that focuses on two things at once: sustaining the presence of the game in all relevant communities during the low periods, and short-term hype bursts around the patch releases. This worked perfectly and elevated the game to one of the best-performing twin-stick shooters on Steam.',
             platforms: ['Steam'],
-            stats: ['2M+', '10+', '39%'],
-            statLabels: ['Players Reached', 'High-value Influencer Collaborations', 'Higher All-time Player Peak']
+            stats: ['6M+', '30+', '2'],
+            statLabels: ['Players Reached', 'High-value Influencer Collaborations', 'Record-breaking CCP Peaks']
         }
     };
 
@@ -467,7 +467,7 @@ function initRpgContact() {
 
     if (!rpgText) return;
 
-    const initialMessage = "We are sad to see you go, let's stay in touch.";
+    const initialMessage = "You reached the end, traveller. Let’s stay in touch!";
     let isTyping = false;
     let typeTimeout;
 
@@ -586,19 +586,33 @@ function initRpgContact() {
     if (backBtn) {
         backBtn.addEventListener('click', hideForm);
     }
-
-    // Form Submit
     if (rpgForm) {
         rpgForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            // Robust selection in case IDs are missing in original HTML
+            const nameInput = document.getElementById('contact-name') || rpgForm.querySelector('input[type="text"]');
+            const emailInput = document.getElementById('contact-email') || rpgForm.querySelector('input[type="email"]');
+            const messageInput = document.getElementById('contact-message') || rpgForm.querySelector('textarea');
+
+            const name = nameInput ? nameInput.value : "Unknown";
+            const email = emailInput ? emailInput.value : "Unknown";
+            const message = messageInput ? messageInput.value : "No message provided.";
+
             typeMessage("Dispatching courier... [|||||||||||||||]", 15);
 
-            // Simulate API call
             setTimeout(() => {
-                typeMessage("Missive sent. The Guild will send a response shortly.");
+                const subject = `ExWord Contact: ${name}`;
+                const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+                const mailtoLink = `mailto:ognjen@exword.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoLink;
+
+                typeMessage("Missive sent. Opening your preferred mail client...");
                 rpgForm.reset();
                 setTimeout(hideForm, 3000);
-            }, 2000);
+            }, 1500);
+
         });
     }
 }
@@ -608,39 +622,34 @@ function initRpgContact() {
 // ==========================================
 const skillData = {
     reddit: {
-        title: "Reddit Operations",
+        title: "REDDIT AUTHENTIC ENGAGEMENT",
         icon: '<img src="assets/logos/reddit-143-svgrepo-com.svg" class="diablo-icon" alt="Reddit">',
-        desc: "Authentic presence in key gaming subreddits through smart post strategy, comment engagement, and long-term community trust — not spammy promos.",
-        tags: ["Community Engagement", "Thread & AMA Strategy", "Discovery-Focused Posting"]
+        desc: "Authentic presence & hype building in key gaming subreddits through meticulously-crafted posts, genuine player engagement, and organic growth that translates into measurable awareness, discussion, and player acquisition.",
+        tags: ["Community Engagement", "Hype-Building & Discovery-Focused Posting", "Sustained Organic Growth"]
     },
     community: {
-        title: "Community Management",
+        title: "COMMUNITY MANAGEMENT",
         icon: '<img src="assets/logos/discord-icon-svgrepo-com.svg" class="diablo-icon" alt="Discord">',
-        desc: "Hands-on Discord and community management that turns your server into a welcoming hub — with structure, events, and healthy moderation.",
+        desc: "Hands-on Discord and community management that turns your server into an online space where players feel heard, valued, and excited to participate.",
         tags: ["Server Setup & Structure", "Ongoing Engagement", "Events & Mod Support"]
     },
     youtube: {
-        title: "YouTube Marketing",
+        title: "YOUTUBE COMMENT PLACEMENT",
         icon: '<img src="assets/logos/youtube-168-svgrepo-com.svg" class="diablo-icon" alt="YouTube">',
-        desc: "Strategic YouTube campaigns with creators who genuinely fit your game, built around formats that feel natural and drive lasting visibility.",
+        desc: "Strategic YouTube comment positioning designed to blend into conversations, organically grow interest around your game, and catch creator's attention.",
         tags: ["Creator Sourcing", "Campaign Concepts", "Performance Recaps"]
     },
     tiktok: {
-        title: "TikTok Campaigns",
+        title: "TIKTOK CAMPAIGN",
         icon: '<img src="assets/logos/tiktok-svgrepo-com.svg" class="diablo-icon" alt="TikTok">',
-        desc: "Native-feeling TikToks that match the platform’s rhythm — from devlogs and memes to creator-led clips that don’t feel like ads.",
+        desc: "Lasting TikTok presence built through platform-native content, trend-aware execution, and engaging videos designed to capture attention and drive consistent discovery.",
         tags: ["Content & Hook Ideas", "Posting Strategy", "TikTok Creator Collabs"]
     },
-    content: {
-        title: "Content Production",
-        icon: '<img src="assets/logos/adobepremierepro-svgrepo-com.svg" class="diablo-icon" alt="Content">',
-        desc: "Platform-ready copy, visuals, and short-form video that sound like your game and slot straight into Reddit, Discord, YouTube, and TikTok.",
-        tags: ["Social & Community Copy", "Short-Form Video Scripts", "Announcement & Update Packs"]
-    },
+
     influencer: {
-        title: "Influencer Networks",
+        title: "CREATOR PARTNERSHIPS",
         icon: '<img src="assets/logos/instagram-svgrepo-com.svg" class="diablo-icon" alt="Influencer">',
-        desc: "Long-term creator relationships instead of one-off promos, building a circle of partners who keep coming back to your game.",
+        desc: "High-value creator collaborations across all tiers, from micro to macro, with transparent ROI tracking and performance-oriented campaign development. Designed to put your game in the spotlight.",
         tags: ["Creator Mapping", "Outreach & Coordination", "Ambassador Program Concepts"]
     }
 };
@@ -789,24 +798,28 @@ function initRpgDialogue() {
         {
             name: "Clever Plays",
             studio: "",
+            logo: "assets/marquee logos/2024__CLEVER_PLAYS_-_FULL_COLOR_WHITE_IS_TRANSPARENT.png",
             text: "\"Working with ExWord on the Happy Bastards campaign has been fantastic. The ExWord team is highly knowledgeable about games, internet culture, and community building for new titles. They are professional, genuinely care about games, and value strong relationships. Partnering with them was a no-brainer for us.\"",
             gender: "male"
         },
         {
             name: "Filmic Studios",
             studio: "",
+            logo: "assets/marquee logos/filmic-studios-sPf-updh.png",
             text: "\"I am incredibly impressed with the personal touch that ExWord has brought to our game. They take the time to really understand our vision and goals. What sets them apart is their deep understanding of the channels that gamers use. I highly recommend this game promotion company to developers looking to elevate their game.\"",
             gender: "female"
         },
         {
             name: "Hibernian Workshop",
             studio: "",
+            logo: "assets/marquee logos/hibernian-workshop-DdrPp1ul.png",
             text: "\"ExWord took time to understand our game and our needs to help us grow our community. As a self-publishing studio, it was great getting support on this. They provided reports of their work and have been following us closely since we started working together. We will be happy working with them again in the future.\"",
             gender: "male"
         },
         {
             name: "AEXLAB",
             studio: "",
+            logo: "assets/marquee logos/aexlab-D8upVgGr.png",
             text: "\"I recommend ExWord, as they really helped us reach out to community leaders and organize and set up events for grassroots marketing. This all really helped us as we were growing our game and looking for new players to add to our community. They are easy to work with, dedicated, and focused on delivering the best results.\"",
             gender: "female"
         }
@@ -818,6 +831,7 @@ function initRpgDialogue() {
     const dialogueName = document.getElementById('dialogueName');
     const dialogueStudio = document.getElementById('dialogueStudio');
     const dialogueText = document.getElementById('dialogueText');
+    const dialogueLogo = document.getElementById('dialogueLogo'); // Added
     const prevBtn = document.querySelector('.dialogue-prev');
     const nextBtn = document.querySelector('.dialogue-next');
     const indicators = document.querySelectorAll('.dialogue-indicators .indicator');
@@ -835,6 +849,14 @@ function initRpgDialogue() {
             ? 'assets/Vector Male.svg'
             : 'assets/Vector  Female.svg';
         dialogueCharacter.src = imagePath;
+
+        // Update Logo
+        if (testimonial.logo && dialogueLogo) {
+            dialogueLogo.src = testimonial.logo;
+            dialogueLogo.style.display = 'block';
+        } else if (dialogueLogo) {
+            dialogueLogo.style.display = 'none';
+        }
 
         // Update name and studio immediately
         dialogueName.textContent = testimonial.name;
