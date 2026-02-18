@@ -1065,6 +1065,57 @@ section {
     max-width: none;
 }
 
+/* Inventory CTA Button - Aligned with Grid */
+.inventory-cta {
+    margin-top: 15px;
+    /* Was 30px */
+    margin-right: 140px;
+    /* Align with Hex Grid (120px + slight adjustment for center feel) */
+    z-index: 5;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hex-link-styled {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* Force Center */
+    width: auto !important;
+    gap: 10px;
+
+    /* Match cta-button-sched (Brown Theme) */
+    background: #3C2415 !important;
+    color: #F5ECD7 !important;
+    padding: 14px 32px !important;
+    /* Force Padding */
+    border-radius: 6px !important;
+    font-family: var(--font-primary) !important;
+    font-size: 0.9rem !important;
+    /* Reduced from 1rem */
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.5px !important;
+    text-decoration: none !important;
+    border: 2px solid #5C3A1E !important;
+    box-shadow: 0 4px 15px rgba(60, 36, 21, 0.3) !important;
+
+    transition: all 0.3s ease;
+}
+
+.hex-link-styled:hover {
+    background: #5C3A1E !important;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(60, 36, 21, 0.5) !important;
+    border-color: #7a4f2e !important;
+}
+
+.hex-link-styled::after {
+    content: '';
+}
+
 /* HEAGON SLOTS */
 /* HEAGON SLOTS - Borderless 3D Style */
 .inventory-slot.hex-slot {
@@ -2819,6 +2870,16 @@ p,
     font-size: 0.95rem;
     color: var(--text-secondary);
     font-weight: 400;
+}
+
+/* Wrapper to keep number and suffix on same line */
+.stat-value {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    white-space: nowrap;
 }
 
 /* ================================
@@ -8680,4 +8741,75 @@ h3.philosophy-title {
         transform: translateX(0) !important;
         display: block !important;
     }
+
+    /* Fix "What We Do" Heading Position (Move Right & Down) */
+    .split-header .section-title {
+        position: relative !important;
+        left: 80px !important;
+        top: 70px !important;
+    }
+}
+
+/* Modal Description Formatting - Enable newlines */
+#csModalChallenge {
+    white-space: pre-line !important;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* FIX RPG CURSOR POSITION (Inline with text) */
+.rpg-cursor {
+    display: none !important;
+}
+
+#rpg-text::after {
+    content: '|';
+    display: inline;
+    animation: rpg-blink 1s step-end infinite;
+    margin-left: 1px;
+}
+
+@keyframes rpg-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Service Page Label styling - Increased size for readability */
+.service-label {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px !important;
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    color: #a0a0b0 !important;
+    text-transform: uppercase;
+}
+
+/* Service Divider - Subtle separation */
+.service-detail-block {
+    position: relative;
+    padding-bottom: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.service-detail-block:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    /* Center it a bit */
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.08) 20%,
+            rgba(0, 0, 0, 0.08) 80%,
+            rgba(0, 0, 0, 0) 100%);
 }

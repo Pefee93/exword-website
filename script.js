@@ -92,7 +92,7 @@ function initCaseStudyModal() {
             image: 'assets/projects/diplomacy.jpg',
             challenge: 'We helped the game find its target audience on Reddit through a combination of targeted organic Reddit marketing and highly specialized Reddit ads. Through the combination of the two, Diplomacy is Not an Option was put in front of over 5 million players and established as one of the leading real-time strategy games.\n\nDue to the campaign’s success, the studio decided to continue working with ExWord as their long-term partners after the initial campaign for Diplomacy is Not an Option in 2024. Since then, we’ve helped them promote, alongside Diplomacy is Not an Option, their newest title, Abra Cooking Dabra, and other side projects.',
             platforms: ['Steam'],
-            stats: ['12M+', '500k+', '1,000,000+'],
+            stats: ['12M+', '500k+', '1M+'],
             statLabels: ['Players Reached', 'Launch Day Wishlists', 'Total Copies Sold']
         },
         astral: {
