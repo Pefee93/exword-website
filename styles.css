@@ -2842,7 +2842,7 @@ p,
 }
 
 .stat-number {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2rem, 10vw, 5rem);
     font-weight: 800;
     line-height: 1;
     background: var(--gradient-primary);
@@ -2854,7 +2854,7 @@ p,
 }
 
 .stat-suffix {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 6vw, 3rem);
     font-weight: 700;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -8812,4 +8812,61 @@ h3.philosophy-title {
             rgba(0, 0, 0, 0.08) 20%,
             rgba(0, 0, 0, 0.08) 80%,
             rgba(0, 0, 0, 0) 100%);
+}
+
+/* Mobile Fixes - Inventory CTA Button & Layout */
+@media (max-width: 768px) {
+    .inventory-main {
+        min-width: 0 !important;
+        width: 100% !important;
+        align-items: center !important;
+        padding-top: 100px !important;
+        /* Reduced from 280px but enough to clear char */
+    }
+
+    .inventory-mesh.grid-hex {
+        margin-right: 0 !important;
+        justify-content: center !important;
+        gap: 10px !important;
+    }
+
+    .inventory-cta {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        justify-content: center !important;
+        width: 100% !important;
+        padding: 0 20px !important;
+        margin-top: 40px !important;
+    }
+
+    .hex-link-styled {
+        width: 100% !important;
+        max-width: 300px !important;
+        justify-content: center !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Modal Fixes - High Z-Index & Mobile Positioning */
+.case-study-modal {
+    z-index: 10000 !important;
+}
+
+.modal-close {
+    z-index: 10001 !important;
+}
+
+@media (max-width: 768px) {
+    .modal-close {
+        top: max(30px, env(safe-area-inset-top) + 20px) !important;
+        right: 20px !important;
+        background: rgba(20, 20, 20, 0.9) !important;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
 }
