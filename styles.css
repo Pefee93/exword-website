@@ -8947,3 +8947,22 @@ h3.philosophy-title {
         opacity: 1 !important;
     }
 }
+
+/* Disable Scroll Snap on Mobile */
+@media (max-width: 900px) {
+
+    html,
+    body {
+        scroll-snap-type: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    section,
+    .section-container,
+    .hero,
+    .projects,
+    div {
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+    }
+}
