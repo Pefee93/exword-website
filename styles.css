@@ -1009,7 +1009,6 @@ section {
     /* Pull slightly left to create dynamic overlap */
     position: relative;
     z-index: 2;
-    overflow: visible;
 }
 
 /* Ensure container doesn't clip and no overlays exist */
