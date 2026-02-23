@@ -246,6 +246,11 @@ function initNavbarScroll() {
         document.querySelector('.banner-section')
     ];
 
+    const paperSections = [
+        document.getElementById('services'),
+        document.querySelector('.logo-scroll')
+    ];
+
     let cachedNavbarHeight = 80;
     let cachedHeroHeight = 0;
     let cachedDark = [];
