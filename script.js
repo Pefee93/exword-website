@@ -89,7 +89,7 @@ function initCaseStudyModal() {
         diplomacy: {
             title: 'Diplomacy is Not an Option',
             genre: 'Door 407',
-            image: 'assets/projects/diplomacy.jpg',
+            image: 'assets/projects/diplomacy.webp',
             challenge: 'We helped the game find its target audience on Reddit through a combination of targeted organic Reddit marketing and highly specialized Reddit ads. Through the combination of the two, Diplomacy is Not an Option was put in front of over 5 million players and established as one of the leading real-time strategy games.\n\nDue to the campaign’s success, the studio decided to continue working with ExWord as their long-term partners after the initial campaign for Diplomacy is Not an Option in 2024. Since then, we’ve helped them promote, alongside Diplomacy is Not an Option, their newest title, Abra Cooking Dabra, and other side projects.',
             platforms: ['Steam'],
             stats: ['12M+', '500k+', '1M+'],
@@ -98,7 +98,7 @@ function initCaseStudyModal() {
         astral: {
             title: 'Astral Ascent',
             genre: 'Hibernian Workshop',
-            image: 'assets/projects/astral-ascent-cover-DaaHsuMo.jpg',
+            image: 'assets/projects/astral-ascent-cover-optimized.webp',
             challenge: 'Through a highly specialized, targeted Reddit strategy, we put Astral Ascent in front of 4M+ players on Reddit, built widespread hype, and established the game as one of the most talked-about roguelites on social media.\n\nAfter the initial collaboration was finished and the initial goal was reached, Hibernian Workshop collaborated with ExWord on two other occasions - the first time for the promotion of a big update for Astral Ascent, and the second time for the help promoting the Kickstarter campaign of their latest project - Fallen Fates.',
             platforms: ['Steam', 'Console'],
             stats: ['5M+', '91%', '12+'],
@@ -107,7 +107,7 @@ function initCaseStudyModal() {
         vail: {
             title: 'VAIL VR',
             genre: 'AEXLAB',
-            image: 'assets/projects/vail-vr-CFhHfYeD.png',
+            image: 'assets/projects/vail-vr-optimized.webp',
             challenge: 'Helped establish VAIL VR as one of the leading VR shooters on social media, positioned it in front of key VR communities, and organized engaging community events that strengthened the game\'s presence and expanded its player base. Alongside that, we helped the developers establish long-lasting, high-value collaborations with key Esports and VR gaming communities that propelled the game’s popularity to new heights.',
             platforms: ['Steam', 'Meta', 'VR'],
             stats: ['10M+', '20+', '5,000+'],
@@ -116,7 +116,7 @@ function initCaseStudyModal() {
         atre: {
             title: 'Atre: Dominance Wars',
             genre: 'Ironward',
-            image: 'assets/projects/atre-dominance-wars-ClSNUBvy.avif',
+            image: 'assets/projects/atre-dominance-wars-optimized.webp',
             challenge: 'As an emerging and unique 4X strategy game blending the RTS and 4X genres, the real challenge for Atre was finding its true audience on Reddit. We published a few posts, tracked their performance, and identified the best-performing communities in which we built Atre’s reputation later on and established a long-term presence.',
             platforms: ['Steam'],
             stats: ['3M+', '92%', '400%+'],
@@ -125,7 +125,7 @@ function initCaseStudyModal() {
         galactic: {
             title: 'Galactic Glitch',
             genre: 'Crunchy Leaf Games',
-            image: 'assets/projects/galactic-glitch-COuJvM3i.jpg',
+            image: 'assets/projects/galactic-glitch-optimized.webp',
             challenge: 'Due to regular, big updates produced by the studio, we designed a strategy that focuses on two things at once: sustaining the presence of the game in all relevant communities during the low periods, and short-term hype bursts around the patch releases. This worked perfectly and elevated the game to one of the best-performing twin-stick shooters on Steam.',
             platforms: ['Steam'],
             stats: ['6M+', '30+', '2'],
