@@ -119,6 +119,7 @@
             left: 0;
             top: 0;
             animation: loaderProgress 1.5s infinite linear;
+            will-change: transform;
         }
 
         @keyframes loaderPulse {
@@ -141,18 +142,15 @@
 
         @keyframes loaderProgress {
             0% {
-                left: -100%;
-                width: 50%;
+                transform: translateX(-200%);
             }
 
             50% {
-                left: 25%;
-                width: 50%;
+                transform: translateX(50%);
             }
 
             100% {
-                left: 100%;
-                width: 50%;
+                transform: translateX(200%);
             }
         }
     </style>
@@ -174,7 +172,7 @@
     <!-- Loading Screen -->
     <div id="loader-wrapper">
         <div class="loader-content">
-            <img src="assets/Logo.svg" alt="Loading..." class="loader-logo">
+            <img src="assets/Logo.svg" alt="Loading..." class="loader-logo" width="80" height="80">
             <div class="loader-bar-bg">
                 <div class="loader-bar-fill"></div>
             </div>
