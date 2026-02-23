@@ -10,10 +10,164 @@
     <link rel="icon" type="image/svg+xml" href="assets/Logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+
+    <style>
+        :root {
+            --bg-light: #f5f5f7;
+            --color-primary: #4F46E5;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050510;
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            z-index: 100000;
+        }
+
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            animation: loaderPulse 2s infinite ease-in-out;
+            filter: brightness(0) invert(1);
+        }
+
+        .loader-bar-bg {
+            width: 150px;
+            height: 3px;
+            background: rgba(117, 117, 242, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar-fill {
+            width: 50%;
+            height: 100%;
+            background: #7575f2;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: loaderProgress 1.5s infinite linear;
+        }
+
+        @keyframes loaderPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+                filter: drop-shadow(0 0 10px #7575f2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes loaderProgress {
+            0% {
+                left: -100%;
+                width: 50%;
+            }
+
+            50% {
+                left: 25%;
+                width: 50%;
+            }
+
+            100% {
+                left: 100%;
+                width: 50%;
+            }
+        }
+    </style>
+
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap">
+    <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+        media="print" onload="this.media='all'">
+
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
 </head>
 
 <body>
@@ -127,37 +281,45 @@
             <div class="logo-track">
                 <!-- Logos repeated for seamless loop -->
                 <div class="logo-item"><img src="assets/marquee%20logos/acid-mines-software-BKUAX-Pe.png"
-                        alt="Acid Mines" height="50"></div>
-                <div class="logo-item"><img src="assets/marquee%20logos/aexlab-D8upVgGr.png" alt="Aexlab" height="50"
-                        style="height: 35px;"></div>
+                        alt="Acid Mines" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
+                <div class="logo-item"><img src="assets/marquee%20logos/aexlab-D8upVgGr.png" alt="Aexlab" width="174"
+                        height="100" loading="lazy" style="height: 35px; width: auto;"></div>
                 <div class="logo-item"><img
                         src="assets/marquee%20logos/2024__CLEVER_PLAYS_-_FULL_COLOR_WHITE_IS_TRANSPARENT.png"
-                        alt="Clever Plays" height="50"></div>
+                        alt="Clever Plays" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
                 <div class="logo-item"><img src="assets/marquee%20logos/crunchy-leaf-c-7C1w43.png" alt="Crunchy Leaf"
-                        height="50"></div>
-                <div class="logo-item"><img src="assets/marquee%20logos/door407-DDB7q593.png" alt="Door 407"
-                        height="50"></div>
+                        width="174" height="100" loading="lazy" style="height: 50px; width: auto;"></div>
+                <div class="logo-item"><img src="assets/marquee%20logos/door407-DDB7q593.png" alt="Door 407" width="174"
+                        height="100" loading="lazy" style="height: 50px; width: auto;"></div>
                 <div class="logo-item"><img src="assets/marquee%20logos/filmic-studios-sPf-updh.png"
-                        alt="Filmic Studios" height="50"></div>
+                        alt="Filmic Studios" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
                 <div class="logo-item"><img src="assets/marquee%20logos/hibernian-workshop-DdrPp1ul.png"
-                        alt="Hibernian Workshop" height="50"></div>
+                        alt="Hibernian Workshop" width="174" height="100" loading="lazy"
+                        style="height: 50px; width: auto;"></div>
 
                 <!-- Duplicate set for seamless loop -->
                 <div class="logo-item"><img src="assets/marquee%20logos/acid-mines-software-BKUAX-Pe.png"
-                        alt="Acid Mines" height="50"></div>
-                <div class="logo-item"><img src="assets/marquee%20logos/aexlab-D8upVgGr.png" alt="Aexlab" height="50"
-                        style="height: 35px;"></div>
+                        alt="Acid Mines" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
+                <div class="logo-item"><img src="assets/marquee%20logos/aexlab-D8upVgGr.png" alt="Aexlab" width="174"
+                        height="100" loading="lazy" style="height: 35px; width: auto;"></div>
                 <div class="logo-item"><img
                         src="assets/marquee%20logos/2024__CLEVER_PLAYS_-_FULL_COLOR_WHITE_IS_TRANSPARENT.png"
-                        alt="Clever Plays" height="50"></div>
+                        alt="Clever Plays" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
                 <div class="logo-item"><img src="assets/marquee%20logos/crunchy-leaf-c-7C1w43.png" alt="Crunchy Leaf"
-                        height="50"></div>
-                <div class="logo-item"><img src="assets/marquee%20logos/door407-DDB7q593.png" alt="Door 407"
-                        height="50"></div>
+                        width="174" height="100" loading="lazy" style="height: 50px; width: auto;"></div>
+                <div class="logo-item"><img src="assets/marquee%20logos/door407-DDB7q593.png" alt="Door 407" width="174"
+                        height="100" loading="lazy" style="height: 50px; width: auto;"></div>
                 <div class="logo-item"><img src="assets/marquee%20logos/filmic-studios-sPf-updh.png"
-                        alt="Filmic Studios" height="50"></div>
+                        alt="Filmic Studios" width="174" height="100" loading="lazy" style="height: 50px; width: auto;">
+                </div>
                 <div class="logo-item"><img src="assets/marquee%20logos/hibernian-workshop-DdrPp1ul.png"
-                        alt="Hibernian Workshop" height="50"></div>
+                        alt="Hibernian Workshop" width="174" height="100" loading="lazy"
+                        style="height: 50px; width: auto;"></div>
             </div>
         </div>
     </section>
@@ -186,9 +348,10 @@
                 <!-- Left: Character Art -->
                 <div class="character-panel">
                     <div class="knight-bg-logo">
-                        <img src="assets/Logo.svg" alt="Background Logo">
+                        <img src="assets/Logo.svg" alt="Background Logo" width="150" height="150" loading="lazy">
                     </div>
-                    <img src="assets/knight_nobackground.png" alt="RPG Character" class="pixel-art-character">
+                    <img src="assets/knight_nobackground.webp" alt="RPG Character" class="pixel-art-character"
+                        width="800" height="800" fetchpriority="high">
                 </div>
 
                 <!-- Right: Inventory (Hexagons) -->
@@ -292,7 +455,8 @@
     <!-- Profile Banner Section (Full Width Expansion) -->
     <section class="banner-section">
         <div class="banner-expansion-wrapper">
-            <img src="assets/Profile banner - 1.avif" alt="Profile Banner" class="banner-img">
+            <img src="assets/Profile banner - 1.avif" alt="Profile Banner" class="banner-img" loading="lazy"
+                width="2800" height="400">
             <div class="banner-gradient"></div>
         </div>
     </section>
@@ -461,7 +625,8 @@
                 <!-- 1. Diplomacy -->
                 <div class="character-card" data-project="diplomacy">
                     <div class="character-image">
-                        <img src="assets/projects/diplomacy.jpg" alt="Diplomacy is Not an Option"
+                        <img src="assets/projects/diplomacy.webp" alt="Diplomacy is Not an Option" width="1194"
+                            height="672" loading="lazy"
                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
                     </div>
                     <div class="character-info">
@@ -473,8 +638,8 @@
                 <!-- 2. VAIL -->
                 <div class="character-card" data-project="vail">
                     <div class="character-image">
-                        <img src="assets/projects/vail-vr-CFhHfYeD.png" alt="VAIL VR"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="assets/projects/vail-vr-optimized.webp" alt="VAIL VR" width="1194" height="672"
+                            loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="character-info">
                         <h3 class="character-name">VAIL VR</h3>
@@ -485,8 +650,8 @@
                 <!-- 3. Astral -->
                 <div class="character-card" data-project="astral">
                     <div class="character-image">
-                        <img src="assets/projects/astral-ascent-cover-DaaHsuMo.jpg" alt="Astral Ascent"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="assets/projects/astral-ascent-cover-optimized.webp" alt="Astral Ascent" width="1194"
+                            height="672" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="character-info">
                         <h3 class="character-name">Astral Ascent</h3>
@@ -497,8 +662,8 @@
                 <!-- 4. Galactic -->
                 <div class="character-card" data-project="galactic">
                     <div class="character-image">
-                        <img src="assets/projects/galactic-glitch-COuJvM3i.jpg" alt="Galactic Glitch"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="assets/projects/galactic-glitch-optimized.webp" alt="Galactic Glitch" width="1194"
+                            height="672" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="character-info">
                         <h3 class="character-name">Galactic Glitch</h3>
@@ -509,7 +674,8 @@
                 <!-- 5. Atre -->
                 <div class="character-card" data-project="atre">
                     <div class="character-image">
-                        <img src="assets/projects/atre-dominance-wars-ClSNUBvy.avif" alt="Atre: Dominance Wars"
+                        <img src="assets/projects/atre-dominance-wars-optimized.webp" alt="Atre: Dominance Wars"
+                            width="1194" height="672" loading="lazy"
                             style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="character-info">

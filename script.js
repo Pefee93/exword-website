@@ -213,13 +213,19 @@ function initVideoLoop() {
     const video = document.querySelector('.hero-video');
     if (!video) return;
 
-    video.addEventListener('timeupdate', () => {
-        // Restart 0.1 seconds before the video ends
-        if (video.currentTime > video.duration - 0.1) {
+    // A robust requestAnimationFrame based checker to restart smoothly
+    // Fallback to native loop attribute if this fails
+    const checkLoop = () => {
+        if (video.duration > 0 && video.currentTime >= video.duration - 0.1) {
             video.currentTime = 0;
-            video.play();
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => { });
+            }
         }
-    });
+        requestAnimationFrame(checkLoop);
+    };
+    requestAnimationFrame(checkLoop);
 }
 
 /**
@@ -243,58 +249,63 @@ function initNavbarScroll() {
         document.querySelector('.banner-section')
     ];
 
+    let ticking = false;
+
     const handleScroll = () => {
-        const scrollY = window.scrollY;
-        const navbarHeight = navbar.offsetHeight;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                const navbarHeight = navbar.offsetHeight;
 
-        // Check if scrolled past hero (needs glass background)
-        const heroHeight = hero ? hero.offsetHeight : 0;
-        const pastHero = scrollY > (heroHeight - navbarHeight - 20);
+                // Check if scrolled past hero (needs glass background)
+                const heroHeight = hero ? hero.offsetHeight : 0;
+                const pastHero = scrollY > (heroHeight - navbarHeight - 20);
 
-        if (pastHero) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+                let overDark = false;
+                darkSections.forEach(section => {
+                    if (!section) return;
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= navbarHeight && rect.bottom >= 0) {
+                        overDark = true;
+                    }
+                });
 
-        // Check if navbar is over any dark section (for white text)
-        let overDark = false;
-        darkSections.forEach(section => {
-            if (!section) return;
-            const rect = section.getBoundingClientRect();
-            // Navbar is at top (0 to navbarHeight)
-            // Overlap if section top < navbarHeight AND section bottom > 0
-            if (rect.top <= navbarHeight && rect.bottom >= 0) {
-                overDark = true;
-            }
-        });
+                const paperSections = [
+                    document.getElementById('services'),
+                    document.querySelector('.logo-scroll')
+                ];
 
-        if (overDark) {
-            navbar.classList.add('dark-section');
-        } else {
-            navbar.classList.remove('dark-section');
-        }
+                let overPaper = false;
+                paperSections.forEach(section => {
+                    if (!section) return;
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= navbarHeight && rect.bottom >= 0) {
+                        overPaper = true;
+                    }
+                });
 
-        // Check if navbar is over any PAPER section (for brown button)
-        // Paper sections = Services, Philosophy (inside Services), Logo Scroll
-        const paperSections = [
-            document.getElementById('services'),
-            document.querySelector('.logo-scroll')
-        ];
+                // Batch writes
+                if (pastHero) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
 
-        let overPaper = false;
-        paperSections.forEach(section => {
-            if (!section) return;
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= navbarHeight && rect.bottom >= 0) {
-                overPaper = true;
-            }
-        });
+                if (overDark) {
+                    navbar.classList.add('dark-section');
+                } else {
+                    navbar.classList.remove('dark-section');
+                }
 
-        if (overPaper) {
-            navbar.classList.add('nav-paper-mode');
-        } else {
-            navbar.classList.remove('nav-paper-mode');
+                if (overPaper) {
+                    navbar.classList.add('nav-paper-mode');
+                } else {
+                    navbar.classList.remove('nav-paper-mode');
+                }
+
+                ticking = false;
+            });
+            ticking = true;
         }
     };
 
