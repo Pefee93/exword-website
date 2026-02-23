@@ -249,37 +249,54 @@ function initNavbarScroll() {
         document.querySelector('.banner-section')
     ];
 
+    let cachedNavbarHeight = 80;
+    let cachedHeroHeight = 0;
+    let cachedDark = [];
+    let cachedPaper = [];
+
+    const updateCache = () => {
+        cachedNavbarHeight = navbar.offsetHeight || 80;
+        cachedHeroHeight = hero ? hero.offsetHeight : 0;
+        const scrollOffset = window.scrollY;
+
+        cachedDark = darkSections.map(section => {
+            if (!section) return null;
+            const rect = section.getBoundingClientRect();
+            return { top: rect.top + scrollOffset, bottom: rect.bottom + scrollOffset };
+        });
+
+        cachedPaper = paperSections.map(section => {
+            if (!section) return null;
+            const rect = section.getBoundingClientRect();
+            return { top: rect.top + scrollOffset, bottom: rect.bottom + scrollOffset };
+        });
+    };
+
+    updateCache();
+    window.addEventListener('resize', updateCache);
+    setTimeout(updateCache, 1000); // Audit after potential image loads
+    setTimeout(updateCache, 3000);
+
     let ticking = false;
 
     const handleScroll = () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 const scrollY = window.scrollY;
-                const navbarHeight = navbar.offsetHeight;
-
-                // Check if scrolled past hero (needs glass background)
-                const heroHeight = hero ? hero.offsetHeight : 0;
-                const pastHero = scrollY > (heroHeight - navbarHeight - 20);
+                const pastHero = scrollY > (cachedHeroHeight - cachedNavbarHeight - 20);
 
                 let overDark = false;
-                darkSections.forEach(section => {
-                    if (!section) return;
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= navbarHeight && rect.bottom >= 0) {
+                cachedDark.forEach(bounds => {
+                    if (!bounds) return;
+                    if (bounds.top - scrollY <= cachedNavbarHeight && bounds.bottom - scrollY >= 0) {
                         overDark = true;
                     }
                 });
 
-                const paperSections = [
-                    document.getElementById('services'),
-                    document.querySelector('.logo-scroll')
-                ];
-
                 let overPaper = false;
-                paperSections.forEach(section => {
-                    if (!section) return;
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top <= navbarHeight && rect.bottom >= 0) {
+                cachedPaper.forEach(bounds => {
+                    if (!bounds) return;
+                    if (bounds.top - scrollY <= cachedNavbarHeight && bounds.bottom - scrollY >= 0) {
                         overPaper = true;
                     }
                 });
