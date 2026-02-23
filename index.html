@@ -163,10 +163,10 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap"
         media="print" onload="this.media='all'">
 
-    <link rel="preload" href="styles.css" as="style">
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="preload" href="styles.min.css?v=1.0" as="style">
+    <link rel="stylesheet" href="styles.min.css?v=1.0" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="styles.min.css?v=1.0">
     </noscript>
 </head>
 
@@ -777,7 +777,7 @@
                     <!-- Character Portrait (positioned on right, overlapping) -->
                     <div class="dialogue-character">
                         <img src="assets/Vector Male.svg" alt="Character" class="character-silhouette"
-                            id="dialogueCharacter">
+                            id="dialogueCharacter" width="300" height="400">
                     </div>
                 </div>
 
@@ -1021,7 +1021,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.min.js?v=1.0" defer></script>
 </body>
 
 </html>
