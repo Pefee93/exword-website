@@ -4371,16 +4371,16 @@ main {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 15vh;
-    /* HUGE Gap between sections for scrolling feel */
+    gap: 120px;
+    /* Fixed gap ensures precise spacing regardless of 4K screen height */
     min-width: 0;
     /* Flexbox fix */
 }
 
 .service-detail-block {
     scroll-margin-top: 150px;
-    min-height: 80vh;
-    /* Make each section tall enough to allow scrolling */
+    min-height: auto;
+    /* Prevent aggressive vertical stretching on huge displays */
     display: flex;
     flex-direction: column;
     justify-content: center;
