@@ -213,9 +213,8 @@ function initVideoLoop() {
     const video = document.querySelector('.hero-video');
     if (!video) return;
 
-    // A robust requestAnimationFrame based checker to restart smoothly
-    // Fallback to native loop attribute if this fails
-    const checkLoop = () => {
+    // Use timeupdate (fires ~4 times a second) instead of spamming requestAnimationFrame 60-120 times a second
+    video.addEventListener('timeupdate', () => {
         if (video.duration > 0 && video.currentTime >= video.duration - 0.1) {
             video.currentTime = 0;
             const playPromise = video.play();
@@ -223,9 +222,7 @@ function initVideoLoop() {
                 playPromise.catch(() => { });
             }
         }
-        requestAnimationFrame(checkLoop);
-    };
-    requestAnimationFrame(checkLoop);
+    });
 }
 
 /**
@@ -335,6 +332,10 @@ function initNavbarScroll() {
  * Parallax effects for various elements
  */
 function initParallaxEffects() {
+    // Disable expensive parallax recalculations on mobile to save JS execution/paint time
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return;
+
     const heroContent = document.querySelector('.hero-content');
     const videoWrapper = document.querySelector('.hero-video-wrapper');
 
