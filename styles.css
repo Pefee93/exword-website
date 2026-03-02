@@ -9109,12 +9109,33 @@ h3.philosophy-title {
     }
 
     /* 
-       Removing the fixed full-screen scanline gradient for the same reason. 
-       Overlapping fixed layers with transparency destroys FPS on older phones.
+       Removing all fixed SVG background noise layers, scanline animations, and pseudo-element overloads. 
+       These overlapping layers of transparency + SVG filters completely destroy FPS on older mobile chips.
     */
-    body::before {
+    body::before,
+    body::after,
+    .stats::before,
+    .stats::after,
+    #projects::before,
+    #projects::after,
+    #services::before,
+    #services::after,
+    .rpg-contact::before,
+    .rpg-contact::after,
+    .footer::before,
+    .footer::after,
+    .glitch-marquee-wrapper::before,
+    .glitch-marquee-wrapper::after,
+    .testimonials::before,
+    .testimonials::after,
+    .section-container::before,
+    .section-container::after,
+    .bento-box-item::before,
+    .bento-box-item::after {
         display: none !important;
         background: none !important;
         animation: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 }
