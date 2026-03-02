@@ -461,8 +461,11 @@
     <!-- Profile Banner Section (Full Width Expansion) -->
     <section class="banner-section">
         <div class="banner-expansion-wrapper">
-            <img src="assets/Profile banner - 1.avif" alt="Profile Banner" class="banner-img" loading="lazy"
-                width="2800" height="400">
+            <picture>
+                <source media="(max-width: 900px)" srcset="assets/Profile%20banner%20mobile.png">
+                <img src="assets/Profile%20banner%20-%201.avif" alt="Profile Banner" class="banner-img" loading="lazy"
+                    width="2800" height="400">
+            </picture>
             <div class="banner-gradient"></div>
         </div>
     </section>
@@ -689,6 +692,19 @@
                         <p class="character-role">Ironward</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Mobile Swipe Indicator -->
+            <div class="mobile-swipe-indicator" style="display: none;">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                SWIPE TO EXPLORE
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
             </div>
         </div>
     </section>

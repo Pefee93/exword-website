@@ -7960,13 +7960,12 @@ h3.philosophy-title {
 
     .character-card {
         min-width: 100vw !important;
-        /* Full width */
         width: 100vw !important;
         height: 100% !important;
-        scroll-snap-align: start !important;
+        scroll-snap-align: center !important;
         margin: 0 !important;
-        padding: 0 !important;
-        /* No padding */
+        padding: 15px 20px !important;
+        box-sizing: border-box !important;
 
         /* Reset Desktop Styles */
         transform: none !important;
@@ -7975,7 +7974,13 @@ h3.philosophy-title {
         background: transparent !important;
         position: relative !important;
         opacity: 1 !important;
-        /* Ensure visible */
+        overflow: visible !important;
+        /* Stop clipping rounded corners and shadows */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-shadow: none !important;
     }
 
     /* Ensure image fills card */
@@ -7984,49 +7989,63 @@ h3.philosophy-title {
         height: 100% !important;
         clip-path: none !important;
         transform: none !important;
-        border: none !important;
-        position: static !important;
-        /* Reset absolute if present */
+        border: 1px solid rgba(129, 140, 248, 0.4) !important;
+        border-radius: 12px !important;
+        box-shadow: 0 0 15px rgba(129, 140, 248, 0.15) !important;
+        position: relative !important;
+        overflow: hidden !important;
         margin: 0 !important;
+        left: 0 !important;
     }
 
     .character-image img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
-        border-radius: 0 !important;
+        border-radius: 12px !important;
         filter: brightness(0.9);
         display: block !important;
+        transform: none !important;
     }
 
     /* Info Overlay - readable at bottom */
-    .character-info {
+    .character-info,
+    .character-card:first-child .character-info,
+    .character-card:last-child .character-info {
         position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        padding: 40px 20px 30px !important;
+        bottom: 15px !important;
+        left: 20px !important;
+        /* matches card left padding */
+        width: calc(100% - 40px) !important;
+        padding: 30px 10px 20px !important;
         background: linear-gradient(to top, rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0)) !important;
-        text-align: left !important;
+        text-align: center !important;
+        border-bottom-left-radius: 12px !important;
+        border-bottom-right-radius: 12px !important;
         transform: none !important;
         z-index: 5 !important;
         opacity: 1 !important;
         pointer-events: none !important;
-        /* Let swipes pass nicely? */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
     .character-name {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
         font-family: 'Exo 2', sans-serif !important;
         color: #fff !important;
         margin-bottom: 5px !important;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+        text-align: center !important;
     }
 
     .character-role {
         font-size: 1.1rem !important;
         color: #ccc !important;
         font-weight: 400 !important;
+        text-align: center !important;
     }
 
     /* Mobile Spacing Fixes (Remove huge gaps) */
@@ -8940,6 +8959,18 @@ h3.philosophy-title {
         opacity: 1 !important;
         transform: none !important;
     }
+
+    /* Make the 5th stat span both columns so it perfectly centers at the bottom */
+    .stats-grid .stat-item:last-child {
+        grid-column: 1 / -1 !important;
+        margin-top: 10px !important;
+    }
+
+    /* Force proper centering on the labels when they line break */
+    .stats-grid .stat-label {
+        text-align: center !important;
+        margin-top: 5px !important;
+    }
 }
 
 /* Disable Scroll Snap on Mobile */
@@ -8955,9 +8986,42 @@ h3.philosophy-title {
     .section-container,
     .hero,
     .projects,
-    div {
+    div:not(.character-select):not(.character-card) {
         scroll-snap-align: none !important;
         scroll-snap-stop: normal !important;
+    }
+
+    /* Swipe Indicator Styles */
+    .mobile-swipe-indicator {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        gap: 8px;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        opacity: 0.8;
+        animation: swipePulse 2s infinite ease-in-out;
+    }
+
+    .mobile-swipe-indicator svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+    }
+
+    @keyframes swipePulse {
+
+        0%,
+        100% {
+            transform: translateX(0);
+            opacity: 0.6;
+        }
+
+        50% {
+            transform: translateX(10px);
+            opacity: 1;
+        }
     }
 }
 
@@ -9018,7 +9082,17 @@ h3.philosophy-title {
     }
 
     .banner-img {
-        object-position: right center !important;
+        object-position: center !important;
+        aspect-ratio: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+
+    /* Keep the gradient small and only at the very bottom to act as a soft transition rather than a full dark overlay */
+    .banner-gradient {
+        height: 60px !important;
+        background: linear-gradient(to top, var(--bg-dark) 0%, rgba(8, 8, 22, 0.4) 50%, transparent 100%) !important;
     }
 
     /* --- CRITICAL MOBILE PERFORMANCE FIXES --- */
