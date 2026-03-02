@@ -9020,4 +9020,27 @@ h3.philosophy-title {
     .banner-img {
         object-position: right center !important;
     }
+
+    /* --- CRITICAL MOBILE PERFORMANCE FIXES --- */
+    /* 
+       Disabling the fixed SVG filter and mix-blend-mode overlay. 
+       These operations force the mobile GPU to recalculate every pixel on every scroll frame, 
+       causing massive lag, especially over dark sections.
+    */
+    .paper-texture {
+        display: none !important;
+        opacity: 0 !important;
+        filter: none !important;
+        mix-blend-mode: normal !important;
+    }
+
+    /* 
+       Removing the fixed full-screen scanline gradient for the same reason. 
+       Overlapping fixed layers with transparency destroys FPS on older phones.
+    */
+    body::before {
+        display: none !important;
+        background: none !important;
+        animation: none !important;
+    }
 }
