@@ -7133,6 +7133,34 @@ main {
     justify-content: flex-start;
 }
 
+@media (max-width: 768px) {
+    .modal-stats {
+        flex-direction: column !important;
+        gap: 15px !important;
+        margin-top: 20px !important;
+    }
+
+    .modal-stat {
+        width: 100% !important;
+        padding: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .modal-stat .modal-stat-number {
+        font-size: 2.2rem !important;
+        margin-bottom: 5px !important;
+        text-align: center !important;
+    }
+
+    .modal-stat .modal-stat-label {
+        font-size: 0.7rem !important;
+        text-align: center !important;
+    }
+}
+
 /* 4. Modal Banner Screen Effects */
 .modal-image-banner::after {
     content: "";
