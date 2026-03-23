@@ -501,7 +501,7 @@ function initRpgContact() {
 
     if (!rpgText) return;
 
-    const initialMessage = "You reached the end, traveller. Let’s stay in touch!";
+    const initialMessage = "You've reached the end, traveller. Let’s stay in touch!";
     let isTyping = false;
     let typeTimeout;
 
