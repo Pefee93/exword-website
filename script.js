@@ -606,7 +606,7 @@ function initRpgContact() {
             } else if (action === 'email') {
                 showForm();
             } else if (action === 'publisher') {
-                typeMessage("Awesome! If you need help marketing your games, we are the right fit for you! Email us at hello@exword.co", 25);
+                typeMessage("Awesome! If you need help marketing your games, we are the right fit for you! Email us at ognjen@exword.co", 25);
             } else if (action === 'run') {
                 typeMessage("See ya!", 40);
                 setTimeout(() => {

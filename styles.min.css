@@ -9166,4 +9166,4 @@ h3.philosophy-title {
         opacity: 0 !important;
         pointer-events: none !important;
     }
-}
+}.philosophy-text { font-size: 1.15rem !important; line-height: 1.8 !important; color: var(--text-dark-secondary) !important; font-weight: 400 !important; }

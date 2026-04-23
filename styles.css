@@ -515,20 +515,35 @@ section {
     font-family: var(--font-primary);
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 600;
-    /* Increased weight */
     line-height: 1.3;
     letter-spacing: -0.01em;
     margin-bottom: var(--space-lg);
     color: #ffffff;
-    /* Pure white */
-    /* Strong text shadow for contrast without overlay */
-    text-shadow:
-        0 2px 4px rgba(0, 0, 0, 0.9),
-        0 8px 32px rgba(0, 0, 0, 0.8),
-        0 0 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 8px 32px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5);
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(1.5rem, 8vw, 4rem);
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    .hero-title span {
+        white-space: normal;
+    }
+    .indie-heading {
+        margin-bottom: 1rem;
+    }
+    .indie-paragraph {
+        margin-bottom: 1rem;
+    }
+    .philosophy-grid {
+        gap: 1rem;
+    }
 }
 
 .cta-heading {
@@ -3696,11 +3711,11 @@ p,
 }
 
 .philosophy-text {
-    font-size: 1.15rem;
+    font-size: 1.15rem !important;
     /* Standard readable size */
-    line-height: 1.8;
-    color: var(--text-dark-secondary);
-    font-weight: 400;
+    line-height: 1.8 !important;
+    color: var(--text-dark-secondary) !important;
+    font-weight: 400 !important;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -8315,37 +8330,24 @@ h3.philosophy-title {
         display: block !important;
     }
 
-    /* Philosophy Grid Swipeable (Cards) */
+    /* Philosophy Grid - Now Stacks Vertically on Mobile */
     .philosophy-grid {
         display: flex !important;
-        flex-direction: row !important;
-        overflow-x: auto !important;
+        flex-direction: column !important;
+        overflow-x: visible !important;
         gap: 20px !important;
-
-        /* Break out full width */
-        width: 100vw !important;
-        margin-left: calc(-50vw + 50%) !important;
-        margin-right: calc(-50vw + 50%) !important;
-        padding: 0 20px 30px 20px !important;
-        /* Extra bottom padding for scrollbar */
-        /* Left/Right padding */
-
+        width: 100% !important;
+        margin: 0 0 30px 0 !important;
+        padding: 0 !important;
         scroll-snap-type: none !important;
-        /* No snap as requested */
         -webkit-overflow-scrolling: touch !important;
-
-        /* Reset Grid styles */
         grid-template-columns: none !important;
         transition-delay: 0s !important;
-        margin-bottom: 20px !important;
     }
 
-    /* Scrollbar Styling for Indicator */
+    /* Hide Scrollbar since no longer swiping */
     .philosophy-grid::-webkit-scrollbar {
-        display: block !important;
-        height: 4px !important;
-        /* Thin line */
-        background: transparent !important;
+        display: none !important;
     }
 
     .philosophy-grid::-webkit-scrollbar-track {
@@ -8362,14 +8364,11 @@ h3.philosophy-title {
     }
 
     .philosophy-grid>div {
-        min-width: 78vw !important;
-        /* Reduced width for better "peek" */
-        /* Nearly full width cards */
-        width: 78vw !important;
+        min-width: 100% !important;
+        width: 100% !important;
         flex: 0 0 auto !important;
-        margin: 0 !important;
+        margin: 0 0 10px 0 !important;
         opacity: 1 !important;
-        /* Ensure visible */
     }
 
     /* Remove Scroll Snap from Projects Carousel */
