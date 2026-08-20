@@ -111,7 +111,7 @@ function initCaseStudyModal() {
         croak: {
             title: 'Croak',
             genre: 'WoodRunner Games',
-            image: 'assets/projects/case-studies/croak-cover.jpg',
+            image: 'assets/projects/case-studies/croakheader.jpg',
             challenge: 'There are not many games with such a unique design as this hand-drawn masterpiece about a frog prince trying to secure his spot at a royal dinner.\n\nWe helped WoodRunner Games with Reddit - where we’ve had dozens of viral posts because who doesn’t love looking at this little gem of a game - and designed a full influencer program from the ground up, including the outreach structure and highly-converting messages.',
             platforms: ['Steam'],
             stats: ['400+', '3M+', '80K+'],
@@ -261,6 +261,7 @@ function initCaseStudyModal() {
                 const proofSection = document.getElementById('csModalProof');
                 const proofGrid = document.getElementById('csModalProofGrid');
                 if (proofSection && proofGrid) {
+                    proofSection.dataset.project = projectId;
                     proofGrid.innerHTML = '';
                     const proofImages = Array.isArray(data.proofImages) ? data.proofImages : [];
                     modal.classList.toggle('has-proof', proofImages.length > 0);

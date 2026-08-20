@@ -10272,3 +10272,28 @@ h3.philosophy-title {
         margin: 0 20px 28px;
     }
 }
+
+/* Croak keeps its square cover in the narrow card and uses the supplied wide art in the modal. */
+.project-row .character-card[data-project="croak"] .character-image img {
+    object-fit: cover !important;
+    object-position: 50% 58% !important;
+}
+
+.modal-image-banner[data-project="croak"] {
+    height: auto !important;
+    aspect-ratio: 460 / 248;
+}
+
+.modal-image-banner[data-project="croak"] .modal-project-art {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* High Times captures have wider source margins, so they need a tighter evidence crop. */
+.modal-proof[data-project="high-times"] .modal-proof-card img,
+.modal-proof[data-project="high-times"] .modal-proof-card:hover img {
+    transform: scale(1.75) !important;
+    transform-origin: center 48%;
+}
