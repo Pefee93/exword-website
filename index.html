@@ -270,10 +270,10 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=VT323&display=swap"
         media="print" onload="this.media='all'">
 
-    <link rel="preload" href="styles.min.css?v=1.1" as="style">
-    <link rel="stylesheet" href="styles.min.css?v=1.1" media="print" onload="this.media='all'">
+    <link rel="preload" href="styles.min.css?v=1.7" as="style">
+    <link rel="stylesheet" href="styles.min.css?v=1.7" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="styles.min.css?v=1.1">
+        <link rel="stylesheet" href="styles.min.css?v=1.7">
     </noscript>
 </head>
 
@@ -305,11 +305,13 @@
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="#projects" class="nav-link">Clients</a>
             </div>
-            <div class="nav-logo">
-                <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon" width="40" height="40">
-                <img src="assets/Group.svg" alt="ExWord" class="logo-text" width="87" height="14">
-                <span class="logo-rpg-text">EXWORD//</span>
-            </div>
+            <a href="#hero" class="nav-logo-link" aria-label="Back to homepage hero">
+                <div class="nav-logo">
+                    <img src="assets/Logo.svg" alt="ExWord Logo" class="logo-icon" width="40" height="40">
+                    <img src="assets/Group.svg" alt="ExWord" class="logo-text" width="87" height="14">
+                    <span class="logo-rpg-text">EXWORD//</span>
+                </div>
+            </a>
             <div class="nav-right">
                 <a href="about.html" class="nav-link">About</a>
                 <a href="#contact" class="nav-link nav-cta">Contact</a>
@@ -757,66 +759,118 @@
                     studios.</p>
             </div>
 
-            <div class="character-select">
-                <!-- 1. Diplomacy -->
-                <div class="character-card" data-project="diplomacy">
-                    <div class="character-image">
-                        <img src="assets/projects/diplomacy.webp" alt="Diplomacy is Not an Option" width="1194"
-                            height="672" loading="lazy"
-                            style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+            <div class="projects-showcase">
+                <div class="character-select project-row project-row--forward" aria-label="Featured client projects">
+                    <div class="character-card" data-project="atre" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/atre-dominance-wars-optimized.webp" alt="Atre: Dominance Wars"
+                                width="1194" height="672" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Atre:<br>Dominance Wars</h3>
+                            <p class="character-role">Ironward</p>
+                        </div>
                     </div>
-                    <div class="character-info">
-                        <h3 class="character-name">Diplomacy is Not<br>an Option</h3>
-                        <p class="character-role">Door 407</p>
+
+                    <div class="character-card" data-project="astral" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/astral-ascent-cover-optimized.webp" alt="Astral Ascent" width="1194"
+                                height="672" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Astral Ascent</h3>
+                            <p class="character-role">Hibernian Workshop</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card is-featured" data-project="dark-west" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/case-studies/the-dark-west-cover.png" alt="The Dark West" width="600"
+                                height="900" loading="eager">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">The Dark West</h3>
+                            <p class="character-role">Black Hand</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-project="vail" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/vail-vr-optimized.webp" alt="VAIL VR" width="1194" height="672"
+                                loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">VAIL VR</h3>
+                            <p class="character-role">AEXLAB</p>
+                        </div>
+                    </div>
+
+                    <div class="character-card" data-project="galactic" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/galactic-glitch-optimized.webp" alt="Galactic Glitch" width="1194"
+                                height="672" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Galactic Glitch</h3>
+                            <p class="character-role">Crunchy Leaf Games</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 2. VAIL -->
-                <div class="character-card" data-project="vail">
-                    <div class="character-image">
-                        <img src="assets/projects/vail-vr-optimized.webp" alt="VAIL VR" width="1194" height="672"
-                            loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="character-select project-row project-row--reverse" aria-label="More client projects">
+                    <div class="character-card" data-project="guilty-or-not" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/case-studies/guilty-or-not-cover.png" alt="Guilty or Not" width="748"
+                                height="896" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Guilty or Not</h3>
+                            <p class="character-role">YALP</p>
+                        </div>
                     </div>
-                    <div class="character-info">
-                        <h3 class="character-name">VAIL VR</h3>
-                        <p class="character-role">AEXLAB</p>
-                    </div>
-                </div>
 
-                <!-- 3. Astral -->
-                <div class="character-card" data-project="astral">
-                    <div class="character-image">
-                        <img src="assets/projects/astral-ascent-cover-optimized.webp" alt="Astral Ascent" width="1194"
-                            height="672" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="character-card" data-project="croak" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/case-studies/croak-cover.jpg" alt="Croak" width="1024" height="1024"
+                                loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Croak</h3>
+                            <p class="character-role">WoodRunner Games</p>
+                        </div>
                     </div>
-                    <div class="character-info">
-                        <h3 class="character-name">Astral Ascent</h3>
-                        <p class="character-role">Hibernian Workshop</p>
-                    </div>
-                </div>
 
-                <!-- 4. Galactic -->
-                <div class="character-card" data-project="galactic">
-                    <div class="character-image">
-                        <img src="assets/projects/galactic-glitch-optimized.webp" alt="Galactic Glitch" width="1194"
-                            height="672" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="character-card" data-project="diplomacy" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/diplomacy.webp" alt="Diplomacy is Not an Option" width="1194"
+                                height="672" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Diplomacy is Not<br>an Option</h3>
+                            <p class="character-role">Door 407</p>
+                        </div>
                     </div>
-                    <div class="character-info">
-                        <h3 class="character-name">Galactic Glitch</h3>
-                        <p class="character-role">Crunchy Leaf Games</p>
-                    </div>
-                </div>
 
-                <!-- 5. Atre -->
-                <div class="character-card" data-project="atre">
-                    <div class="character-image">
-                        <img src="assets/projects/atre-dominance-wars-optimized.webp" alt="Atre: Dominance Wars"
-                            width="1194" height="672" loading="lazy"
-                            style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="character-card" data-project="loftia" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/case-studies/loftia-cover.jpg" alt="Loftia" width="1200" height="1600"
+                                loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">Loftia</h3>
+                            <p class="character-role">Qloud Games</p>
+                        </div>
                     </div>
-                    <div class="character-info">
-                        <h3 class="character-name">Atre:<br>Dominance Wars</h3>
-                        <p class="character-role">Ironward</p>
+
+                    <div class="character-card" data-project="high-times" role="button" tabindex="0">
+                        <div class="character-image">
+                            <img src="assets/projects/case-studies/box-art.png" alt="High Times" width="600"
+                                height="800" loading="lazy">
+                        </div>
+                        <div class="character-info">
+                            <h3 class="character-name">High Times</h3>
+                            <p class="character-role">Yangyang Mobile</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -840,46 +894,55 @@
     <div class="case-study-modal" id="caseStudyModal">
         <div class="modal-overlay"></div>
         <div class="modal-content">
-            <div class="modal-image-banner" id="csModalImage"></div>
             <button class="modal-close" id="csModalClose">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
-            <div class="modal-header">
-                <span class="modal-tag">Case Study</span>
-                <h2 class="modal-title" id="csModalTitle">Project Name</h2>
-                <p class="modal-genre" id="csModalGenre">Genre</p>
-            </div>
-            <div class="modal-body">
-                <div class="modal-details">
-                    <div class="modal-section">
-                        <h3>Our Approach</h3>
-                        <p id="csModalChallenge">Description...</p>
-                    </div>
-                    <div class="modal-section">
-                        <h3>Platforms</h3>
-                        <div id="csModalPlatforms" class="platform-tags"></div>
-                    </div>
-                    <div class="modal-section">
-                        <h3>The Results</h3>
-                        <div class="modal-stats">
-                            <div class="modal-stat">
-                                <span class="modal-stat-number" id="csModalStat1">+250%</span>
-                                <span class="modal-stat-label" id="csModalStatLabel1">Community Growth</span>
-                            </div>
-                            <div class="modal-stat">
-                                <span class="modal-stat-number" id="csModalStat2">50K+</span>
-                                <span class="modal-stat-label" id="csModalStatLabel2">New Players</span>
-                            </div>
-                            <div class="modal-stat">
-                                <span class="modal-stat-number" id="csModalStat3">4.8★</span>
-                                <span class="modal-stat-label" id="csModalStatLabel3">Store Rating</span>
+            <div class="modal-primary">
+                <div class="modal-image-banner" id="csModalImage"></div>
+                <div class="modal-header">
+                    <span class="modal-tag">Case Study</span>
+                    <h2 class="modal-title" id="csModalTitle">Project Name</h2>
+                    <p class="modal-genre" id="csModalGenre">Genre</p>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <div class="modal-section">
+                            <h3>Our Approach</h3>
+                            <p id="csModalChallenge">Description...</p>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Platforms</h3>
+                            <div id="csModalPlatforms" class="platform-tags"></div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>The Results</h3>
+                            <div class="modal-stats">
+                                <div class="modal-stat">
+                                    <span class="modal-stat-number" id="csModalStat1">+250%</span>
+                                    <span class="modal-stat-label" id="csModalStatLabel1">Community Growth</span>
+                                </div>
+                                <div class="modal-stat">
+                                    <span class="modal-stat-number" id="csModalStat2">50K+</span>
+                                    <span class="modal-stat-label" id="csModalStatLabel2">New Players</span>
+                                </div>
+                                <div class="modal-stat">
+                                    <span class="modal-stat-number" id="csModalStat3">4.8★</span>
+                                    <span class="modal-stat-label" id="csModalStatLabel3">Store Rating</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <aside class="modal-proof" id="csModalProof" hidden>
+                <div class="modal-proof-heading">
+                    <span>Campaign evidence</span>
+                    <small>Reddit post performance</small>
+                </div>
+                <div class="modal-proof-grid" id="csModalProofGrid"></div>
+            </aside>
         </div>
     </div>
 
@@ -1171,7 +1234,7 @@
         </div>
     </footer>
 
-    <script src="script.min.js?v=1.1" defer></script>
+    <script src="script.min.js?v=1.7" defer></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const svg = document.getElementById('marauders-svg');

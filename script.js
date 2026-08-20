@@ -95,6 +95,71 @@ function initCaseStudyModal() {
             stats: ['12M+', '500k+', '1M+'],
             statLabels: ['Players Reached', 'Launch Day Wishlists', 'Total Copies Sold']
         },
+        'dark-west': {
+            title: 'The Dark West',
+            genre: 'Black Hand',
+            image: 'assets/projects/case-studies/the-dark-west-banner.png',
+            challenge: 'We started working on The Dark West in June 2026 as the external Reddit and influencer marketing partner. Over time, we grew closer and discovered our synergy working together, and since July, our CEO, Ognjen, has become the Head of Marketing for Black Hand, leading The Dark West’s meteoric rise.\n\nEven though our work was initially focused on Reddit marketing and specialized influencer activity, we currently manage everything marketing-wise - Reddit, influencers, community management, PR, official communications, short & long-term plans, and… well, whatever’s needed to be done to push the game to stardom.\n\nWhen we joined in June, the game had 45k wishlists. Today, The Dark West sits at over 100k wishlists and is on a stable path to multiply that total.',
+            platforms: ['Steam'],
+            stats: ['100K+', '2X+', '7M+'],
+            statLabels: ['Wishlists', 'Wishlist Growth', 'Players Reached'],
+            proofImages: [
+                'assets/projects/case-studies/the-dark-west-reddit-1.png',
+                'assets/projects/case-studies/the-dark-west-reddit-2.png'
+            ]
+        },
+        croak: {
+            title: 'Croak',
+            genre: 'WoodRunner Games',
+            image: 'assets/projects/case-studies/croak-cover.jpg',
+            challenge: 'There are not many games with such a unique design as this hand-drawn masterpiece about a frog prince trying to secure his spot at a royal dinner.\n\nWe helped WoodRunner Games with Reddit - where we’ve had dozens of viral posts because who doesn’t love looking at this little gem of a game - and designed a full influencer program from the ground up, including the outreach structure and highly-converting messages.',
+            platforms: ['Steam'],
+            stats: ['400+', '3M+', '80K+'],
+            statLabels: ['Creators Contacted', 'Players Reached', 'Wishlists'],
+            proofImages: [
+                'assets/projects/case-studies/croak-reddit-1.png',
+                'assets/projects/case-studies/croak-reddit-2.png'
+            ]
+        },
+        'guilty-or-not': {
+            title: 'Guilty or Not',
+            genre: 'YALP',
+            image: 'assets/projects/case-studies/guilty-or-not-banner.png',
+            challenge: 'We leaned into the game’s absurd hook - a courtroom simulator where you are the detective, the forensic scientist, and the judge, and can abuse every bit of it - and matched this in our writing. The first post confirmed our expectation - 1,200 upvotes, 100k+ views, and immense support in the comments.',
+            platforms: ['Steam'],
+            stats: ['400K+', '60%', '10K+'],
+            statLabels: ['Views Across 10 Posts', 'Viral Posts', 'Wishlists in 3 Weeks'],
+            proofImages: [
+                'assets/projects/case-studies/guilty-or-not-reddit-1.png',
+                'assets/projects/case-studies/guilty-or-not-reddit-2.png'
+            ]
+        },
+        loftia: {
+            title: 'Loftia',
+            genre: 'Qloud Games',
+            image: 'assets/projects/case-studies/loftia-cover.jpg',
+            challenge: 'We met the amazing Loftia team in January 2026 and clicked right on our first call. They knew what they were looking for, and we knew exactly how to make the game explode on Reddit.\n\nThe initial plan was to promote the game until the beta test in April, but the game was performing so well on Reddit with dozens of viral posts, and the Loftia team was so satisfied with ExWord’s work that we became long-term partners and have worked together continuously since.\n\nApart from Reddit, ExWord also provided help with community management.',
+            platforms: ['Steam'],
+            stats: ['30+', '6M+', '400K+'],
+            statLabels: ['Viral Posts Delivered', 'Players Reached', 'Wishlists'],
+            proofImages: [
+                'assets/projects/case-studies/loftia-reddit-1.png',
+                'assets/projects/case-studies/loftia-reddit-2.png'
+            ]
+        },
+        'high-times': {
+            title: 'High Times',
+            genre: 'Yangyang Mobile',
+            image: 'assets/projects/case-studies/images_1.jpg',
+            challenge: 'We ran a launch boost Reddit campaign for High Times, and it built the narrative around genuine developer moments - the studio’s three-years-in-the-making origin story, original artwork and gameplay showcases, and community giveaways. This resulted in viral posts and huge hype in the related Reddit communities that translated into a successful launch.\n\nIn addition, we helped the studio with their influencer marketing efforts, deploying layered targeting to find around 200 creators who would be the most valuable for the game, reach out to them, and secure dozens of collaborations.',
+            platforms: ['Steam', 'PlayStation', 'Xbox', 'Nintendo Switch'],
+            stats: ['2M+', '5,000+', '20+'],
+            statLabels: ['Players Reached', 'Positive Social Media Reactions', 'Creator Partnerships'],
+            proofImages: [
+                'assets/projects/case-studies/high-timesReddit_Stats_-_Post_10-selection.png',
+                'assets/projects/case-studies/hightimesReddit_Stats_-_Post_9-selection.png'
+            ]
+        },
         astral: {
             title: 'Astral Ascent',
             genre: 'Hibernian Workshop',
@@ -147,7 +212,17 @@ function initCaseStudyModal() {
                 // Update Image
                 const imgContainer = document.getElementById('csModalImage');
                 if (imgContainer) {
-                    imgContainer.innerHTML = `<img src="${data.image}" alt="${data.title}" style="width:100%; height:100%; object-fit:cover; display:block;">`;
+                    const imageFit = data.imageFit === 'contain' ? 'contain' : 'cover';
+                    imgContainer.dataset.project = projectId;
+                    imgContainer.classList.toggle('modal-image-banner--contain', imageFit === 'contain');
+                    imgContainer.classList.toggle('modal-image-banner--cover', imageFit === 'cover');
+
+                    const image = document.createElement('img');
+                    image.className = 'modal-project-art';
+                    image.src = data.image;
+                    image.alt = data.title;
+
+                    imgContainer.replaceChildren(image);
                 }
 
                 const challengeEl = document.getElementById('csModalChallenge');
@@ -182,9 +257,46 @@ function initCaseStudyModal() {
                 if (s3) s3.textContent = data.stats[2];
                 if (l3) l3.textContent = data.statLabels[2];
 
+                // Show supplied Reddit performance captures when a project has them.
+                const proofSection = document.getElementById('csModalProof');
+                const proofGrid = document.getElementById('csModalProofGrid');
+                if (proofSection && proofGrid) {
+                    proofGrid.innerHTML = '';
+                    const proofImages = Array.isArray(data.proofImages) ? data.proofImages : [];
+                    modal.classList.toggle('has-proof', proofImages.length > 0);
+
+                    if (proofImages.length) {
+                        proofImages.forEach((src, index) => {
+                            const figure = document.createElement('figure');
+                            figure.className = 'modal-proof-card';
+
+                            const image = document.createElement('img');
+                            image.src = src;
+                            image.alt = `${data.title} Reddit campaign performance, post ${index + 1}`;
+                            image.loading = 'lazy';
+
+                            const caption = document.createElement('figcaption');
+                            caption.textContent = `Featured post ${String(index + 1).padStart(2, '0')}`;
+
+                            figure.append(image, caption);
+                            proofGrid.appendChild(figure);
+                        });
+                        proofSection.hidden = false;
+                    } else {
+                        proofSection.hidden = true;
+                    }
+                }
+
                 // Open modal only when data is valid
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
+            }
+        });
+
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
             }
         });
     });
@@ -421,7 +533,7 @@ function initScrollAnimations() {
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        
+
         .animate-on-scroll.visible {
             opacity: 1;
             transform: translateY(0);
@@ -983,7 +1095,7 @@ function initStickyScrollSpy() {
  * Random Signal Loss Glitch Effect on Cards
  */
 function initRandomGlitch() {
-    const cards = document.querySelectorAll('.character-card');
+    const cards = document.querySelectorAll('.character-card[data-project]');
     if (!cards.length) return;
 
     function triggerGlitch() {
@@ -994,8 +1106,8 @@ function initRandomGlitch() {
         // Add glitch class
         card.classList.add('signal-lost');
 
-        // Remove after random short duration (150ms - 400ms)
-        const duration = 150 + Math.random() * 250;
+        // Keep the interruption quick enough to read as signal loss, not a glow.
+        const duration = 120 + Math.random() * 120;
         setTimeout(() => {
             card.classList.remove('signal-lost');
             scheduleNextGlitch();
@@ -1003,8 +1115,8 @@ function initRandomGlitch() {
     }
 
     function scheduleNextGlitch() {
-        // Random delay between glitches (2s - 6s)
-        const delay = 2000 + Math.random() * 4000;
+        // Leave enough calm time between glitches so the effect stays intentional.
+        const delay = 3500 + Math.random() * 5000;
         setTimeout(triggerGlitch, delay);
     }
 
